@@ -121,23 +121,56 @@
             background-clip: text;
         }
 
-        /* Before/After cards animation */
-        .before-card {
-            transform: translateX(-60px) rotate(-3deg);
-            transition: all .5s ease;
+                /* Before/After cards - Mobile First */
+                .compare-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
         }
 
+        .before-card,
         .after-card {
-            transform: translateX(60px) rotate(2deg);
-            transition: all .5s ease;
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            transform: none !important;
+            transition: transform 0.3s ease;
         }
 
-        .compare-cards:hover .before-card {
-            transform: translateX(-200px) rotate(-6deg);
-        }
-
-        .compare-cards:hover .after-card {
-            transform: translateX(200px) rotate(3deg);
+        /* Desktop hover effect */
+        @media (min-width: 768px) {
+            .compare-cards {
+                flex-direction: row;
+                height: 400px;
+                gap: 0;
+            }
+            
+            .before-card {
+                position: absolute;
+                width: 320px;
+                max-width: none;
+                transform: translateX(-60px) rotate(-3deg) !important;
+                z-index: 10;
+            }
+            
+            .after-card {
+                position: absolute;
+                width: 320px;
+                max-width: none;
+                transform: translateX(60px) rotate(2deg) !important;
+                z-index: 20;
+            }
+            
+            .compare-cards:hover .before-card {
+                transform: translateX(-200px) rotate(-6deg) !important;
+            }
+            
+            .compare-cards:hover .after-card {
+                transform: translateX(200px) rotate(3deg) !important;
+            }
         }
 
         /* Floating animation */
