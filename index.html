@@ -144,13 +144,13 @@ border-radius:999px;
 color:white;
 text-decoration:none;
 }
-        .fade-up{
+.fade-up{
 opacity:0;
 transform:translateY(40px);
-transition:all .8s ease;
+transition:opacity .8s ease, transform .8s ease;
 }
 
-.fade-up.show{
+.fade-up.visible{
 opacity:1;
 transform:translateY(0);
 }
@@ -682,7 +682,7 @@ transform:translateY(0px) scale(1.02);
         </section>
 
         <!-- Process Section -->
-        <section id="process" class="section bg-blue-900 text-white fade-up">
+        <section id="process" class="bg-blue-900 text-white py-24 fade-up">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <p class="text-blue-300 font-bold tracking-wide uppercase text-sm mb-3">How It Works</p>
@@ -691,7 +691,7 @@ transform:translateY(0px) scale(1.02);
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8 relative">
-                    <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-blue-800"></div>
+                    <div class="hidden md:block absolute top-12 left-10 right-10 h-0.5 bg-blue-800"></div>
 
                     <div class="process-step relative z-10 bg-blue-800 p-8 rounded-2xl border border-blue-700 text-center card">
                         <div class="w-12 h-12 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 shadow-lg">1</div>
@@ -708,9 +708,9 @@ transform:translateY(0px) scale(1.02);
                     <div class="process-step relative z-10 bg-blue-800 p-8 rounded-2xl border border-blue-700 text-center card">
                         <div class="w-12 h-12 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 shadow-lg">3</div>
                         <h3 class="text-xl font-bold mb-3">Launch & Grow</h3>
-                        <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4 text-gray-900">
-                            Turn Your <span style="color: #3b82f6;">Outdated Site</span> Into a Customer Magnet
-                        </h1>
+                        <p class="text-blue-200">
+                            We launch your new website and make sure everything runs smoothly so you can focus on growing your business.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1061,18 +1061,17 @@ transform:translateY(0px) scale(1.02);
     </script>
     <script>
 
-        const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-        if(entry.isIntersecting){
-        entry.target.classList.add("show");
-        }
-        });
-        },{ threshold:0.15 });
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+});
+
+document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+</script>
         
-        document.querySelectorAll(".fade-up").forEach(el=>{
-        observer.observe(el);
-        });
-        
-        </script>
 </body>
 </html>
