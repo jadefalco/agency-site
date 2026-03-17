@@ -177,6 +177,36 @@ scroll-behavior:smooth;
     max-height: 32px !important;
 }
 
+
+/* Mobile Responsive Fixes - Hero Section */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 36px;
+        line-height: 1.1;
+        word-wrap: break-word;
+    }
+    
+    .hero-sub {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+    
+    .hero-content {
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+}
         /* Parallax Hero from File 1 */
         .hero-parallax {
             position: relative;
@@ -358,13 +388,76 @@ transform:translateY(0px) scale(1.02);
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
+        /* Insert AFTER line 238 (after the } of @keyframes float) */
 
+/* Mobile - Before/After Cards */
+@media (max-width: 768px) {
+    .compare-cards {
+        height: auto !important;
+        min-height: 600px;
+        padding: 2rem 1rem;
+    }
+    
+    .before-card, .after-card {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 280px;
+        transform: none !important;
+        margin-bottom: 1.5rem;
+    }
+}
         /* Section spacing */
         .section {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
         }
-  
+        /* Insert AFTER line 246 (after the .section rule closing }) */
+
+/* Mobile - Pricing */
+@media (max-width: 768px) {
+    #pricing .grid {
+        gap: 2rem;
+    }
+    
+    #pricing .card {
+        transform: none !important;
+    }
+    
+    #pricing .border-2.border-red-500 {
+        transform: none;
+        order: -1;
+    }
+    /* Mobile - Contact Form (add inside existing @media or new one at line 254) */
+@media (max-width: 640px) {
+    form .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    input, textarea {
+        max-width: 100%;
+        font-size: 16px;
+    }
+}
+}
+/* Insert at line 262 */
+
+/* Mobile - General */
+@media (max-width: 768px) {
+    .section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        overflow-x: hidden;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    #portfolio article {
+        width: 100%;
+    }
+}
         /* Form validation styles */
         input:invalid, textarea:invalid {
             border-color: #ef4444;
