@@ -2,32 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Riviera Pool &amp; Spa | West Kelowna</title>
+  <title>Riviera Pool &amp; Spa | West Kelowna & Okanagan Valley</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Riviera Pool &amp; Spa - Premium pool installation, renovation, and maintenance services in West Kelowna" />
-  <meta name="theme-color" content="#0F1A2C" />
+  <meta name="description" content="Premium pool installation, renovation, and maintenance services in West Kelowna. Transform your backyard into a luxury oasis with Riviera Pool & Spa." />
+  <meta name="theme-color" content="#0F172A" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-dark: #0f1a2c;
-      --bg-darker: #0a1220;
-      --accent: #1ea7ff;
-      --accent-soft: rgba(30, 167, 255, 0.12);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --card-bg: #111827;
-      --border-subtle: #1f2937;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
-      --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);
-      --max-width: 1120px;
+      --bg-dark: #0B1120;
+      --bg-darker: #050914;
+      --bg-card: #111827;
+      --accent: #38bdf8;
+      --accent-secondary: #22c55e;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(148, 163, 184, 0.15);
+      --border-hover: rgba(148, 163, 184, 0.3);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --shadow-soft: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 40px rgba(56, 189, 248, 0.15);
+      --max-width: 1200px;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
     }
 
     * {
@@ -36,228 +40,39 @@
       padding: 0;
     }
 
-    html, body {
-      height: 100%;
+    html {
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      font-family: var(--font-body);
+      background: var(--bg-darker);
       color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent), var(--accent-secondary));
+      border-radius: 5px;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .shell {
+    /* Utility */
+    .container {
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.5rem 1.25rem 4rem;
+      padding: 0 1.5rem;
     }
 
-    /* Header / Nav */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.85), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.25rem 0.9rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    /* Logo - 50% bigger (60px) and more prominent */
-    .nav-left img {
-      height: 60px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .nav-left img:hover {
-      transform: scale(1.08);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-    }
-
-    .brand-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-    }
-
-    .brand-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: #e5e7eb;
-      opacity: 0.85;
-      position: relative;
-      padding-bottom: 0.15rem;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.2rem;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #38bdf8, #22c55e);
-      transition: width 0.18s ease-out;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #ecfdf5;
-      font-size: 0.85rem;
-      font-weight: 600;
-      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.35);
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .nav-cta:hover {
-      filter: brightness(1.05);
-    }
-
-    /* Hero - Full Width with new image */
-    main {
-      flex: 1;
-    }
-
-    section {
-      padding: 3.5rem 0;
-    }
-
-    #home {
-      position: relative;
-      width: 100vw;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .hero-fullwidth-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .hero-fullwidth-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* Dark overlay on image for general readability */
-    .hero-overlay-dark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 2;
-    }
-
-    /* Content box with 10-15% opaque black background */
-    .hero-content-box {
-      position: relative;
-      z-index: 3;
-      max-width: 900px;
-      margin: 0 1.25rem;
-      padding: 3rem;
-      background: rgba(0, 0, 0, 0.12); /* Slightly opaque black ~12% */
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-kicker {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #a5b4fc;
-      margin-bottom: 0.75rem;
-    }
-
-    /* Fade in animation for title */
-    .hero-title {
-      font-size: clamp(2.4rem, 3vw + 1.4rem, 3.6rem);
-      line-height: 1.1;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      animation: fadeInUp 1.2s ease-out;
-    }
-
+    /* Animations */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -269,1076 +84,2320 @@
       }
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(to bottom, rgba(5, 9, 20, 0.98), rgba(5, 9, 20, 0.9));
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(5, 9, 20, 0.98);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-left img {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .nav-left img:hover {
+      transform: scale(1.05);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+      font-family: var(--font-display);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-secondary), #16a34a);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .mobile-menu-btn span {
+      width: 25px;
+      height: 2px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    /* Hero Section - Premium Upgrade */
+    #home {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 0;
+      padding-top: 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: slowZoom 20s infinite alternate;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(5, 9, 20, 0.85) 0%, rgba(5, 9, 20, 0.6) 50%, rgba(5, 9, 20, 0.4) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     .hero-subtitle {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 30rem;
-      margin: 0 auto 1.6rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
+      gap: 1rem;
       justify-content: center;
-      margin-bottom: 1.6rem;
+      margin-bottom: 3rem;
     }
 
     .btn-primary {
-      padding: 0.8rem 1.4rem;
+      padding: 1rem 2rem;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #ecfdf5;
-      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.35);
-      transition: transform 0.3s ease, filter 0.3s ease;
+      background: linear-gradient(135deg, var(--accent-secondary), #16a34a);
+      color: white;
+      box-shadow: 0 15px 35px rgba(34, 197, 94, 0.35);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .btn-primary:hover {
-      filter: brightness(1.05);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.45);
     }
 
-    .btn-ghost {
-      padding: 0.8rem 1.3rem;
+    .btn-secondary {
+      padding: 1rem 2rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.7);
-      color: #e5e7eb;
-      font-size: 0.95rem;
-      font-weight: 500;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
 
-    .btn-ghost:hover {
-      border-color: rgba(148, 163, 184, 0.8);
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Trust Badges Bar */
+    .trust-bar {
+      position: relative;
+      z-index: 3;
       background: rgba(15, 23, 42, 0.9);
-      transform: translateY(-2px);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem 0;
+      margin-top: auto;
     }
 
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.8);
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
     }
 
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    /* Section headings */
-    .section-header {
-      margin-bottom: 2.2rem;
+    .trust-item {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      max-width: 32rem;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .trust-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .trust-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: white;
+      font-family: var(--font-display);
+    }
+
+    .trust-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .section-alt {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
     }
 
     .section-kicker {
-      font-size: 0.85rem;
+      display: inline-block;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #a5b4fc;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
     }
 
     .section-title {
-      font-size: 1.7rem;
-      font-weight: 600;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
     }
 
     .section-subtitle {
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
+      line-height: 1.7;
     }
 
-    /* Services */
-    #services {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
+    /* Services - Enhanced Cards */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
     .service-card {
-      background: radial-gradient(circle at top, #020617, #020617 40%, #020617 100%);
-      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.8), rgba(5, 9, 20, 0.9));
       border: 1px solid var(--border-subtle);
-      padding: 1.3rem 1.2rem 1.4rem;
-      box-shadow: var(--shadow-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
     }
 
     .service-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      z-index: 10;
+      transform: translateY(-8px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
     .service-title {
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: white;
     }
 
     .service-body {
-      font-size: 0.9rem;
       color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
     }
 
-    .service-maintenance {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 1.8rem;
-      align-items: center;
-      background: radial-gradient(circle at top left, #020617, #020617 55%, #020617 100%);
-      border-radius: 24px;
-      border: 1px solid var(--border-subtle);
-      padding: 1.6rem 1.6rem 1.6rem;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
-    }
-
-    .service-maintenance:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.65);
-      z-index: 10;
-    }
-
-    .service-maintenance-text h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .service-maintenance-text p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
-    }
-
-    .service-maintenance-list {
+    .service-list {
       list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.4rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-list li {
+      padding: 0.4rem 0;
+      color: #cbd5e1;
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .service-list li::before {
+      content: '✓';
+      color: var(--accent-secondary);
+      font-weight: 700;
+    }
+
+    .service-link {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s ease;
+    }
+
+    .service-link:hover {
+      gap: 0.75rem;
+    }
+
+    /* Maintenance Highlight */
+    .service-highlight {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(5, 9, 20, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-highlight::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .service-highlight-content h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
-    .service-maintenance-list li::before {
-      content: "•";
-      color: #22c55e;
-      margin-right: 0.4rem;
+    .service-highlight-content p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
     }
 
-    .service-maintenance img {
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: var(--shadow-subtle);
-      object-fit: cover;
+    .service-highlight-img {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-highlight-img img {
       width: 100%;
-      max-height: 260px;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    /* Gallery */
-    #gallery {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
+    .service-highlight:hover .service-highlight-img img {
+      transform: scale(1.05);
     }
 
+    /* Why Choose Us */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(17, 24, 39, 0.8);
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(34, 197, 94, 0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .feature-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Process - Timeline */
+    .process-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .process-line {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+
+    .process-number {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-dark));
+      border: 3px solid var(--border-subtle);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 auto 1.5rem;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .process-step:hover .process-number {
+      border-color: var(--accent);
+      transform: scale(1.1);
+      transition: all 0.3s ease;
+    }
+
+    .process-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: white;
+    }
+
+    .process-body {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Gallery - Portfolio Style */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
     }
 
     .gallery-item {
-      background: radial-gradient(circle at top, #020617, #020617 40%, #020617 100%);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      overflow: hidden;
-      box-shadow: var(--shadow-subtle);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
       position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      z-index: 10;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      group: gallery;
     }
 
     .gallery-item img {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.6s ease;
     }
 
-    .gallery-body {
-      padding: 0.9rem 1rem 1rem;
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 9, 20, 0.95), rgba(5, 9, 20, 0.4), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
     }
 
     .gallery-label {
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
     }
 
     .gallery-title {
-      font-size: 0.98rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
       font-weight: 600;
-    }
-
-    .gallery-location {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* About */
-    #about {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .about-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      margin-top: 1.2rem;
-    }
-
-    .stat-card {
-      padding: 0.8rem 1rem;
-      border-radius: var(--radius-md);
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      min-width: 120px;
-      position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      z-index: 10;
-    }
-
-    .stat-value {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .about-image-wrap {
-      position: relative;
-    }
-
-    .about-image-wrap img {
-      border-radius: 22px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: var(--shadow-soft);
-      object-fit: cover;
-      width: 100%;
-      max-height: 320px;
-    }
-
-    .about-quote {
-      position: absolute;
-      inset: auto 1.2rem 1.2rem 1.2rem;
-      padding: 0.8rem 1rem;
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.8rem;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
-    }
-
-    .about-image-wrap:hover .about-quote {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .stars {
-      color: #facc15;
-      margin-bottom: 0.2rem;
-    }
-
-    .quote-text {
-      font-size: 0.8rem;
+      color: white;
       margin-bottom: 0.25rem;
     }
 
-    .quote-author {
-      font-size: 0.78rem;
+    .gallery-location {
       color: var(--text-muted);
-    }
-
-    /* Process */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .process-step {
-      background: radial-gradient(circle at top, #020617, #020617 40%, #020617 100%);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      padding: 1.2rem 1.1rem 1.3rem;
-      box-shadow: var(--shadow-subtle);
-      position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
-    }
-
-    .process-step:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      z-index: 10;
-    }
-
-    .process-number {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-      margin-bottom: 0.3rem;
-    }
-
-    .process-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .process-body {
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .gallery-view-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: white;
+      color: var(--bg-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.4s ease;
+      white-space: nowrap;
+    }
+
+    .gallery-item:hover .gallery-view-btn {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Service Areas */
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .area-item {
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .area-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .area-name {
+      font-weight: 600;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .area-desc {
+      font-size: 0.85rem;
       color: var(--text-muted);
+      margin-top: 0.25rem;
     }
 
-    /* Contact */
-    #contact {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
     }
 
+    .testimonial-card {
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.8), rgba(5, 9, 20, 0.9));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .testimonial-stars {
+      color: #fbbf24;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .testimonial-info h4 {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.98), rgba(5, 9, 20, 0.95));
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .cta-text {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .cta-phone:hover {
+      transform: scale(1.05);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Contact Section */
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: flex-start;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info > p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
     }
 
     .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
-      font-size: 0.95rem;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .contact-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-      margin-bottom: 0.1rem;
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
     }
 
-    .contact-value {
-      font-size: 0.98rem;
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
-    .contact-areas {
-      font-size: 0.9rem;
+    .contact-text h4 {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-text p, .contact-text a {
       color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
-    .contact-form {
-      background: radial-gradient(circle at top, #020617, #020617 40%, #020617 100%);
-      border-radius: 22px;
+    .contact-text a:hover {
+      color: var(--accent);
+    }
+
+    .contact-areas-box {
+      background: rgba(17, 24, 39, 0.5);
       border: 1px solid var(--border-subtle);
-      padding: 1.6rem 1.5rem 1.7rem;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .contact-areas-box h4 {
+      color: white;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .contact-areas-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Contact Form - Enhanced */
+    .contact-form-wrapper {
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.9), rgba(5, 9, 20, 0.95));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
       box-shadow: var(--shadow-soft);
       position: relative;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                  box-shadow 0.4s ease;
     }
 
-    .contact-form:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.65);
-      z-index: 10;
+    .form-header {
+      margin-bottom: 2rem;
     }
 
-    .contact-form h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
+    .form-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
     }
 
-    .contact-form p {
-      font-size: 0.9rem;
+    .form-header p {
       color: var(--text-muted);
-      margin-bottom: 1.1rem;
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem 1rem;
-      margin-bottom: 0.9rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
     }
 
-    .form-field {
+    .form-group {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.85rem;
+      gap: 0.5rem;
     }
 
-    .form-field label {
-      color: #e5e7eb;
-    }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      background: #020617;
-      border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.55rem 0.7rem;
-      color: #e5e7eb;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: #38bdf8;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-    }
-
-    .form-field textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .form-full {
+    .form-group.full {
       grid-column: 1 / -1;
     }
 
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(5, 9, 20, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.875rem 1rem;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
     .form-submit {
-      margin-top: 0.6rem;
-    }
-
-    .form-submit button {
       width: 100%;
-      padding: 0.8rem 1.2rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #ecfdf5;
-      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.35);
-      transition: transform 0.3s ease, filter 0.3s ease;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
     }
 
-    .form-submit button:hover {
-      filter: brightness(1.05);
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-      background: radial-gradient(circle at top, #020617, #020617 40%, #020617 100%);
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2.2rem 1.25rem 2.4rem;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 1.8rem;
-      font-size: 0.9rem;
-    }
-
-    .footer-brand {
-      font-size: 0.9rem;
+    .form-security {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      max-width: 18rem;
+      justify-content: center;
+    }
+
+    /* FAQ Section */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-hover);
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .faq-answer p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Footer - Enhanced */
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
 
     .footer-heading {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-      margin-bottom: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
     }
 
-    .footer-list {
+    .footer-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.9rem;
+      gap: 0.75rem;
     }
 
-    .footer-list a {
-      color: #e5e7eb;
-      opacity: 0.85;
-      transition: opacity 0.3s ease;
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
-    .footer-list a:hover {
-      opacity: 1;
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .footer-contact {
+      color: var(--text-muted);
+    }
+
+    .footer-contact strong {
+      color: white;
+      display: block;
+      margin-bottom: 0.5rem;
     }
 
     .footer-bottom {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.25rem 2.2rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 2rem;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 0.8rem;
-      font-size: 0.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
       color: var(--text-muted);
+      font-size: 0.9rem;
     }
 
     .footer-bottom a {
       color: var(--text-muted);
+      text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .footer-bottom a:hover {
-      color: #e5e7eb;
+      color: var(--accent);
+    }
+
+    /* Sticky Mobile CTA */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(5, 9, 20, 0.98);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.75rem 1rem;
+      z-index: 999;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    }
+
+    .sticky-btn {
+      padding: 0.875rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .sticky-btn-primary {
+      background: linear-gradient(135deg, var(--accent-secondary), #16a34a);
+      color: white;
+    }
+
+    .sticky-btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     /* Responsive */
-    @media (max-width: 960px) {
-      .services-grid,
-      .gallery-grid,
-      .about-grid,
-      .process-grid,
-      .contact-grid,
-      .footer-inner {
-        grid-template-columns: minmax(0, 1fr);
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       }
-
-      #home {
-        min-height: 70vh;
-      }
-
-      .hero-content-box {
-        padding: 2rem;
-        margin: 0 1rem;
-      }
-
-      .service-maintenance {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .footer-inner {
-        gap: 1.4rem;
+      
+      .process-grid {
+        gap: 2rem;
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
-
-      .nav-left img {
-        height: 50px; /* Slightly smaller on mobile but still prominent */
+      
+      .mobile-menu-btn {
+        display: flex;
       }
-
-      .shell {
-        padding-inline: 1rem;
+      
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
       }
-
-      section {
-        padding: 3rem 0;
+      
+      .services-grid,
+      .gallery-grid,
+      .features-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
       }
-
-      .hero-title {
-        font-size: 2rem;
+      
+      .service-highlight {
+        grid-template-columns: 1fr;
+        padding: 2rem;
       }
-
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
+      
       .process-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
+        gap: 3rem;
       }
-
-      .contact-form {
-        padding: 1.3rem 1.1rem 1.4rem;
+      
+      .process-line {
+        display: none;
       }
-
+      
+      .process-number {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
       .form-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
-
-      .footer-inner {
-        grid-template-columns: minmax(0, 1fr);
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      
+      .sticky-cta {
+        display: grid;
+      }
+      
+      body {
+        padding-bottom: 80px;
+      }
+      
+      section {
+        padding: 4rem 0;
       }
     }
+
+    @media (max-width: 480px) {
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .cta-phone {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Utility Classes */
+    .text-accent { color: var(--accent); }
+    .text-secondary { color: var(--accent-secondary); }
+    .bg-dark { background: var(--bg-dark); }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <nav class="nav">
-        <div class="nav-left">
-          <img src="images/Riviera-logo.png" alt="Riviera Pool & Spa">
-          <div class="brand-text">
+
+  <!-- Header -->
+  <header id="header">
+    <nav class="nav">
+      <div class="nav-left">
+        <img src="images/Riviera-logo.png" alt="Riviera Pool & Spa">
+        <div class="brand-text">
+          <span class="brand-name">Riviera</span>
+          <span class="brand-sub">Pool & Spa</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Free Consultation
+        </button>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="hero-bg">
+      <img src="images/pool-hot-tub.jpg" alt="Luxury pool and hot tub installation in West Kelowna">
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <div class="hero-kicker">West Kelowna's Premier Pool Builder</div>
+      <h1 class="hero-title">Transform Your Backyard Into a Private Luxury Oasis</h1>
+      <p class="hero-subtitle">
+        Award-winning pool design and installation serving the Okanagan Valley. 
+        From concept to completion, we create stunning outdoor living spaces that 
+        increase your home's value and transform your lifestyle.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          <span>📞</span> Call for Free Consultation
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+          Explore Our Services
+        </button>
+      </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-item animate-on-scroll">
+            <div class="trust-icon">🏆</div>
+            <div class="trust-number">10+</div>
+            <div class="trust-label">Years Experience</div>
+          </div>
+          <div class="trust-item animate-on-scroll">
+            <div class="trust-icon">✓</div>
+            <div class="trust-number">500+</div>
+            <div class="trust-label">Projects Completed</div>
+          </div>
+          <div class="trust-item animate-on-scroll">
+            <div class="trust-icon">🛡️</div>
+            <div class="trust-number">100%</div>
+            <div class="trust-label">Licensed & Insured</div>
+          </div>
+          <div class="trust-item animate-on-scroll">
+            <div class="trust-icon">★</div>
+            <div class="trust-number">5.0</div>
+            <div class="trust-label">Star Rating</div>
           </div>
         </div>
-        <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-            Book Consult
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-alt">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">What We Offer</div>
+        <h2 class="section-title">Premium Pool & Spa Solutions</h2>
+        <p class="section-subtitle">
+          From custom installations to ongoing maintenance, we provide comprehensive 
+          services to create and care for your perfect outdoor oasis.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon">🏊</div>
+          <h3 class="service-title">Custom Pool Installation</h3>
+          <p class="service-body">
+            Bespoke gunite, vinyl, and fiberglass pools designed to complement your landscape 
+            and lifestyle. Energy-efficient equipment and 3D design previews included.
+          </p>
+          <ul class="service-list">
+            <li>Custom 3D design & planning</li>
+            <li>Energy-efficient systems</li>
+            <li>Permit handling included</li>
+            <li>Project management from start to finish</li>
+          </ul>
+          <a href="#contact" class="service-link">Get a Quote →</a>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon">🔧</div>
+          <h3 class="service-title">Pool Renovations</h3>
+          <p class="service-body">
+            Transform your outdated pool into a modern retreat with new liners, LED lighting, 
+            water features, and state-of-the-art equipment upgrades.
+          </p>
+          <ul class="service-list">
+            <li>Modern liner replacements</li>
+            <li>LED lighting upgrades</li>
+            <li>Water feature additions</li>
+            <li>Equipment modernization</li>
+          </ul>
+          <a href="#contact" class="service-link">View Options →</a>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon">🧪</div>
+          <h3 class="service-title">Weekly Maintenance</h3>
+          <p class="service-body">
+            Certified technicians keep your pool pristine with regular cleaning, water testing, 
+            and equipment checks. Flexible scheduling available.
+          </p>
+          <ul class="service-list">
+            <li>Balanced water chemistry</li>
+            <li>Filter cleaning & pump checks</li>
+            <li>Debris removal & vacuuming</li>
+            <li>Digital service reports</li>
+          </ul>
+          <a href="#contact" class="service-link">View Plans →</a>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon">🛡️</div>
+          <h3 class="service-title">Safety Upgrades</h3>
+          <p class="service-body">
+            Protect your family with premium safety covers, compliant fencing, and alarm systems 
+            that blend seamlessly with your outdoor aesthetics.
+          </p>
+          <ul class="service-list">
+            <li>Automatic safety covers</li>
+            <li>Code-compliant fencing</li>
+            <li>Gate alarms & sensors</li>
+            <li>Non-slip surface treatments</li>
+          </ul>
+          <a href="#contact" class="service-link">Learn More →</a>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon">♨️</div>
+          <h3 class="service-title">Hot Tubs & Spas</h3>
+          <p class="service-body">
+            Premium spa installation and care for year-round enjoyment. Integrates seamlessly 
+            with your existing landscape and pool systems.
+          </p>
+          <ul class="service-list">
+            <li>In-ground & above-ground options</li>
+            <li>Hydrotherapy jet systems</li>
+            <li>Energy-efficient heating</li>
+            <li>Integration with pool systems</li>
+          </ul>
+          <a href="#contact" class="service-link">Explore Spas →</a>
+        </article>
+
+        <article class="service-card animate-on-scroll">
+          <div class="service-icon">❄️</div>
+          <h3 class="service-title">Seasonal Services</h3>
+          <p class="service-body">
+            Expert opening and closing packages tailored to Okanagan weather. Winterization 
+            services to protect your investment during harsh months.
+          </p>
+          <ul class="service-list">
+            <li>Professional spring opening</li>
+            <li>Winterization & closing</li>
+            <li>Equipment storage available</li>
+            <li>Emergency winter services</li>
+          </ul>
+          <a href="#contact" class="service-link">Schedule Service →</a>
+        </article>
+      </div>
+
+      <!-- Maintenance Highlight -->
+      <div class="service-highlight animate-on-scroll" style="margin-top: 3rem;">
+        <div class="service-highlight-content">
+          <h3>Complete Care Maintenance Plans</h3>
+          <p>
+            Our most popular service takes the hassle out of pool ownership. Weekly visits from 
+            certified technicians ensure your pool stays crystal clear and equipment runs efficiently. 
+            We catch small issues before they become costly repairs.
+          </p>
+          <ul class="service-list" style="grid-template-columns: 1fr 1fr; display: grid; gap: 0.5rem;">
+            <li>Weekly water testing & balancing</li>
+            <li>Skimming & vacuuming</li>
+            <li>Filter cleaning & backwashing</li>
+            <li>Equipment inspection</li>
+            <li>Chemical delivery included</li>
+            <li>Priority repair scheduling</li>
+          </ul>
+          <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="margin-top: 1rem;">
+            View Maintenance Plans
           </button>
         </div>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Hero - Full Width with new image -->
-      <section id="home">
-        <div class="hero-fullwidth-bg">
-          <img src="images/pool-hot-tub.jpg" alt="Pool and hot tub" />
+        <div class="service-highlight-img">
+          <img src="images/pool-care.jpg" alt="Professional pool maintenance service">
         </div>
-        <div class="hero-overlay-dark"></div>
-        <div class="hero-content-box">
-          <div class="hero-kicker">West Kelowna Pool &amp; Spa</div>
-          <h1 class="hero-title">Outdoor Living, Designed Around You</h1>
-          <p class="hero-subtitle">
-            From custom builds to weekly care, we help families enjoy pools and spas that look beautiful and run flawlessly.
-          </p>
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-              Book a Free Consult
-            </button>
-            <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-              Explore Services
-            </button>
-          </div>
-          <div class="hero-meta">
-            <span><span class="hero-meta-dot"></span>Serving West Kelowna &amp; the Okanagan Valley</span>
-            <span>Custom builds · Renovations · Weekly maintenance</span>
-          </div>
-        </div>
-      </section>
-
-      <div class="shell">
-        <!-- Services -->
-        <section id="services">
-          <div class="section-header">
-            <div class="section-kicker">What We Offer</div>
-            <h2 class="section-title">Premium Pool &amp; Spa Services</h2>
-            <p class="section-subtitle">
-              Comprehensive solutions for your outdoor oasis, from installation to year-round maintenance.
-            </p>
-          </div>
-
-          <div class="services-grid">
-            <article class="service-card">
-              <h3 class="service-title">Pool Installation</h3>
-              <p class="service-body">
-                Custom-designed pools built to complement your landscape and lifestyle.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3 class="service-title">Renovations</h3>
-              <p class="service-body">
-                Transform your existing pool with new liners, equipment, and modern features.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3 class="service-title">Weekly Maintenance</h3>
-              <p class="service-body">
-                Regular cleaning, water testing, and equipment checks to keep your pool pristine.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3 class="service-title">Safety Upgrades</h3>
-              <p class="service-body">
-                Covers, fencing, and safety features to protect your family and investment.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3 class="service-title">Hot Tubs &amp; Spas</h3>
-              <p class="service-body">
-                Installation and care for spas and hot tubs that integrate seamlessly with your outdoor space.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <h3 class="service-title">Seasonal Services</h3>
-              <p class="service-body">
-                Opening and closing packages tailored to Okanagan weather and your specific system.
-              </p>
-            </article>
-          </div>
-
-          <div class="service-maintenance">
-            <div class="service-maintenance-text">
-              <h3>Professional Maintenance Plans</h3>
-              <p>
-                Our weekly service includes water testing, surface cleaning, equipment checks, and seasonal adjustments.
-                We catch small issues before they become costly repairs.
-              </p>
-              <ul class="service-maintenance-list">
-                <li>Balanced chemistry, every visit</li>
-                <li>Filter cleaning &amp; pump checks</li>
-                <li>Opening &amp; closing packages</li>
-                <li>Emergency repair services</li>
-              </ul>
-              <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-                View Maintenance Plans
-              </button>
-            </div>
-            <div>
-              <img src="images/pool-care.jpg" alt="Pool maintenance service" />
-            </div>
-          </div>
-        </section>
-
-        <!-- Gallery -->
-        <section id="gallery">
-          <div class="section-header">
-            <div class="section-kicker">Our Work</div>
-            <h2 class="section-title">Inspired Outdoor Spaces</h2>
-            <p class="section-subtitle">
-              Browse our portfolio of custom pool and spa installations throughout the Okanagan Valley.
-            </p>
-          </div>
-
-          <div class="gallery-grid">
-            <article class="gallery-item">
-              <img src="./images/hero-pool.jpg" alt="Infinity pool with vineyard view" />
-              <div class="gallery-body">
-                <div class="gallery-label">Project</div>
-                <div class="gallery-title">Vineyard Estate</div>
-                <div class="gallery-location">West Kelowna</div>
-              </div>
-            </article>
-
-            <article class="gallery-item">
-              <img src="./images/gallery-1.jpg" alt="Hot tub with fire pit" />
-              <div class="gallery-body">
-                <div class="gallery-label">Project</div>
-                <div class="gallery-title">Evening Retreat</div>
-                <div class="gallery-location">Lake Country</div>
-              </div>
-            </article>
-
-            <article class="gallery-item">
-              <img src="./images/gallery-2.jpg" alt="Pool with waterfall feature" />
-              <div class="gallery-body">
-                <div class="gallery-label">Project</div>
-                <div class="gallery-title">Mountain Oasis</div>
-                <div class="gallery-location">Peachland</div>
-              </div>
-            </article>
-
-            <article class="gallery-item">
-              <img src="./images/gallery-3.jpg" alt="Aerial view of pool and hot tub" />
-              <div class="gallery-body">
-                <div class="gallery-label">Project</div>
-                <div class="gallery-title">Modern Sanctuary</div>
-                <div class="gallery-location">Kelowna</div>
-              </div>
-            </article>
-
-            <article class="gallery-item">
-              <img src="images/pool-construction.jpg" alt="Construction" />
-              <div class="gallery-body">
-                <div class="gallery-label">Project</div>
-                <div class="gallery-title">Pool Construction</div>
-                <div class="gallery-location">Vernon</div>
-              </div>
-            </article>
-
-            <article class="gallery-item">
-              <img src="images/pool_waterfall.jpg" alt="Pool and spa with lighting" />
-              <div class="gallery-body">
-                <div class="gallery-label">Project</div>
-                <div class="gallery-title">Waterfall</div>
-                <div class="gallery-location">West Kelowna</div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- About -->
-        <section id="about">
-          <div class="section-header">
-            <div class="section-kicker">About Us</div>
-            <h2 class="section-title">Your Trusted Pool Experts in the Okanagan</h2>
-            <p class="section-subtitle">
-              Riviera Pool &amp; Spa has been transforming outdoor spaces throughout West Kelowna and the Okanagan Valley
-              for over a decade. We believe every backyard has the potential to become a personal retreat.
-            </p>
-          </div>
-
-          <div class="about-grid">
-            <div>
-              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:0.9rem;">
-                Our team of certified technicians and designers work closely with homeowners to create custom solutions
-                that blend seamlessly with the stunning natural beauty of British Columbia's interior.
-              </p>
-              <div class="about-stats">
-                <div class="stat-card">
-                  <div class="stat-value">10+</div>
-                  <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">500+</div>
-                  <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">100%</div>
-                  <div class="stat-label">Satisfaction</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="about-image-wrap">
-              <img src="images/homeowner-portrait.jpg" alt="Happy homeowners enjoying their pool" />
-              <div class="about-quote">
-                <div class="stars">★★★★★</div>
-                <div class="quote-text">"The entire process was stress-free."</div>
-                <div class="quote-author">— Homeowner, West Kelowna</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Process -->
-        <section>
-          <div class="section-header">
-            <div class="section-kicker">Our Process</div>
-            <h2 class="section-title">How It Works</h2>
-          </div>
-
-          <div class="process-grid">
-            <article class="process-step">
-              <div class="process-number">01</div>
-              <h3 class="process-title">Consult &amp; Measure</h3>
-              <p class="process-body">
-                We visit your property, discuss your vision, and take precise measurements for accurate planning.
-              </p>
-            </article>
-
-            <article class="process-step">
-              <div class="process-number">02</div>
-              <h3 class="process-title">Design &amp; Quote</h3>
-              <p class="process-body">
-                Our designers create a custom plan with 3D renderings and a detailed, transparent quote.
-              </p>
-            </article>
-
-            <article class="process-step">
-              <div class="process-number">03</div>
-              <h3 class="process-title">Build &amp; Maintain</h3>
-              <p class="process-body">
-                Expert installation followed by our comprehensive maintenance programs.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-          <div class="section-header">
-            <div class="section-kicker">Get In Touch</div>
-            <h2 class="section-title">Ready to Transform Your Backyard?</h2>
-            <p class="section-subtitle">
-              Book a free on-site consultation. We'll measure, recommend, and deliver a clear plan—no pressure, just expert advice.
-            </p>
-          </div>
-
-          <div class="contact-grid">
-            <div class="contact-details">
-              <div>
-                <div class="contact-label">Phone</div>
-                <div class="contact-value">250-801-9353</div>
-              </div>
-              <div>
-                <div class="contact-label">Email</div>
-                <div class="contact-value">daxin.rivierapoolandspa@gmail.com</div>
-              </div>
-              <div>
-                <div class="contact-label">Address</div>
-                <div class="contact-value">
-                  101 - 1865 Suite 524 Dilworth Dr., Kelowna, BC V1Y 9T1
-                </div>
-              </div>
-              <div>
-                <div class="contact-label">Service Areas</div>
-                <div class="contact-areas">
-                  West Kelowna · Kelowna · Peachland · Lake Country · Vernon
-                </div>
-              </div>
-            </div>
-
-            <form class="contact-form">
-              <h3>Request a Consultation</h3>
-              <p>Tell us a bit about your project and we'll follow up with next steps.</p>
-
-              <div class="form-grid">
-                <div class="form-field">
-                  <label for="first-name">First Name</label>
-                  <input id="first-name" type="text" name="first-name" />
-                </div>
-                <div class="form-field">
-                  <label for="last-name">Last Name</label>
-                  <input id="last-name" type="text" name="last-name" />
-                </div>
-                <div class="form-field">
-                  <label for="email">Email</label>
-                  <input id="email" type="email" name="email" />
-                </div>
-                <div class="form-field">
-                  <label for="phone">Phone</label>
-                  <input id="phone" type="tel" name="phone" />
-                </div>
-                <div class="form-field form-full">
-                  <label for="service">Service Interested In</label>
-                  <select id="service" name="service">
-                    <option value="">Select a service</option>
-                    <option>Pool Installation</option>
-                    <option>Pool Renovation</option>
-                    <option>Weekly Maintenance</option>
-                    <option>Opening/Closing</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="form-field form-full">
-                  <label for="message">Message</label>
-                  <textarea id="message" name="message"></textarea>
-                </div>
-              </div>
-
-              <div class="form-submit">
-                <button type="submit">Send Request</button>
-              </div>
-            </form>
-          </div>
-        </section>
       </div>
-    </main>
+    </div>
+  </section>
 
-    <footer>
-      <div class="footer-inner">
-        <div>
-          <div class="brand-name" style="margin-bottom:0.4rem;">Riviera</div>
-          <div class="footer-brand">
-            Your premier pool and spa experts in West Kelowna, BC. Transforming outdoor spaces into havens of relaxation and luxury.
+  <!-- Why Choose Us -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">Why Riviera</div>
+        <h2 class="section-title">The Okanagan's Trusted Pool Experts</h2>
+        <p class="section-subtitle">
+          With over a decade of experience and 500+ successful projects, we've earned our reputation 
+          as West Kelowna's premier pool and spa company.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">🎯</div>
+          <h3 class="feature-title">Local Okanagan Experts</h3>
+          <p class="feature-text">Deep understanding of local climate, regulations, and terrain challenges unique to the BC interior.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">📜</div>
+          <h3 class="feature-title">Fully Certified & Insured</h3>
+          <p class="feature-text">Licensed professionals with comprehensive insurance coverage for your complete peace of mind.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">💎</div>
+          <h3 class="feature-title">Premium Materials Only</h3>
+          <p class="feature-text">We use top-tier equipment and finishes from industry-leading manufacturers with full warranties.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">⭐</div>
+          <h3 class="feature-title">5-Star Rated Service</h3>
+          <p class="feature-text">Consistently rated #1 in customer satisfaction across the Okanagan Valley.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">💰</div>
+          <h3 class="feature-title">Transparent Pricing</h3>
+          <p class="feature-text">Detailed, itemized quotes with no hidden fees. Flexible financing options available.</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">🔧</div>
+          <h3 class="feature-title">Lifetime Support</h3>
+          <p class="feature-text">Comprehensive warranties and ongoing maintenance programs to protect your investment.</p>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; text-align: center;">
+        <div class="animate-on-scroll">
+          <div style="font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">10+</div>
+          <div style="color: var(--text-muted);">Years Serving Okanagan</div>
+        </div>
+        <div class="animate-on-scroll">
+          <div style="font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">500+</div>
+          <div style="color: var(--text-muted);">Pools Built & Renovated</div>
+        </div>
+        <div class="animate-on-scroll">
+          <div style="font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">98%</div>
+          <div style="color: var(--text-muted);">Client Satisfaction</div>
+        </div>
+        <div class="animate-on-scroll">
+          <div style="font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">24/7</div>
+          <div style="color: var(--text-muted);">Emergency Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">Our Process</div>
+        <h2 class="section-title">Simple. Professional. Stress-Free.</h2>
+        <p class="section-subtitle">
+          We've refined our process over 500+ projects to ensure your pool installation 
+          or renovation is seamless from start to finish.
+        </p>
+      </div>
+
+      <div class="process-container">
+        <div class="process-line"></div>
+        <div class="process-grid">
+          <article class="process-step animate-on-scroll">
+            <div class="process-number">01</div>
+            <h3 class="process-title">Consult & Design</h3>
+            <p class="process-body">
+              We visit your property, discuss your vision, take precise measurements, and create 
+              custom 3D renderings so you can see your pool before we break ground.
+            </p>
+          </article>
+          <article class="process-step animate-on-scroll">
+            <div class="process-number">02</div>
+            <h3 class="process-title">Plan & Permit</h3>
+            <p class="process-body">
+              Our team handles all permits, HOA approvals, and utility markings. You'll receive 
+              a detailed timeline and transparent pricing with no surprises.
+            </p>
+          </article>
+          <article class="process-step animate-on-scroll">
+            <div class="process-number">03</div>
+            <h3 class="process-title">Build & Perfect</h3>
+            <p class="process-body">
+              Expert craftsmen bring your design to life with daily quality checks. We finish 
+              with comprehensive training on your new system and ongoing maintenance options.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">Portfolio</div>
+        <h2 class="section-title">Inspired Outdoor Living Spaces</h2>
+        <p class="section-subtitle">
+          Browse our recent custom pool and spa installations throughout the Okanagan Valley. 
+          Each project reflects our commitment to quality and client vision.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <article class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="./images/hero-pool.jpg" alt="Infinity pool with vineyard view in West Kelowna">
+          <div class="gallery-overlay">
+            <div class="gallery-label">Custom Build</div>
+            <div class="gallery-title">Vineyard Estate Infinity Pool</div>
+            <div class="gallery-location">📍 West Kelowna</div>
+          </div>
+          <div class="gallery-view-btn">View Project</div>
+        </article>
+
+        <article class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="./images/gallery-1.jpg" alt="Hot tub with fire pit and outdoor living space">
+          <div class="gallery-overlay">
+            <div class="gallery-label">Spa Installation</div>
+            <div class="gallery-title">Evening Retreat Hot Tub</div>
+            <div class="gallery-location">📍 Lake Country</div>
+          </div>
+          <div class="gallery-view-btn">View Project</div>
+        </article>
+
+        <article class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="./images/gallery-2.jpg" alt="Pool with natural rock waterfall feature">
+          <div class="gallery-overlay">
+            <div class="gallery-label">Luxury Feature</div>
+            <div class="gallery-title">Mountain Oasis Waterfall</div>
+            <div class="gallery-location">📍 Peachland</div>
+          </div>
+          <div class="gallery-view-btn">View Project</div>
+        </article>
+
+        <article class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="./images/gallery-3.jpg" alt="Modern geometric pool and integrated hot tub design">
+          <div class="gallery-overlay">
+            <div class="gallery-label">Modern Design</div>
+            <div class="gallery-title">Contemporary Sanctuary</div>
+            <div class="gallery-location">📍 Kelowna</div>
+          </div>
+          <div class="gallery-view-btn">View Project</div>
+        </article>
+
+        <article class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="images/pool-construction.jpg" alt="Pool construction process and concrete work">
+          <div class="gallery-overlay">
+            <div class="gallery-label">New Construction</div>
+            <div class="gallery-title">Custom Gunite Installation</div>
+            <div class="gallery-location">📍 Vernon</div>
+          </div>
+          <div class="gallery-view-btn">View Project</div>
+        </article>
+
+        <article class="gallery-item animate-on-scroll" onclick="openLightbox(this)">
+          <img src="images/pool_waterfall.jpg" alt="Pool and spa with dramatic lighting and waterfall">
+          <div class="gallery-overlay">
+            <div class="gallery-label">Renovation</div>
+            <div class="gallery-title">Dramatic Lighting Upgrade</div>
+            <div class="gallery-location">📍 West Kelowna</div>
+          </div>
+          <div class="gallery-view-btn">View Project</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">Service Areas</div>
+        <h2 class="section-title">Serving the Okanagan Valley</h2>
+        <p class="section-subtitle">
+          Based in Kelowna, we provide premium pool services throughout the Thompson-Okanagan region.
+        </p>
+      </div>
+
+      <div class="areas-grid animate-on-scroll">
+        <div class="area-item">
+          <div class="area-name">West Kelowna</div>
+          <div class="area-desc">Primary service area</div>
+        </div>
+        <div class="area-item">
+          <div class="area-name">Kelowna</div>
+          <div class="area-desc">Central Okanagan</div>
+        </div>
+        <div class="area-item">
+          <div class="area-name">Peachland</div>
+          <div class="area-desc">Lake communities</div>
+        </div>
+        <div class="area-item">
+          <div class="area-name">Lake Country</div>
+          <div class="area-desc">Winfield & Oyama</div>
+        </div>
+        <div class="area-item">
+          <div class="area-name">Vernon</div>
+          <div class="area-desc">North Okanagan</div>
+        </div>
+        <div class="area-item">
+          <div class="area-name">Surrounding Areas</div>
+          <div class="area-desc">Call for availability</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">Testimonials</div>
+        <h2 class="section-title">Trusted by Homeowners Across the Okanagan</h2>
+        <p class="section-subtitle">
+          Don't just take our word for it. Here's what your neighbors say about working with Riviera.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Riviera transformed our backyard into an absolute paradise. The attention to detail was incredible, 
+            and the crew was professional and respectful of our property. Our pool is the envy of the neighborhood!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ST</div>
+            <div class="testimonial-info">
+              <h4>Sarah & Mike T.</h4>
+              <p>West Kelowna, BC</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Professional from start to finish. Dax and his team guided us through every decision, 
+            handled all the permits, and finished on time and on budget. The weekly maintenance 
+            service keeps our pool looking brand new."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JL</div>
+            <div class="testimonial-info">
+              <h4>James L.</h4>
+              <p>Kelowna, BC</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "We renovated our 20-year-old pool and the results exceeded our expectations. 
+            Riviera modernized everything - new liner, LED lights, and energy-efficient pump. 
+            The process was stress-free and the pricing was transparent."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JK</div>
+            <div class="testimonial-info">
+              <h4>Jennifer K.</h4>
+              <p>Peachland, BC</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Trust Indicators -->
+      <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: rgba(17, 24, 39, 0.5); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);" class="animate-on-scroll">
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
+          <span style="color: var(--accent-secondary); font-weight: 600;">✓</span> Licensed by BC Consumer Protection Agency  
+          <span style="color: var(--accent-secondary); font-weight: 600; margin-left: 1rem;">✓</span> WCB Compliant  
+          <span style="color: var(--accent-secondary); font-weight: 600; margin-left: 1rem;">✓</span> Fully Insured & Bonded
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Proudly serving the Okanagan Valley since 2014
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content animate-on-scroll">
+        <h2 class="cta-title">Ready to Transform Your Backyard?</h2>
+        <p class="cta-text">
+          Get started with a free, no-obligation consultation. We'll visit your property, 
+          discuss your vision, and provide a detailed quote within 48 hours.
+        </p>
+        <a href="tel:250-801-9353" class="cta-phone">
+          <span>📞</span> 250-801-9353
+        </a>
+        <div class="cta-buttons">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Book Online Now
+          </button>
+          <button class="btn-secondary" onclick="window.location.href='tel:250-801-9353'">
+            Call for Immediate Help
+          </button>
+        </div>
+        <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+          Emergency services available 24/7 • Free estimates • Financing options
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-alt">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">Get In Touch</div>
+        <h2 class="section-title">Start Your Project Today</h2>
+        <p class="section-subtitle">
+          Fill out the form below and our team will contact you within 24 hours to schedule 
+          your free on-site consultation.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info animate-on-scroll">
+          <h3>Let's Build Something Beautiful</h3>
+          <p>
+            Whether you're dreaming of a new pool, renovating an existing one, or need reliable 
+            maintenance, we're here to help. Our team serves the entire Okanagan Valley with 
+            premium pool solutions.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <a href="tel:250-801-9353">250-801-9353</a>
+                <p style="font-size: 0.85rem; margin-top: 0.25rem;">Mon-Sat: 8am - 6pm</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <a href="mailto:daxin.rivierapoolandspa@gmail.com">daxin.rivierapoolandspa@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-text">
+                <h4>Office</h4>
+                <p>101 - 1865 Suite 524 Dilworth Dr.<br>Kelowna, BC V1Y 9T1</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-areas-box">
+            <h4>Service Coverage</h4>
+            <p>West Kelowna • Kelowna • Peachland • Lake Country (Winfield & Oyama) • Vernon • Surrounding Okanagan areas</p>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper animate-on-scroll">
+          <div class="form-header">
+            <h3>Request Free Consultation</h3>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+          </div>
+          
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="service">Service Interested In</label>
+                <select id="service" name="service">
+                  <option value="">Select a service...</option>
+                  <option value="installation">New Pool Installation</option>
+                  <option value="renovation">Pool Renovation</option>
+                  <option value="maintenance">Weekly Maintenance</option>
+                  <option value="opening">Opening/Closing</option>
+                  <option value="spa">Hot Tub/Spa</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="location">Your Location</label>
+                <select id="location" name="location">
+                  <option value="">Select your area...</option>
+                  <option value="west-kelowna">West Kelowna</option>
+                  <option value="kelowna">Kelowna</option>
+                  <option value="peachland">Peachland</option>
+                  <option value="lake-country">Lake Country</option>
+                  <option value="vernon">Vernon</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="message">Tell Us About Your Project</label>
+                <textarea id="message" name="message" placeholder="Describe your vision, timeline, or any specific requirements..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary form-submit">
+              Send Request →
+            </button>
+            <div class="form-security">
+              <span>🔒</span> Your information is secure and will never be shared with third parties.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section>
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-kicker">FAQ</div>
+        <h2 class="section-title">Common Questions</h2>
+        <p class="section-subtitle">
+          Everything you need to know about working with Riviera Pool & Spa.
+        </p>
+      </div>
+
+      <div class="faq-list animate-on-scroll">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How long does a typical pool installation take?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Most custom pool installations take 6-10 weeks from excavation to completion, depending on complexity, weather, and permit processing. We provide a detailed timeline during your consultation and keep you updated weekly on progress.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Do you offer financing options for pool projects?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We partner with several financing institutions to offer flexible payment plans for qualified buyers. During your consultation, we can discuss options that fit your budget, including seasonal payment structures.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>What areas do you serve beyond West Kelowna?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We serve the entire Okanagan Valley including Kelowna, Peachland, Lake Country (Winfield and Oyama), Vernon, and surrounding areas. Travel fees may apply for locations outside our primary radius, which we'll discuss upfront.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How often should I have my pool serviced?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>For optimal water quality and equipment longevity, we recommend weekly maintenance during the swimming season (May-September) and bi-weekly checks during the off-season. Our maintenance plans are customizable to your usage and budget.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>What warranties do you offer on pool construction?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We stand behind our work with comprehensive warranties: 10-year structural warranty on gunite pools, 5-year warranty on equipment (when purchased through us), and 1-year workmanship warranty on all installations. We also offer extended maintenance packages for ongoing peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Riviera Pool & Spa</h3>
+          <p>
+            Transforming outdoor spaces into havens of relaxation and luxury throughout the 
+            Okanagan Valley since 2014. Your trusted partner for pool installation, renovation, 
+            and year-round maintenance.
+          </p>
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="#" style="width: 40px; height: 40px; background: rgba(56, 189, 248, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); text-decoration: none; border: 1px solid rgba(56, 189, 248, 0.2);">f</a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(56, 189, 248, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); text-decoration: none; border: 1px solid rgba(56, 189, 248, 0.2);">in</a>
+            <a href="#" style="width: 40px; height: 40px; background: rgba(56, 189, 248, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); text-decoration: none; border: 1px solid rgba(56, 189, 248, 0.2);">ig</a>
           </div>
         </div>
 
         <div>
           <div class="footer-heading">Services</div>
-          <ul class="footer-list">
+          <ul class="footer-links">
             <li><a href="#services">Pool Installation</a></li>
-            <li><a href="#services">Pool Maintenance</a></li>
-            <li><a href="#services">Hot Tubs &amp; Spas</a></li>
-            <li><a href="#services">Renovations</a></li>
+            <li><a href="#services">Pool Renovation</a></li>
+            <li><a href="#services">Weekly Maintenance</a></li>
+            <li><a href="#services">Opening & Closing</a></li>
+            <li><a href="#services">Hot Tubs & Spas</a></li>
+            <li><a href="#services">Safety Upgrades</a></li>
           </ul>
         </div>
 
         <div>
           <div class="footer-heading">Company</div>
-          <ul class="footer-list">
+          <ul class="footer-links">
             <li><a href="#about">About Us</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#gallery">Portfolio</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Careers</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="footer-heading">Contact</div>
-          <ul class="footer-list">
-            <li>250-801-9353</li>
-            <li>daxin.rivierapoolandspa@gmail.com</li>
-            <li>Kelowna, BC V1Y 9T1</li>
-          </ul>
+          <div class="footer-heading">Contact Us</div>
+          <div class="footer-contact">
+            <strong style="color: var(--accent); font-size: 1.25rem; margin-bottom: 0.75rem; display: block;">250-801-9353</strong>
+            <p style="margin-bottom: 0.5rem;">daxin.rivierapoolandspa@gmail.com</p>
+            <p>101 - 1865 Suite 524 Dilworth Dr.<br>Kelowna, BC V1Y 9T1</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Mon-Sat: 8am - 6pm<br>Emergency: 24/7</p>
+          </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>© 2026 Riviera Pool &amp; Spa. All rights reserved.</div>
+        <div>© 2026 Riviera Pool & Spa. All rights reserved.</div>
         <div>
-          <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Sitemap</a>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="sticky-cta">
+    <button class="sticky-btn sticky-btn-secondary" onclick="window.location.href='tel:250-801-9353'">
+      <span>📞</span> Call Now
+    </button>
+    <button class="sticky-btn sticky-btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <span>✉️</span> Get Quote
+    </button>
   </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; padding: 2rem;" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Gallery image" style="max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 8px;">
+    <button style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;" onclick="closeLightbox()">×</button>
+  </div>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ Accordion
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      const wasActive = item.classList.contains('active');
+      
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+      });
+      
+      // Open clicked if it wasn't active
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Lightbox
+    function openLightbox(element) {
+      const img = element.querySelector('img');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // Form Handling
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Sending...';
+      btn.disabled = true;
+      
+      // Simulate form submission
+      setTimeout(() => {
+        btn.innerHTML = '✓ Request Sent!';
+        btn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          btn.style.background = '';
+          e.target.reset();
+          alert('Thank you! We will contact you within 24 hours to schedule your consultation.');
+        }, 2000);
+      }, 1500);
+    }
+
+    // Mobile menu toggle (basic)
+    function toggleMobileMenu() {
+      const nav = document.querySelector('.nav-links');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.top = '100%';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.background = 'rgba(5, 9, 20, 0.98)';
+        nav.style.padding = '2rem';
+        nav.style.backdropFilter = 'blur(20px)';
+      }
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.nav-links').style.display = 'none';
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
