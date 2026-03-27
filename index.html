@@ -1,1252 +1,634 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueNorth Websites | Okanagan Web Design for Local Businesses | Kelowna, BC</title>
-    <meta name="description" content="Kelowna web design company specializing in websites for Okanagan small businesses. Fast, mobile-friendly sites that rank on Google and convert visitors into customers.">    
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>TrueNorth Websites | Kelowna Web Design for Local Businesses | Okanagan BC</title>
+    <meta name="description" content="Kelowna-based web design specialist creating high-converting websites for Okanagan local service businesses. Fast, mobile-first sites that generate more leads and customers.">
     
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 
-    <!-- Custom Styles -->
     <style>
-        .hero{
-position:relative;
-height:95vh;
-display:flex;
-align-items:center;
-color:white;
-overflow:hidden;
-}
-
-.aurora{
-position:absolute;
-width:160%;
-height:160%;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-object-fit:cover;
-filter: brightness(.95) saturate(1.2);
-animation:
-auroraMove 40s ease-in-out infinite alternate,
-auroraShimmer 8s ease-in-out infinite;
-}
-
-/* Aurora shimmer effect */
-
-@keyframes auroraShimmer {
-
-0%{
-filter: brightness(.9) saturate(1);
-}
-
-50%{
-filter: brightness(1.05) saturate(1.15);
-}
-
-100%{
-filter: brightness(.95) saturate(1.05);
-}
-
-}
-
-/* shimmer movement */
-
-@keyframes auroraMove{
-
-0%{
-transform:translate(-50%,-50%) scale(1.05);
-}
-
-50%{
-transform:translate(-52%,-48%) scale(1.08);
-}
-
-100%{
-transform:translate(-48%,-52%) scale(1.06);
-}
-
-}
-
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(
-90deg,
-rgba(0,0,0,.65),
-rgba(0,0,0,.35),
-rgba(0,0,0,.15)
-);
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-max-width:1100px;
-margin:auto;
-padding:40px;
-}
-
-.location{
-background:#14b8a6;
-display:inline-block;
-padding:6px 14px;
-border-radius:999px;
-font-size:13px;
-margin-bottom:20px;
-}
-
-.hero h1{
-font-size:64px;
-font-weight:800;
-line-height:1.05;
-margin-bottom:18px;
-}
-
-.hero h1 span{
-color:#38bdf8
-;
-}
-
-.hero-sub{
-font-size:20px;
-opacity:.9;
-max-width:600px;
-margin-bottom:30px;
-}
-
-.hero-buttons{
-display:flex;
-gap:20px;
-}
-
-.btn-primary{
-background:#14b8a6;
-padding:14px 30px;
-border-radius:999px;
-font-weight:600;
-color:white;
-text-decoration:none;
-}
-
-.btn-secondary{
-border:1px solid rgba(255,255,255,.5);
-padding:14px 30px;
-border-radius:999px;
-color:white;
-text-decoration:none;
-}
-.fade-up{
-opacity:0;
-transform:translateY(40px);
-transition:opacity .8s ease, transform .8s ease;
-}
-
-.fade-up.visible{
-opacity:1;
-transform:translateY(0);
-}
-        body {
-            font-family: Inter, system-ui, sans-serif;
-            scroll-behavior: smooth;
-        }
-        html{
-scroll-behavior:smooth;
-}
-        /* CSS Variables from File 1 */
         :root {
-            --accent-1: #38bdf8;
-            --accent-2: #22d3ee;
-            --accent-3: #14b8a6;
-            --gray-section: #f7f9fb;
-            --card-bg: #ffffff;
-            --border-subtle: rgba(0,0,0,0.08);
-        }
-        .flex.-space-x-2 img {
-    width: 32px !important;
-    height: 32px !important;
-    max-width: 32px !important;
-    max-height: 32px !important;
-}
-
-
-/* Mobile Responsive Fixes - Hero Section */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 36px;
-        line-height: 1.1;
-        word-wrap: break-word;
-    }
-    
-    .hero-sub {
-        font-size: 16px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-    }
-    
-    .hero-content {
-        padding: 20px;
-        width: 100%;
-    }
-    
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-        padding: 12px 20px;
-    }
-}
-        /* Parallax Hero from File 1 */
-        .hero-parallax {
-            position: relative;
-            height: 90vh;
-            overflow: hidden;
-            background: white;
+            --accent: #0ea5e9;
+            --accent2: #14b8a6;
+            --dark: #0f172a;
         }
 
-        .hero-parallax img {
-            position: absolute;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1e2937;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 120%;
-            object-fit: cover;
-            transform: translateY(0);
-            transition: transform 0.1s linear;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
         }
 
-        /* Light fade overlay */
-        .hero-fade {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, white 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-/* Aurora flow effect */
-
-.hero::before{
-content:"";
-position:absolute;
-inset:-20%;
-background:inherit;
-pointer-events:none;
-z-index:1;
-
-background-image:url("aurora.jpg");
-background-size:cover;
-background-position:center;
-
-mix-blend-mode:overlay;
-opacity:.25;
-
-animation:auroraWave 18s ease-in-out infinite;
-}
-
-@keyframes auroraWave{
-
-0%{
-transform:translateY(0px) scale(1.02);
-}
-
-50%{
-transform:translateY(-25px) scale(1.05);
-}
-
-100%{
-transform:translateY(0px) scale(1.02);
-}
-
-}
-        /* Card styling from File 1 */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-subtle);
-            border-radius: 1rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-        }
-
-        /* Gradient accent animation */
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .animated-gradient {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-3), var(--accent-2));
-            background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
-        }
-
-        /* Fade-up animation */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Navigation glass effect from File 2 */
-        .glass-nav {
-            background: rgba(255,255,255,.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(229,231,235,.5);
-        }
-
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-                /* Before/After cards - Mobile First */
-                .compare-cards {
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.25rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), #38bdf8);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(14, 165, 233, 0.5);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('aurora.jpg') center/cover no-repeat;
+            filter: brightness(0.75) saturate(1.3);
+            animation: auroraMove 50s ease-in-out infinite alternate;
+        }
+
+        @keyframes auroraMove {
+            0% { transform: scale(1.05) translate(0, 0); }
+            100% { transform: scale(1.12) translate(-3%, 4%); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(15,23,42,0.75), rgba(15,23,42,0.9));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.25rem);
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #67e8f9, #22d3ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            max-width: 620px;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #14b8a6, #22d3ee);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 9999px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 20px 40px -10px rgba(20, 184, 166, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 25px 50px -10px rgba(20, 184, 166, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.8);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: white;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* WHY MOST WEBSITES FAIL */
+        .fail-section {
+            background: #f8fafc;
+            padding: 6rem 0;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            transition: transform 0.4s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* DEMO WORK */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .demo-card:hover {
+            transform: scale(1.04) translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+        }
+
+        .demo-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .demo-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* PROCESS */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            border-radius: 9999px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
         }
 
-        .before-card,
-        .after-card {
-            position: relative;
+        /* TRUST BAR */
+        .trust-bar {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #0f172a, #1e2937);
+            color: white;
+            padding: 7rem 0;
+            text-align: center;
+        }
+
+        /* CONTACT */
+        .contact-form-container {
+            max-width: 620px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 28px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+        }
+
+        input, textarea {
             width: 100%;
-            max-width: 320px;
-            transform: none !important;
-            transition: transform 0.3s ease;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 1.05rem;
+            transition: border 0.3s ease;
         }
 
-        /* Desktop hover effect */
-        @media (min-width: 768px) {
-            .compare-cards {
-                flex-direction: row;
-                height: 400px;
-                gap: 0;
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-ctas {
+                flex-direction: column;
             }
-            
-            .before-card {
-                position: absolute;
-                width: 320px;
-                max-width: none;
-                transform: translateX(-60px) rotate(-3deg) !important;
-                z-index: 10;
-            }
-            
-            .after-card {
-                position: absolute;
-                width: 320px;
-                max-width: none;
-                transform: translateX(60px) rotate(2deg) !important;
-                z-index: 20;
-            }
-            
-            .compare-cards:hover .before-card {
-                transform: translateX(-200px) rotate(-6deg) !important;
-            }
-            
-            .compare-cards:hover .after-card {
-                transform: translateX(200px) rotate(3deg) !important;
+            .nav-links {
+                display: none;
             }
         }
-
-        /* Floating animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        /* Insert AFTER line 238 (after the } of @keyframes float) */
-
-/* Mobile - Before/After Cards */
-@media (max-width: 768px) {
-    .compare-cards {
-        height: auto !important;
-        min-height: 600px;
-        padding: 2rem 1rem;
-    }
-    
-    .before-card, .after-card {
-        position: relative !important;
-        width: 100% !important;
-        max-width: 280px;
-        transform: none !important;
-        margin-bottom: 1.5rem;
-    }
-}
-        /* Section spacing */
-        .section {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        /* Insert AFTER line 246 (after the .section rule closing }) */
-
-/* Mobile - Pricing */
-@media (max-width: 768px) {
-    #pricing .grid {
-        gap: 2rem;
-    }
-    
-    #pricing .card {
-        transform: none !important;
-    }
-    
-    #pricing .border-2.border-red-500 {
-        transform: none;
-        order: -1;
-    }
-    /* Mobile - Contact Form (add inside existing @media or new one at line 254) */
-@media (max-width: 640px) {
-    form .grid-cols-2 {
-        grid-template-columns: 1fr;
-    }
-    
-    input, textarea {
-        max-width: 100%;
-        font-size: 16px;
-    }
-}
-}
-/* Insert at line 262 */
-
-/* Mobile - General */
-@media (max-width: 768px) {
-    .section {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        overflow-x: hidden;
-    }
-    
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    #portfolio article {
-        width: 100%;
-    }
-}
-        /* Form validation styles */
-        input:invalid, textarea:invalid {
-            border-color: #ef4444;
-        }
-        input:valid, textarea:valid {
-            border-color: #22c55e;
-        }
-
-        /* Process step animations */
-        .process-step {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity .6s ease, transform .6s ease;
-        }
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .process-step:nth-child(1) { transition-delay: .1s; }
-        .process-step:nth-child(2) { transition-delay: .25s; }
-        .process-step:nth-child(3) { transition-delay: .4s; }
     </style>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="font-sans text-slate-800 antialiased bg-white overflow-x-hidden">
+<body>
 
-    <!-- Skip to main content -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-<div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-    <img src="compass-icon.png" class="w-12 h-12 rounded-full" alt="Logo" />
-    <div>
-        <div class="font-bold text-2xl tracking-tight text-slate-900" style="font-family: 'Playfair Display', serif;">True North</div>
-        <div class="text-xs text-slate-500">Professional Web Services</div>
-    </div>
-</div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#portfolio" class="text-slate-700 hover:text-blue-700 font-medium transition-colors">Work</a>
-                    <a href="#services" class="text-slate-700 hover:text-blue-700 font-medium transition-colors">Services</a>
-                    <a href="#pricing" class="text-slate-700 hover:text-blue-700 font-medium transition-colors">Pricing</a>
-                    <a href="#process" class="text-slate-700 hover:text-blue-700 font-medium transition-colors">Process</a>
-                    <a href="about.html" class="text-slate-700 hover:text-blue-700 font-medium transition-colors">About</a>
-                    
-                    <a href="#contact" class="px-5 py-2.5 rounded-full animated-gradient text-white font-semibold shadow-md hover:shadow-lg transition-all">
-                        Free Review
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-400 p-2 rounded-lg" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                    </button>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                <img src="compass-icon.png" alt="TrueNorth Logo">
+                <div>
+                    <span style="font-family: 'Playfair Display', serif;">TrueNorth</span>
+                    <div style="font-size:0.75rem; font-weight:500; color:#64748b;">WEBSITES</div>
                 </div>
             </div>
-        </div>
-
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl" role="menu">
-            <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="#portfolio" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-700 hover:bg-slate-50 rounded-md" role="menuitem">Work</a>
-                <a href="#services" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-700 hover:bg-slate-50 rounded-md" role="menuitem">Services</a>
-                <a href="#pricing" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-700 hover:bg-slate-50 rounded-md" role="menuitem">Pricing</a>
-                <a href="#process" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-700 hover:bg-slate-50 rounded-md" role="menuitem">Process</a>
-                <a href="about.html" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-700 hover:bg-slate-50 rounded-md" role="menuitem">About</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-medium text-blue-700 font-bold" role="menuitem">Free Review</a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#why-fail">Why Most Fail</a>
+                <a href="#process">Process</a>
+                <a href="about.html">About</a>
+                <a href="#contact">Contact</a>
             </div>
+            <a href="#contact" class="nav-cta">Get Free Mockup</a>
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero">
-
-        <img src="aurora.jpg" class="aurora">
-        
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-        
-        <p class="location">Okanagan • BC</p>
-        
-        <h1>
-        Website <span>Development</span>
-        for Local Businesses
-        </h1>
-        
-        <p class="hero-sub">
-            Fast, modern websites built specifically for Okanagan businesses. Designed to rank on Google and turn local visitors into customers.
-            </p>
-        
-        <div class="hero-buttons">
-        <a href="#work" class="btn-primary">See Real Website Transformations</a>
-        <a href="#contact" class="btn-secondary">Get a Free Review</a>
-        </div>
-        
-        </div>
-        
-        </section>
-
-    <!-- Main content -->
-    <main id="main-content">
-
-        <!-- Trust Section -->
-        <section class="py-12 bg-slate-50 border-y border-slate-100 fade-up">
-            <h2 class="sr-only">Why Choose Us</h2>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="flex flex-col items-center text-center p-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-700 mb-4 card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900 mb-1">Okanagan Based</h3>
-<p class="text-sm text-slate-700">Built specifically for local businesses</p>
-</div>
-                    <div class="flex flex-col items-center text-center p-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-700 mb-4 card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900 mb-1">Lightning Fast</h3>
-                        <p class="text-sm text-slate-700">Optimized for speed & performance</p>
-                    </div>
-                    <div class="flex flex-col items-center text-center p-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-700 mb-4 card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900 mb-1">Mobile First</h3>
-                        <p class="text-sm text-slate-700">Looks perfect on every device</p>
-                    </div>
-                    <div class="flex flex-col items-center text-center p-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-700 mb-4 card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900 mb-1">High Conversion</h3>
-                        <p class="text-sm text-slate-700">Designed to turn visitors into clients</p>
-                    </div>
-                </div>
+            <div class="hero-badge">
+                <span style="color:#67e8f9;">●</span> Kelowna, BC • Okanagan Specialist
             </div>
-        </section>
-    </div>
-</div>
-</section>
-
-        <!-- Portfolio Section -->
-        <section id="work">
-        <section id="portfolio" class="section bg-white fade-up">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <p class="text-blue-700 font-bold tracking-wide uppercase text-sm mb-3">Portfolio</p>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Recent Website Transformations</h2>
-            <p class="text-lg text-slate-700">See how we've helped local businesses modernize their online presence and attract more customers.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h1>Websites That <span>Actually Bring You Customers</span></h1>
+            <p>High-converting, mobile-first websites built specifically for local service businesses in the Okanagan. Stop losing leads to outdated sites.</p>
             
-            <!-- CARD 1: Your Live Site -->
-            <article class="group card overflow-hidden relative">
-                <!-- Live Badge -->
-                <div class="absolute top-4 right-4 z-10 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                    LIVE SITE
-                </div>
-                
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="True North Websites - Web Design Agency" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <span class="text-white font-medium">Visit Live Site →</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <p class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">Tutoring Services/Travel Blog</p>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Educator/Writer</h3>
-                    <p class="text-slate-700 mb-4 text-sm">Local Science/Math Tutor</p>
-                    <a href="https://justinenns.com" target="_blank" rel="noopener noreferrer" class="text-blue-800 font-semibold text-sm hover:text-blue-900 flex items-center gap-1 group/btn">
-                        View Live Site <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover/btn:translate-x-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
-                </div>
-            </article>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Get Your Free Mockup</a>
+                <a href="#work" class="btn-secondary">View Demo Designs</a>
+            </div>
 
-      <!-- CARD 2: Riviera Pool and Spa Mockup (Updated) -->
-<article class="group card overflow-hidden">
-    <div class="relative h-64 overflow-hidden">
-        <img src="images/pool-hot-tub.jpg" loading = "lazy" alt="Riviera Pool and Spa - Full-width hero with pool and hot tub" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-            <span class="text-white font-medium">View Updated Project →</span>
+            <div class="hero-trust">
+                <div>✅ Lightning-fast loading</div>
+                <div>✅ Built for local SEO</div>
+                <div>✅ Conversion-focused design</div>
+                <div>✅ No templates — custom every time</div>
+            </div>
         </div>
-    </div>
-    <div class="p-6">
-        <div class="flex items-center gap-2 mb-2">
-            <p class="text-xs font-bold text-blue-700 uppercase tracking-wider">Pool & Spa Services</p>
-            <span class="px-2 py-0.5 text-[10px] font-bold text-green-700 bg-green-100 rounded-full uppercase">Updated</span>
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-2">Riviera Pool and Spa</h3>
-        <p class="text-slate-700 mb-4 text-sm">West Kelowna pool company featuring a full-width hero with animated title, glassmorphism backdrop, enhanced 50% larger logo, and interactive card hover animations throughout.</p>
-        <a href="3rd-time/index.html" class="text-blue-800 font-semibold text-sm hover:text-blue-900 flex items-center gap-1 group/btn">
-            View Live Demo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fillgit add 3rd-time
-git commit -m "Re-add 3rd-time correctly"
-git push="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-    </div>
-</article>
+    </section>
 
-           <!-- CARD 3: Summit Roofing Mockup -->
-<article class="group card overflow-hidden">
-    <div class="relative h-64 overflow-hidden">
-        <img src="summit roofing.jpg" alt="Summit Roofing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-            <span class="text-white font-medium">View Project</span>
-        </div>
-    </div>
-    <div class="p-6">
-        <p class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">Roofing</p>
-        <h3 class="text-xl font-bold text-slate-900 mb-2">Summit Roofing</h3>
-        <p class="text-slate-700 mb-4 text-sm">Premium roofing company with parallax hero, scroll animations, and instant quote features.</p>
-        <a href="portfolio/summit-roofing/index.html" class="text-blue-800 font-semibold text-sm hover:text-blue-900 flex items-center gap-1 group/btn">
-            View Demo <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-    </div>
-</article>
-</section>
+    <!-- WHY MOST WEBSITES FAIL -->
+    <section id="why-fail" class="fail-section">
+        <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+            <div style="text-align:center; max-width:720px; margin:0 auto 4rem;">
+                <p style="color:#0ea5e9; font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:0.95rem;">The Problem</p>
+                <h2 style="font-size:2.75rem; margin-bottom:1rem;">Most local business websites are invisible to customers</h2>
+                <p style="font-size:1.25rem; color:#64748b;">They load slowly, look outdated on phones, and give visitors no clear reason to call or book.</p>
+            </div>
 
-        <!-- Before/After Comparison -->
-        <!-- Transformation -->
-        <section class="section bg-slate-50 fade-up">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <p class="uppercase tracking-widest text-sm text-blue-600 mb-2">The Difference</p>
-                    <h2 class="text-3xl font-semibold mb-3">See the Transformation</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🐢</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Slow &amp; Frustrating</h3>
+                    <p>Visitors leave in seconds if your site takes longer than 3 seconds to load. Google penalizes slow sites too.</p>
+                </div>
+                <div class="problem-card">
+                    <div style="font-size:3rem; margin-bottom:1rem;">📱</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Broken on Mobile</h3>
+                    <p>Over 60% of your local searches happen on phones. If it doesn't look perfect, you lose the customer.</p>
+                </div>
+                <div class="problem-card">
+                    <div style="font-size:3rem; margin-bottom:1rem;">❓</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">No Clear Next Step</h3>
+                    <p>No strong call-to-action means visitors don't know whether to call, book, or contact you.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:4rem;">
+                <p style="font-size:1.4rem; max-width:620px; margin:0 auto;">TrueNorth Websites fixes all three — delivering fast, beautiful, conversion-focused sites that turn browsers into buyers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO WORK -->
+    <section id="work" style="padding:6rem 0; background:#fff;">
+        <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+            <div style="text-align:center; margin-bottom:3.5rem;">
+                <p style="color:#0ea5e9; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Demo Projects</p>
+                <h2 style="font-size:2.8rem;">See What Your Site Could Look Like</h2>
+                <p style="max-width:560px; margin:1rem auto 0; color:#64748b;">Realistic concept designs tailored for Okanagan local service businesses.</p>
+            </div>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <img src="images/pool-hot-tub.jpg" alt="Riviera Pool & Spa Website Demo" style="height:260px;">
+                    <div style="padding:1.75rem;">
+                        <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">POOL &amp; SPA SERVICES • WEST KELOWNA</p>
+                        <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Luxury Outdoor Living Site</h3>
+                        <p style="color:#64748b; font-size:0.95rem;">Full-width dramatic hero, service cards with hover effects, and strong booking CTAs.</p>
+                        <a href="3rd-time/index.html" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">
+                            View Demo →
+                        </a>
+                    </div>
                 </div>
 
-                <div class="compare-cards relative h-[400px] w-full flex items-center justify-center cursor-pointer">
-                    <!-- BEFORE -->
-<div class="before-card absolute w-[320px] bg-white p-4 rounded-xl shadow-lg border border-slate-200 z-30 card">
-    <div class="absolute -top-3 -left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-        BEFORE
-    </div>
-    <div class="bg-slate-100 rounded-lg overflow-hidden">
-        <img src="kelowna electric.png" alt="Old website" class="w-full h-40 object-cover opacity-70 grayscale">
-    </div>
-    <div class="mt-3 flex justify-between text-xs text-red-600 font-mono">
-        <span>Load: 8.4s</span>
-        <span>Mobile: Broken</span>
-    </div>
-</div>
-
-                    <!-- AFTER -->
-<div class="after-card absolute w-[320px] bg-white p-4 rounded-xl shadow-2xl border border-blue-100 z-20 card">
-    <div class="absolute -top-3 -right-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-        AFTER
-    </div>
-    <div class="bg-white rounded-lg overflow-hidden border border-slate-100">
-        <img src="kelowna electric good.png" alt="New website" class="w-full h-40 object-cover object-left">
-    </div>
-    <div class="mt-3 flex justify-between text-xs text-green-700 font-mono font-bold">
-        <span>Load: 0.4s</span>
-        <span>Score: 100/100</span>
-    </div>
-</div>
-        </section>
-
-        <!-- Services Section -->
-        <!-- Services -->
-
-        <section id="services" class="section bg-white fade-up">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <p class="text-blue-700 font-bold tracking-wide uppercase text-sm mb-3">Our Services</p>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Everything you need to win online</h2>
-                    <p class="text-lg text-slate-700">We handle the technical stuff so you can focus on running your business.</p>
+                <div class="demo-card">
+                    <img src="summit roofing.jpg" alt="Summit Roofing Website Demo" style="height:260px;">
+                    <div style="padding:1.75rem;">
+                        <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">ROOFING SERVICES</p>
+                        <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Premium Roofing Company</h3>
+                        <p style="color:#64748b; font-size:0.95rem;">Parallax hero, instant quote form, and trust-building before/after elements.</p>
+                        <a href="portfolio/summit-roofing/index.html" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">
+                            View Demo →
+                        </a>
+                    </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card p-8 hover:border-blue-200 transition-all group">
-                        <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-blue-700 mb-6 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">Website Redesign</h3>
-                        <p class="text-slate-700 leading-relaxed">Transform your outdated site into a modern, high-converting sales machine that works 24/7.</p>
-                    </div>
-
-                    <div class="card p-8 hover:border-blue-200 transition-all group">
-                        <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-blue-700 mb-6 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">New Business Sites</h3>
-                        <p class="text-slate-700 leading-relaxed">Starting from scratch? We build robust, scalable websites that grow with your business.</p>
-                    </div>
-
-                    <div class="card p-8 hover:border-blue-200 transition-all group">
-                        <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-blue-700 mb-6 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">Mobile Optimization</h3>
-                        <p class="text-slate-700 leading-relaxed">Over 60% of traffic is mobile. We ensure your site looks perfect on phones and tablets.</p>
-                    </div>
-
-                    <div class="card p-8 hover:border-blue-200 transition-all group">
-                        <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-blue-700 mb-6 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">Performance Tuning</h3>
-                        <p class="text-slate-700 leading-relaxed">Slow sites lose customers. We optimize loading speeds for better user experience and SEO.</p>
-                    </div>
-
-                    <div class="card p-8 hover:border-blue-200 transition-all group md:col-span-2 lg:col-span-1">
-                        <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-blue-700 mb-6 group-hover:scale-110 transition-transform">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">SEO-Ready Structure</h3>
-                        <p class="text-slate-700 leading-relaxed">Clean code, fast loading, and proper meta tags built-in to help you rank higher on Google.</p>
+                <div class="demo-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Educator Website Demo" style="height:260px;">
+                    <div style="padding:1.75rem;">
+                        <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">TUTORING SERVICES</p>
+                        <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Local Tutor / Educator</h3>
+                        <p style="color:#64748b; font-size:0.95rem;">Clean, professional site that ranks locally and converts inquiries.</p>
+                        <a href="https://justinenns.com" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">
+                            Visit Live Site →
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Process Section -->
-        <section id="process" class="bg-blue-900 text-white py-24 fade-up">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <p class="text-blue-300 font-bold tracking-wide uppercase text-sm mb-3">How It Works</p>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, transparent process</h2>
-                    <p class="text-lg text-blue-100">No tech jargon, no hidden fees. Just results.</p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8 relative">
-                    <div class="hidden md:block absolute top-12 left-10 right-10 h-0.5 bg-blue-800"></div>
-
-                    <div class="process-step relative z-10 bg-blue-800 p-8 rounded-2xl border border-blue-700 text-center card">
-                        <div class="w-12 h-12 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 shadow-lg">1</div>
-                        <h3 class="text-xl font-bold mb-3">Free Website Review</h3>
-                        <p class="text-blue-200">We analyze your current site and show you exactly what's hurting your business and how to fix it.</p>
-                    </div>
-
-                    <div class="process-step relative z-10 bg-blue-800 p-8 rounded-2xl border border-blue-700 text-center card">
-                        <div class="w-12 h-12 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 shadow-lg">2</div>
-                        <h3 class="text-xl font-bold mb-3">We Design Your Site</h3>
-                        <p class="text-blue-200">Our team builds a custom, mobile-first design tailored to your brand and business goals.</p>
-                    </div>
-
-                    <div class="process-step relative z-10 bg-blue-800 p-8 rounded-2xl border border-blue-700 text-center card">
-                        <div class="w-12 h-12 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-6 shadow-lg">3</div>
-                        <h3 class="text-xl font-bold mb-3">Launch & Grow</h3>
-                        <p class="text-blue-200">
-                            We launch your new website and make sure everything runs smoothly so you can focus on growing your business.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-<!-- Before/After Comparison -->
-<section class="section bg-slate-50 fade-up" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            
-            <!-- Photo -->
-            <div class="card overflow-hidden">
-                <img src="images/workspace.webp" 
-                     alt="Professional workspace" 
-                     class="w-full h-80 object-cover">
-            </div>
-            
-            <!-- Text Content -->
-            <div>
-                <p class="uppercase tracking-widest text-sm text-blue-600 mb-3">About Us</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                    Your Local <span class="gradient-text">Professionals</span>
-                </h2>
-                <p class="text-slate-600 text-lg mb-6 leading-relaxed">
-                    I grew up watching my dad build a business from almost nothing. He started with less than $1,000 and grew it into a million-dollar company through smart marketing and the importance of standing out.
-                </p>
-                <p class="text-slate-600 mb-8">
-                    Today, I'm pursuing my Master's of Data Analytics, analyzing hundreds of websites to identify exactly what captures attention and what causes visitors to click away.
-                </p>
-                <a href="about.html" class="inline-flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-800 transition-colors mb-6">
-                    Read the full story →
-                </a>
-                <div>
-                    <a href="#contact" class="inline-block px-8 py-4 rounded-full animated-gradient text-white font-bold shadow-lg hover:shadow-xl transition-all">
-                        Work With Us →
-                    </a>
-                </div>
-            </div>
-            
         </div>
-    </div>
-</section>
+    </section>
 
-         <!-- Serving the Okanagan Section -->
-         <section class="py-16 bg-white fade-up">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <p class="text-blue-700 font-bold tracking-wide uppercase text-sm mb-3">Local Service Area</p>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Serving the Okanagan Valley</h2>
-                    <p class="text-lg text-slate-700">Based in Kelowna, working with businesses throughout the Thompson-Okanagan region. No out-of-town agencies—just local expertise.</p>
+    <!-- PROCESS -->
+    <section id="process" style="background:#0f172a; color:white; padding:6rem 0;">
+        <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+            <div style="text-align:center; margin-bottom:4rem;">
+                <p style="color:#67e8f9; font-weight:700; letter-spacing:2px;">OUR PROCESS</p>
+                <h2 style="font-size:2.75rem; color:white;">From First Conversation to Live Website in Weeks</h2>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 style="color:white; margin-bottom:1rem;">Free Mockup &amp; Strategy Call</h3>
+                    <p style="color:#cbd5e1;">We review your current site and create a custom concept tailored to your business goals.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 style="color:white; margin-bottom:1rem;">Design &amp; Feedback</h3>
+                    <p style="color:#cbd5e1;">You get to see and approve every page. Unlimited revisions until it's perfect.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 style="color:white; margin-bottom:1rem;">Launch &amp; Grow</h3>
+                    <p style="color:#cbd5e1;">We handle hosting, SEO basics, and training so you can start getting more calls immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar">
+        <div style="max-width:1280px; margin:0 auto; padding:0 2rem; text-align:center;">
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:3rem; font-size:1.1rem; opacity:0.95;">
+                <div>✅ Local Kelowna Designer</div>
+                <div>✅ Fast Turnaround (2–4 weeks)</div>
+                <div>✅ Mobile-First &amp; SEO Ready</div>
+                <div>✅ Focused on Lead Generation</div>
+                <div>✅ No Long-Term Contracts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRONG CTA -->
+    <section class="final-cta">
+        <div style="max-width:820px; margin:0 auto; padding:0 2rem; text-align:center;">
+            <h2 style="font-size:3rem; margin-bottom:1.5rem;">Want to see what your website could actually look like?</h2>
+            <p style="font-size:1.35rem; margin-bottom:2.5rem; opacity:0.9;">I'll create a free, custom mockup for your business — no strings attached.</p>
+            <a href="#contact" class="btn-primary" style="font-size:1.25rem; padding:20px 48px;">Get Your Free Mockup Now</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="padding:6rem 0; background:#f8fafc;">
+        <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+            <div class="contact-form-container">
+                <div style="text-align:center; margin-bottom:2.5rem;">
+                    <h2 style="font-size:2.4rem;">Let's Build Your New Website</h2>
+                    <p style="color:#64748b;">Tell me about your business and I'll reply with a custom concept within 48 hours.</p>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <!-- Kelowna -->
-                    <div class="card p-6 text-center group hover:border-blue-300 transition-all">
-                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-700 mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900">Kelowna</h3>
-                    </div>
+                <form action="https://formsubmit.co/websitestruenorth@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Free Mockup Request - TrueNorth Websites">
+                    <input type="hidden" name="_next" value="https://truenorthwebsites.com/thank-you.html">
 
-                    <!-- West Kelowna -->
-                    <div class="card p-6 text-center group hover:border-blue-300 transition-all">
-                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-700 mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900">West Kelowna</h3>
-                    </div>
-
-                    <!-- Peachland -->
-                    <div class="card p-6 text-center group hover:border-blue-300 transition-all">
-                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-700 mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900">Peachland</h3>
-                    </div>
-
-                    <!-- Penticton -->
-                    <div class="card p-6 text-center group hover:border-blue-300 transition-all">
-                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-700 mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900">Penticton</h3>
-                    </div>
-
-                    <!-- Vernon -->
-                    <div class="card p-6 text-center group hover:border-blue-300 transition-all">
-                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-700 mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900">Vernon</h3>
-                    </div>
-
-                    <!-- Lake Country -->
-                    <div class="card p-6 text-center group hover:border-blue-300 transition-all">
-                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-700 mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <h3 class="font-bold text-slate-900">Lake Country</h3>
-                    </div>
-                </div>
-
-                <!-- Additional smaller towns -->
-                <div class="mt-8 text-center">
-                    <p class="text-sm text-slate-500">
-                        Also serving: <span class="text-slate-700 font-medium">Summerland · Oliver · Osoyoos · Armstrong · Enderby · Salmon Arm</span>
-                    </p>
-                </div>
-
-                <!-- Local advantage callout -->
-                <div class="mt-12 bg-blue-50 rounded-2xl p-8 md:p-12 border border-blue-100">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
                         <div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Why Choose a Local Web Designer?</h3>
-                            <ul class="space-y-3 text-slate-700">
-                                <li class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mt-0.5 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                                    <span>Meet in person at your business or a local coffee shop</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mt-0.5 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                                    <span>Understands the Okanagan market and local competition</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mt-0.5 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                                    <span>Same time zone, no waiting days for email responses</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mt-0.5 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                                    <span>Supports other local businesses in the community</span>
-                                </li>
-                            </ul>
+                            <label style="display:block; margin-bottom:8px; font-weight:500;">Your Name</label>
+                            <input type="text" name="name" required>
                         </div>
-                        <div class="relative">
-                            <img src="robbie-down-zppGPIF-aqo-unsplash.jpg" alt="Okanagan Lake and mountains" class="rounded-xl shadow-lg w-full h-64 object-cover">                            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md">
-                                <p class="text-sm font-bold text-slate-900">Your Local Web Partner</p>
-                                <p class="text-xs text-slate-600">Based in Kelowna since 2024</p>
-                            </div>
+                        <div>
+                            <label style="display:block; margin-bottom:8px; font-weight:500;">Business Name</label>
+                            <input type="text" name="business" required>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
- 
-        <section class="py-20 bg-slate-50">
-            <div class="max-w-6xl mx-auto px-6 text-center">
-          
-              <h2 class="text-4xl font-bold text-slate-900 mb-4">
-                Simple Pricing. No Surprises.
-              </h2>
-              <p class="text-lg text-slate-600 mb-12">
-                Get a high-converting website without paying thousands upfront.
-              </p>
-          
-              <div class="grid md:grid-cols-3 gap-8">
-          
-                <!-- STARTER -->
-                <div class="card p-8 flex flex-col border border-slate-200 rounded-2xl bg-white">
-                  <h3 class="text-lg font-semibold text-slate-900">Starter</h3>
-                  <div class="my-4">
-                    <span class="text-4xl font-bold text-slate-900">$75</span>
-                    <span class="text-slate-600">/month</span>
-                  </div>
-                  <p class="text-slate-700 text-sm mb-6">
-                    Perfect for small businesses needing a clean, professional online presence.
-                  </p>
-                  <ul class="space-y-3 mb-8 flex-1 text-left">
-                    <li class="flex items-center gap-3 text-sm">✔ 1–3 Page Website</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Mobile Optimized</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Basic SEO Setup</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Fast Hosting</li>
-                  </ul>
-                  <a href="#contact" class="w-full block text-center py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-black transition">
-                    Get Started
-                  </a>
-                </div>
-          
-                <!-- GROWTH (MAIN OFFER) -->
-                <div class="card p-8 flex flex-col relative border-2 border-yellow-500 shadow-2xl rounded-2xl bg-white scale-105">
-                  
-                  <div class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">
-                    MOST POPULAR
-                  </div>
-          
-                  <h3 class="text-lg font-semibold text-slate-900">Growth</h3>
-          
-                  <div class="my-4">
-                    <span class="text-4xl font-bold text-slate-900">$125</span>
-                    <span class="text-slate-600">/month (12 months)</span>
-                  </div>
-          
-                  <p class="text-sm text-slate-500 mb-4">
-                    Then $20/month for hosting, updates & support
-                  </p>
-          
-                  <p class="text-slate-700 text-sm mb-6 font-medium">
-                    Built to generate leads and help your business grow.
-                  </p>
-          
-                  <ul class="space-y-3 mb-8 flex-1 text-left">
-                    <li class="flex items-center gap-3 text-sm">✔ Everything in Starter</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Up to 10 Pages</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Advanced SEO Optimization</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Google Maps Integration</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Conversion-Focused Design</li>
-                    <li class="flex items-center gap-3 text-sm">✔ 1 Month Priority Support</li>
-                  </ul>
-          
-                  <a href="#contact" class="w-full block text-center py-3 rounded-xl bg-yellow-500 text-black font-bold hover:bg-yellow-400 transition shadow-lg">
-                    Get Started
-                  </a>
-                </div>
-          
-                <!-- PREMIUM -->
-                <div class="card p-8 flex flex-col border border-slate-200 rounded-2xl bg-white">
-                  <h3 class="text-lg font-semibold text-slate-900">Premium</h3>
-                  <div class="my-4">
-                    <span class="text-4xl font-bold text-slate-900">Custom</span>
-                  </div>
-                  <p class="text-slate-700 text-sm mb-6">
-                    For businesses that want a fully custom solution or advanced features.
-                  </p>
-                  <ul class="space-y-3 mb-8 flex-1 text-left">
-                    <li class="flex items-center gap-3 text-sm">✔ Unlimited Pages</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Custom Features</li>
-                    <li class="flex items-center gap-3 text-sm">✔ E-Commerce / Shopify</li>
-                    <li class="flex items-center gap-3 text-sm">✔ Ongoing Optimization</li>
-                  </ul>
-                  <a href="#contact" class="w-full block text-center py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-black transition">
-                    Contact Us
-                  </a>
-                </div>
-          
-              </div>
-          
-              <!-- TRUST BOOST -->
-              <div class="mt-12 text-sm text-slate-500">
-                ✔ No large upfront cost &nbsp;&nbsp; ✔ Cancel anytime &nbsp;&nbsp; ✔ Fast turnaround
-              </div>
-          
-            </div>
-          </section>
 
-        <!-- Contact/CTA Section -->
-        <section id="contact">
-        <section id="contact" class="section bg-white fade-up">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-blue-900 rounded-3xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
-                    <div class="absolute top-0 left-0 -ml-16 -mt-16 w-64 h-64 bg-blue-800 rounded-full opacity-50"></div>
-                    <div class="absolute bottom-0 right-0 -mr-16 -mb-16 w-64 h-64 bg-blue-800 rounded-full opacity-50"></div>
-                    
-                    <div class="relative z-10">
-                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ready for a Website That Brings You Customers?</h2>
-                        <p class="text-blue-200 text-lg md:text-xl mb-10 max-w-2xl mx-auto">Join 50+ local businesses who have transformed their online presence with TrueNorth.</p>
-                        
-                        <form action="https://formsubmit.co/websitestruenorth@gmail.com" method="POST" class="max-w-md mx-auto space-y-4 text-left bg-white/10 p-2 rounded-2xl backdrop-blur-sm border border-white/10">
-                            <input type="hidden" name="_subject" value="New Website Review Request - TrueNorth">
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="hidden" name="_next" value="https://truenorthwebsites.com/thank-you.html">
-                            <input type="hidden" name="_template" value="table">
-                            
-                            <div class="grid grid-cols-2 gap-2">
-                                <label class="sr-only" for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Name" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                                <label class="sr-only" for="business">Business</label>
-                                <input type="text" id="business" name="business" placeholder="Business" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                            </div>
-                            <div style="position:absolute; left:-5000px;">
-                                <label>Leave this field empty</label>
-                                <input type="text" name="company">
-                            </div>
-                            <label class="sr-only" for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                            <label class="sr-only" for="website">Current Website</label>
-                            <input type="text" id="website" name="website" placeholder="Current Website (if any)" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                            <textarea name="message" placeholder="Tell me a bit about your business and what you'd like to improve" class="w-full px-4 py-3 rounded-xl bg-white text-slate-900 h-32 resize-none"></textarea>
-                            <button type="submit" class="w-full py-4 rounded-xl bg-white text-blue-900 font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg">Request a Free Website Review</button>
-                        </form>
-                        <p class="text-blue-300 text-sm mt-4">Free review delivered within 24 hours. No obligations.</p>
+                    <div style="margin-bottom:1.25rem;">
+                        <label style="display:block; margin-bottom:8px; font-weight:500;">Email Address</label>
+                        <input type="email" name="email" required>
                     </div>
-                </div>
-            </div>
-        </section>
 
-    </main>
+                    <div style="margin-bottom:1.25rem;">
+                        <label style="display:block; margin-bottom:8px; font-weight:500;">Current Website (if any)</label>
+                        <input type="text" name="website">
+                    </div>
 
-<!-- Footer -->
-<footer class="bg-slate-50 border-t border-slate-200 pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-12 gap-8 mb-12 items-start">
-            
-            <!-- Logo Column - Takes 5 columns -->
-            <div class="md:col-span-5">
-                <div class="mb-4">
-                    <img src="truenorth-logo.png" alt="True North Websites" class="h-16 w-auto">
-                </div>
-                <p class="text-slate-700 max-w-xs mb-6 text-sm leading-relaxed">
-                    Okanagan web design studio helping local businesses turn their websites into their best salespeople. Based in Kelowna, serving the valley and beyond.
-                </p>
-                <div class="flex gap-3">
-                    <a href="#" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-blue-700 hover:border-blue-300 transition-all" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-blue-700 hover:border-blue-300 transition-all" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                    </a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-blue-700 hover:border-blue-300 transition-all" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Spacer - 1 column -->
-            <div class="hidden md:block md:col-span-1"></div>
-            
-            <!-- Services Column - 3 columns -->
-            <nav class="md:col-span-3" aria-label="Footer Services">
-                <h3 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Services</h3>
-                <ul class="space-y-3 text-slate-600 text-sm">
-                    <li><a href="#" class="hover:text-blue-700 transition-colors">Website Redesign</a></li>
-                    <li><a href="#" class="hover:text-blue-700 transition-colors">New Websites</a></li>
-                    <li><a href="#" class="hover:text-blue-700 transition-colors">SEO Optimization</a></li>
-                    <li><a href="#" class="hover:text-blue-700 transition-colors">Maintenance</a></li>
-                </ul>
-            </nav>
+                    <div style="margin-bottom:2rem;">
+                        <label style="display:block; margin-bottom:8px; font-weight:500;">Tell me about your business &amp; goals</label>
+                        <textarea name="message" rows="5" placeholder="E.g., We install pools in West Kelowna and want more bookings..." style="resize:vertical;"></textarea>
+                    </div>
 
-            <!-- Contact Column - 3 columns -->
-            <div class="md:col-span-3">
-                <h3 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider">Contact</h3>
-                <ul class="space-y-3 text-slate-600 text-sm">
-                    <li class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <a href="mailto:websitestruenorth@gmail.com" class="hover:text-blue-700 transition-colors">websitestruenorth@gmail.com</a>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span>(250) 859-1231</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Kelowna, BC, Canada</span>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-        
-        <!-- Bottom Bar -->
-        <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-slate-500 text-sm">&copy; 2024 TrueNorth Websites. All rights reserved.</p>
-            <div class="flex gap-6 text-sm text-slate-500">
-                <a href="#" class="hover:text-slate-900 transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-slate-900 transition-colors">Terms of Service</a>
+                    <button type="submit" style="width:100%; background:linear-gradient(135deg, #14b8a6, #22d3ee); color:white; padding:18px; border:none; border-radius:9999px; font-size:1.15rem; font-weight:700; cursor:pointer;">
+                        Send My Free Mockup Request →
+                    </button>
+                </form>
+
+                <p style="text-align:center; margin-top:1.75rem; color:#64748b; font-size:0.95rem;">Zero pressure. Zero cost. Just a custom vision for your business.</p>
             </div>
         </div>
-    </div>
-</footer>
-    <!-- Success Toast -->
-    <div id="toast-success" class="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none transition-all duration-500 z-50">
-        Your message has been sent!
-    </div>
+    </section>
 
-    <!-- JavaScript -->
+    <!-- FOOTER -->
+    <footer style="background:#0f172a; color:#cbd5e1; padding:4rem 0 2rem;">
+        <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:3rem;">
+                <div>
+                    <div class="logo" style="color:white; margin-bottom:1rem;">
+                        <img src="compass-icon.png" alt="Logo" style="height:42px; filter:brightness(0) invert(1);">
+                        <span style="font-family:'Playfair Display',serif; font-size:1.8rem;">TrueNorth</span>
+                    </div>
+                    <p style="max-width:280px;">Kelowna web designer helping Okanagan local businesses stand out online and get more customers.</p>
+                </div>
+                <div>
+                    <h4 style="color:white; margin-bottom:1rem;">Quick Links</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#work" style="color:#cbd5e1;">Demo Designs</a></li>
+                        <li><a href="#why-fail" style="color:#cbd5e1;">Why Most Sites Fail</a></li>
+                        <li><a href="#process" style="color:#cbd5e1;">Our Process</a></li>
+                        <li><a href="about.html" style="color:#cbd5e1;">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:white; margin-bottom:1rem;">Contact</h4>
+                    <p style="margin-bottom:0.5rem;"><a href="mailto:websitestruenorth@gmail.com" style="color:#67e8f9;">websitestruenorth@gmail.com</a></p>
+                    <p>Kelowna, BC</p>
+                </div>
+            </div>
+
+            <div style="border-top:1px solid #334155; margin-top:4rem; padding-top:2rem; text-align:center; font-size:0.9rem; opacity:0.7;">
+                © 2026 TrueNorth Websites • Kelowna, British Columbia • All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Parallax Effect from File 1
-        document.addEventListener("scroll", () => {
-            const scrolled = window.scrollY;
-            const heroImg = document.querySelector(".hero-parallax img");
-            if (heroImg) {
-                heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
-            }
-        });
-
-        // Fade-up Animation Observer
-
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".fade-up, .process-step").forEach(el => observer.observe(el));
-        });
-
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => { 
-            const expanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', !expanded);
-            menu.classList.toggle('hidden'); 
-        });
-        
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                menu.classList.add('hidden');
-                btn.setAttribute('aria-expanded', 'false');
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
-        });
-        
-        // Navbar Shadow
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) navbar.classList.add('shadow-md');
-            else navbar.classList.remove('shadow-md');
-        });
+        }, { threshold: 0.1 });
 
-        // Form Handling with Toast
-        const form = document.querySelector("form");
-        const toast = document.getElementById("toast-success");
-        
-        if (form) {
-            form.addEventListener("submit", async (e) => {
-                // Let the form submit naturally, but show toast
-                toast.style.opacity = "1";
-                toast.style.transform = "translateY(0)";
-                setTimeout(() => {
-                    toast.style.opacity = "0";
-                }, 3000);
-            });
-        }
+        document.querySelectorAll('.problem-card, .demo-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
     </script>
-    <script>
-
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-});
-
-document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
-</script>
-        
 </body>
 </html>
