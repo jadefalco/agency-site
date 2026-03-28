@@ -43,24 +43,25 @@
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 1.25rem;
+            padding: 0 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 80px;
+            height: 76px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.75rem;
+            gap: 10px;
+            font-size: 1.65rem;
             font-weight: 800;
             color: var(--dark);
             cursor: pointer;
+            flex-shrink: 0;
         }
 
-        .logo img { height: 48px; width: auto; }
+        .logo img { height: 42px; width: auto; }
 
         .nav-links {
             display: flex;
@@ -79,12 +80,13 @@
         .nav-cta {
             background: linear-gradient(135deg, var(--accent), #38bdf8);
             color: white;
-            padding: 12px 28px;
+            padding: 10px 22px;
             border-radius: 9999px;
             font-weight: 600;
             text-decoration: none;
             box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.4);
             white-space: nowrap;
+            font-size: 0.95rem;
         }
 
         /* Mobile Hamburger */
@@ -92,30 +94,34 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: #1e2937;
             cursor: pointer;
+            padding: 8px;
+            margin-left: 12px;
         }
 
         /* Mobile Menu */
         #mobile-menu {
             display: none;
             position: absolute;
-            top: 80px;
+            top: 76px;
             left: 0;
             right: 0;
             background: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            padding: 1.5rem 1.25rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            padding: 1.75rem 1.5rem;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.25rem;
+            border-top: 1px solid #e2e8f0;
         }
 
         #mobile-menu a {
             color: #1e2937;
-            font-size: 1.1rem;
-            padding: 0.75rem 0;
+            font-size: 1.15rem;
+            padding: 12px 0;
             text-decoration: none;
+            font-weight: 500;
         }
 
         /* HERO */
@@ -127,7 +133,7 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
             color: white;
             overflow: hidden;
-            padding-top: 80px;
+            padding-top: 76px;
         }
 
         .hero-bg {
@@ -250,10 +256,25 @@
         section { padding: 5rem 0; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 1.25rem; }
 
-        /* Local Advantage */
-        .local-advantage {
-            background: #f8fafc;
-            padding: 7rem 0;
+        /* Contact Form Improvements */
+        input, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
         }
 
         /* Pricing */
@@ -296,14 +317,41 @@
             border-radius: 9999px;
         }
 
-        /* Mobile */
+        /* Mobile Styles */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
-            .nav-container { padding: 0 1rem; }
-            .hero { padding-top: 90px; }
-            .hero-content { padding: 0 1rem; }
-            .hero-trust { gap: 1rem 1.5rem; font-size: 1rem; }
+            
+            .nav-container {
+                padding: 0 1rem;
+                height: 72px;
+            }
+
+            .nav-cta {
+                padding: 8px 18px;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.55rem;
+                gap: 8px;
+            }
+
+            .logo img { height: 38px; }
+
+            .hero { padding-top: 72px; }
+
+            /* Contact Form */
+            .contact-form-box {
+                padding: 2.5rem 1.75rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-cta {
+                padding: 7px 16px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -316,7 +364,7 @@
                 <img src="compass-icon.png" alt="TrueNorth Logo">
                 <div>
                     <span style="font-family: 'Playfair Display', serif;">TrueNorth</span>
-                    <div style="font-size:0.75rem; font-weight:500; color:#64748b;">WEBSITES</div>
+                    <div style="font-size:0.72rem; font-weight:500; color:#64748b; letter-spacing:0.5px;">WEBSITES</div>
                 </div>
             </div>
 
@@ -328,20 +376,20 @@
                 <a href="#contact">Contact</a>
             </div>
 
-            <a href="#contact" class="nav-cta">Get Free Mockup</a>
-
-            <!-- Mobile Hamburger -->
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <a href="#contact" class="nav-cta">Get Free Mockup</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" style="display:none; background:white; padding:1.5rem 1.25rem; box-shadow:0 10px 20px rgba(0,0,0,0.1);">
-            <a href="#work" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Work</a>
-            <a href="#why-fail" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Why Most Fail</a>
-            <a href="#process" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Process</a>
-            <a href="about.html" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">About</a>
-            <a href="#contact" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Contact</a>
-            <a href="#contact" class="nav-cta" style="margin-top:1rem; display:block; text-align:center;">Get Free Mockup</a>
+        <div id="mobile-menu">
+            <a href="#work">Work</a>
+            <a href="#why-fail">Why Most Fail</a>
+            <a href="#process">Process</a>
+            <a href="about.html">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="nav-cta" style="text-align:center; margin-top:0.5rem;">Get Free Mockup</a>
         </div>
     </nav>
 
@@ -569,7 +617,7 @@
     <!-- FINAL CTA -->
     <section style="background:linear-gradient(135deg,#0f172a,#1e2937); color:white; padding:7rem 0; text-align:center;">
         <div style="max-width:820px; margin:0 auto; padding:0 2rem;">
-            <h2 style="font-size:3rem; margin-bottom:1.5rem;">Want to see what your website could actually look like?</h2>
+            <h2 style="font-size:3rem; margin-bottom:1.5rem;">Your Website Should Be Your </h2>Best Salesperson
             <p style="font-size:1.35rem; margin-bottom:2.5rem; opacity:0.9;">I'll create a free, custom mockup for your business — no strings attached.</p>
             <a href="#contact" class="btn-primary" style="font-size:1.25rem; padding:20px 48px;">Get Your Free Mockup Now</a>
         </div>
@@ -578,7 +626,7 @@
     <!-- CONTACT -->
     <section id="contact" style="background:#f8fafc; padding:6rem 0;">
         <div class="container">
-            <div style="max-width:620px; margin:0 auto; background:white; padding:3rem; border-radius:28px; box-shadow:0 25px 60px rgba(0,0,0,0.12);">
+            <div class="contact-form-box" style="max-width:620px; margin:0 auto; background:white; padding:3.25rem 2.25rem; border-radius:28px; box-shadow:0 25px 60px rgba(0,0,0,0.12);">
                 <div style="text-align:center; margin-bottom:2.5rem;">
                     <h2 style="font-size:2.4rem;">Let's Build Your New Website</h2>
                     <p style="color:#64748b;">Tell me about your business and I'll reply with a custom concept within 48 hours.</p>
@@ -611,10 +659,10 @@
 
                     <div style="margin-bottom:2rem;">
                         <label style="display:block; margin-bottom:8px; font-weight:500;">Tell me about your business &amp; goals</label>
-                        <textarea name="message" rows="5" placeholder="E.g., We install pools in West Kelowna and want more bookings..."></textarea>
+                        <textarea name="message" rows="6" placeholder="E.g., We install pools in West Kelowna and want more bookings..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn-primary" style="width:100%; border:none;">Send My Free Mockup Request →</button>
+                    <button type="submit" class="btn-primary" style="width:100%; border:none; padding:18px;">Send My Free Mockup Request →</button>
                 </form>
 
                 <p style="text-align:center; margin-top:1.75rem; color:#64748b; font-size:0.95rem;">Zero pressure. Zero cost. Just a custom vision for your business.</p>
@@ -669,10 +717,10 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         mobileBtn.addEventListener('click', () => {
-            if (mobileMenu.style.display === 'block') {
+            if (mobileMenu.style.display === 'flex') {
                 mobileMenu.style.display = 'none';
             } else {
-                mobileMenu.style.display = 'block';
+                mobileMenu.style.display = 'flex';
             }
         });
 
@@ -681,6 +729,13 @@
             link.addEventListener('click', () => {
                 mobileMenu.style.display = 'none';
             });
+        });
+
+        // Close menu if clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && mobileMenu.style.display === 'flex') {
+                mobileMenu.style.display = 'none';
+            }
         });
     </script>
 </body>
