@@ -6,7 +6,7 @@
     <title>TrueNorth Websites | Kelowna Web Design for Local Businesses | Okanagan BC</title>
     <meta name="description" content="Kelowna-based web design specialist creating high-converting websites for Okanagan local service businesses. Fast, mobile-first sites that generate more leads and customers.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -43,7 +43,7 @@
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.25rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -64,7 +64,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.25rem;
+            gap: 2rem;
             font-weight: 500;
         }
 
@@ -84,6 +84,38 @@
             font-weight: 600;
             text-decoration: none;
             box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.4);
+            white-space: nowrap;
+        }
+
+        /* Mobile Hamburger */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #1e2937;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem 1.25rem;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #mobile-menu a {
+            color: #1e2937;
+            font-size: 1.1rem;
+            padding: 0.75rem 0;
+            text-decoration: none;
         }
 
         /* HERO */
@@ -95,6 +127,7 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
             color: white;
             overflow: hidden;
+            padding-top: 80px;
         }
 
         .hero-bg {
@@ -121,7 +154,7 @@
             z-index: 10;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.25rem;
         }
 
         .hero-badge {
@@ -138,7 +171,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.25rem);
+            font-size: clamp(2.75rem, 7vw, 5.25rem);
             line-height: 1.05;
             margin-bottom: 1.25rem;
         }
@@ -151,7 +184,7 @@
         }
 
         .hero p {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             max-width: 620px;
             opacity: 0.95;
             margin-bottom: 2.5rem;
@@ -163,35 +196,28 @@
             gap: 1rem;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #14b8a6, #22d3ee);
-            color: white;
-            padding: 18px 36px;
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
             border-radius: 9999px;
             font-size: 1.1rem;
             font-weight: 700;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 20px 40px -10px rgba(20, 184, 166, 0.5);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
+            transition: all 0.4s ease;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-6px) scale(1.03);
+        .btn-primary {
+            background: linear-gradient(135deg, #14b8a6, #22d3ee);
+            color: white;
+            box-shadow: 0 20px 40px -10px rgba(20, 184, 166, 0.5);
         }
+
+        .btn-primary:hover { transform: translateY(-4px); }
 
         .btn-secondary {
             background: transparent;
             border: 2px solid rgba(255,255,255,0.8);
             color: white;
-            padding: 18px 36px;
-            border-radius: 9999px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
@@ -220,114 +246,14 @@
             font-size: 1.4rem;
         }
 
-        /* Sections General */
-        section { padding: 6rem 0; }
-        
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .text-center { text-align: center; }
-        
-        .text-gradient {
-            background: linear-gradient(90deg, #67e8f9, #22d3ee);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Sections */
+        section { padding: 5rem 0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.25rem; }
 
         /* Local Advantage */
         .local-advantage {
             background: #f8fafc;
             padding: 7rem 0;
-        }
-
-        .local-advantage h2 {
-            font-size: 2.75rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .local-advantage p {
-            color: #475569;
-            font-size: 1.1rem;
-        }
-
-        .advantage-list {
-            margin-top: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .advantage-item {
-            background: white;
-            padding: 1.75rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            font-weight: 600;
-        }
-
-        .comparison-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .comparison-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            align-items: center;
-        }
-
-        .badge {
-            padding: 2px 12px;
-            border-radius: 9999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .badge-red {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-
-        .badge-green {
-            background: #14b8a6;
-            color: white;
-        }
-
-        .comparison-list {
-            list-style: none;
-            color: #64748b;
-            padding: 0;
-        }
-
-        .comparison-list li {
-            margin-bottom: 0.75rem;
-        }
-
-        .comparison-card-dark {
-            background: #0f172a;
-            padding: 2rem;
-            border-radius: 20px;
-            color: white;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .comparison-list-light {
-            list-style: none;
-            color: #cbd5e1;
-            padding: 0;
-        }
-
-        .comparison-list-light li {
-            margin-bottom: 0.75rem;
         }
 
         /* Pricing */
@@ -370,187 +296,14 @@
             border-radius: 9999px;
         }
 
-        .price {
-            font-size: 3.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-sub {
-            color: #64748b;
-            margin-bottom: 2rem;
-        }
-
-        .feature-list {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 2.5rem;
-            padding: 0;
-        }
-
-        .feature-list li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Problem Cards */
-        .problem-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-        }
-
-        .problem-emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Demo Cards */
-        .demo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px,1fr));
-            gap: 2rem;
-        }
-
-        .demo-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.5s ease;
-        }
-
-        .demo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .demo-card img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-        }
-
-        .demo-content {
-            padding: 1.75rem;
-        }
-
-        .demo-tag {
-            color: #0ea5e9;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .demo-card h3 {
-            margin: 0.75rem 0 0.5rem;
-            font-size: 1.45rem;
-        }
-
-        .demo-card p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .demo-link {
-            color: #0ea5e9;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Process Steps */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-            gap: 2rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .step-number {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg,#0ea5e9,#14b8a6);
-            color: white;
-            border-radius: 9999px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .step h3 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.35rem;
-        }
-
-        .step p {
-            color: #cbd5e1;
-        }
-
-        /* Forms */
-        input, textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #0ea5e9;
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        /* Grid helpers */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
+        /* Mobile */
         @media (max-width: 768px) {
-            .hero-ctas { flex-direction: column; }
             .nav-links { display: none; }
-            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
-            .demo-grid { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            section { padding: 4rem 0; }
-            .local-advantage h2 { font-size: 2rem; }
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .mobile-menu-btn { display: block; }
+            .nav-container { padding: 0 1rem; }
+            .hero { padding-top: 90px; }
+            .hero-content { padding: 0 1rem; }
+            .hero-trust { gap: 1rem 1.5rem; font-size: 1rem; }
         }
     </style>
 </head>
@@ -566,6 +319,7 @@
                     <div style="font-size:0.75rem; font-weight:500; color:#64748b;">WEBSITES</div>
                 </div>
             </div>
+
             <div class="nav-links">
                 <a href="#work">Work</a>
                 <a href="#why-fail">Why Most Fail</a>
@@ -573,7 +327,21 @@
                 <a href="about.html">About</a>
                 <a href="#contact">Contact</a>
             </div>
+
             <a href="#contact" class="nav-cta">Get Free Mockup</a>
+
+            <!-- Mobile Hamburger -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" style="display:none; background:white; padding:1.5rem 1.25rem; box-shadow:0 10px 20px rgba(0,0,0,0.1);">
+            <a href="#work" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Work</a>
+            <a href="#why-fail" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Why Most Fail</a>
+            <a href="#process" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Process</a>
+            <a href="about.html" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">About</a>
+            <a href="#contact" style="display:block; padding:12px 0; color:#1e2937; font-size:1.1rem;">Contact</a>
+            <a href="#contact" class="nav-cta" style="margin-top:1rem; display:block; text-align:center;">Get Free Mockup</a>
         </div>
     </nav>
 
@@ -585,7 +353,7 @@
             <div class="hero-badge">
                 <span style="color:#67e8f9;">●</span> Kelowna, BC • Okanagan Specialist
             </div>
-            <h1>Your Website Should Be <span>Best Salesperson</span></h1>
+            <h1>Websites That <span>Actually Bring You Customers</span></h1>
             <p>High-converting, mobile-first websites built specifically for local service businesses in the Okanagan.</p>
             
             <div class="hero-ctas">
@@ -603,7 +371,7 @@
     </section>
 
     <!-- WHY MOST WEBSITES FAIL -->
-    <section id="why-fail" style="background:#f8fafc;">
+    <section id="why-fail" style="background:#f8fafc; padding:6rem 0;">
         <div class="container">
             <div style="text-align:center; max-width:720px; margin:0 auto 4rem;">
                 <p style="color:#0ea5e9; font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:0.95rem;">The Problem</p>
@@ -612,18 +380,18 @@
             </div>
 
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem;">
-                <div class="problem-card fade-up">
-                    <div class="problem-emoji">🐢</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Slow & Frustrating</h3>
+                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🐢</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Slow &amp; Frustrating</h3>
                     <p>Visitors leave in seconds if your site takes longer than 3 seconds to load.</p>
                 </div>
-                <div class="problem-card fade-up">
-                    <div class="problem-emoji">📱</div>
+                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">📱</div>
                     <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Broken on Mobile</h3>
                     <p>Over 60% of local searches happen on phones. If it doesn't look perfect, you lose the customer.</p>
                 </div>
-                <div class="problem-card fade-up">
-                    <div class="problem-emoji">❓</div>
+                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">❓</div>
                     <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">No Clear Next Step</h3>
                     <p>No strong call-to-action means visitors don't know what to do next.</p>
                 </div>
@@ -632,7 +400,7 @@
     </section>
 
     <!-- DEMO WORK -->
-    <section id="work" style="background:#fff;">
+    <section id="work" style="padding:6rem 0; background:#fff;">
         <div class="container">
             <div style="text-align:center; margin-bottom:3.5rem;">
                 <p style="color:#0ea5e9; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Demo Projects</p>
@@ -640,34 +408,34 @@
                 <p style="max-width:560px; margin:1rem auto 0; color:#64748b;">Realistic concept designs tailored for Okanagan local service businesses.</p>
             </div>
 
-            <div class="demo-grid">
-                <div class="demo-card fade-up">
-                    <img src="images/pool-hot-tub.jpg" alt="Riviera Pool & Spa">
-                    <div class="demo-content">
-                        <p class="demo-tag">POOL & SPA SERVICES • WEST KELOWNA</p>
-                        <h3>Luxury Outdoor Living Site</h3>
-                        <p>Full-width dramatic hero, service cards with hover effects, and strong booking CTAs.</p>
-                        <a href="3rd-time/index.html" target="_blank" class="demo-link">View Demo →</a>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px,1fr)); gap:2rem;">
+                <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.1); transition:all 0.5s ease;">
+                    <img src="images/pool-hot-tub.jpg" alt="Riviera Pool & Spa" style="width:100%; height:260px; object-fit:cover;">
+                    <div style="padding:1.75rem;">
+                        <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">POOL &amp; SPA SERVICES • WEST KELOWNA</p>
+                        <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Luxury Outdoor Living Site</h3>
+                        <p style="color:#64748b; font-size:0.95rem;">Full-width dramatic hero, service cards with hover effects, and strong booking CTAs.</p>
+                        <a href="3rd-time/index.html" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Demo →</a>
                     </div>
                 </div>
 
-                <div class="demo-card fade-up">
-                    <img src="summit roofing.jpg" alt="Summit Roofing">
-                    <div class="demo-content">
-                        <p class="demo-tag">ROOFING SERVICES</p>
-                        <h3>Premium Roofing Company</h3>
-                        <p>Parallax hero, instant quote form, and trust-building before/after elements.</p>
-                        <a href="portfolio/summit-roofing/index.html" target="_blank" class="demo-link">View Demo →</a>
+                <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.1); transition:all 0.5s ease;">
+                    <img src="summit roofing.jpg" alt="Summit Roofing" style="width:100%; height:260px; object-fit:cover;">
+                    <div style="padding:1.75rem;">
+                        <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">ROOFING SERVICES</p>
+                        <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Premium Roofing Company</h3>
+                        <p style="color:#64748b; font-size:0.95rem;">Parallax hero, instant quote form, and trust-building before/after elements.</p>
+                        <a href="portfolio/summit-roofing/index.html" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Demo →</a>
                     </div>
                 </div>
 
-                <div class="demo-card fade-up">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Educator Website Demo">
-                    <div class="demo-content">
-                        <p class="demo-tag">TUTORING SERVICES</p>
-                        <h3>Local Tutor / Educator</h3>
-                        <p>Clean, professional site that ranks locally and converts inquiries.</p>
-                        <a href="https://justinenns.com" target="_blank" class="demo-link">Visit Live Site →</a>
+                <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.1); transition:all 0.5s ease;">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Educator Website Demo" style="width:100%; height:260px; object-fit:cover;">
+                    <div style="padding:1.75rem;">
+                        <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">TUTORING SERVICES</p>
+                        <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Local Tutor / Educator</h3>
+                        <p style="color:#64748b; font-size:0.95rem;">Clean, professional site that ranks locally and converts inquiries.</p>
+                        <a href="https://justinenns.com" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">Visit Live Site →</a>
                     </div>
                 </div>
             </div>
@@ -675,28 +443,28 @@
     </section>
 
     <!-- PROCESS -->
-    <section id="process" style="background:#0f172a; color:white;">
+    <section id="process" style="background:#0f172a; color:white; padding:6rem 0;">
         <div class="container">
             <div style="text-align:center; margin-bottom:4rem;">
                 <p style="color:#67e8f9; font-weight:700; letter-spacing:2px;">OUR PROCESS</p>
                 <h2 style="font-size:2.75rem; color:white;">From First Conversation to Live Website in Weeks</h2>
             </div>
 
-            <div class="process-grid">
-                <div class="step fade-up">
-                    <div class="step-number">1</div>
-                    <h3>Free Mockup & Strategy Call</h3>
-                    <p>We review your current site and create a custom concept tailored to your business goals.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem;">
+                <div style="text-align:center; padding:2rem;">
+                    <div style="width:72px;height:72px;background:linear-gradient(135deg,#0ea5e9,#14b8a6);color:white;border-radius:9999px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;">1</div>
+                    <h3 style="color:white;margin-bottom:1rem;">Free Mockup &amp; Strategy Call</h3>
+                    <p style="color:#cbd5e1;">We review your current site and create a custom concept tailored to your business goals.</p>
                 </div>
-                <div class="step fade-up">
-                    <div class="step-number">2</div>
-                    <h3>Design & Feedback</h3>
-                    <p>You get to see and approve every page. Unlimited revisions until it's perfect.</p>
+                <div style="text-align:center; padding:2rem;">
+                    <div style="width:72px;height:72px;background:linear-gradient(135deg,#0ea5e9,#14b8a6);color:white;border-radius:9999px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;">2</div>
+                    <h3 style="color:white;margin-bottom:1rem;">Design &amp; Feedback</h3>
+                    <p style="color:#cbd5e1;">You get to see and approve every page. Unlimited revisions until it's perfect.</p>
                 </div>
-                <div class="step fade-up">
-                    <div class="step-number">3</div>
-                    <h3>Launch & Grow</h3>
-                    <p>We handle hosting, SEO basics, and training so you can start getting more calls immediately.</p>
+                <div style="text-align:center; padding:2rem;">
+                    <div style="width:72px;height:72px;background:linear-gradient(135deg,#0ea5e9,#14b8a6);color:white;border-radius:9999px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;">3</div>
+                    <h3 style="color:white;margin-bottom:1rem;">Launch &amp; Grow</h3>
+                    <p style="color:#cbd5e1;">We handle hosting, SEO basics, and training so you can start getting more calls immediately.</p>
                 </div>
             </div>
         </div>
@@ -705,41 +473,41 @@
     <!-- LOCAL ADVANTAGE -->
     <section class="local-advantage">
         <div class="container">
-            <div class="grid-2">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
                 <div>
                     <div style="display:inline-block; padding:8px 20px; background:#ccfbf1; color:#0f766e; border-radius:9999px; font-weight:700; font-size:0.9rem; margin-bottom:1rem;">THE LOCAL ADVANTAGE</div>
-                    <h2>Big Agency Results.<br>Without the Big Agency Hassle.</h2>
-                    <p>Most Okanagan businesses get quotes from Vancouver agencies and end up talking to three different project managers.</p>
+                    <h2 style="font-size:2.75rem; line-height:1.1; margin-bottom:1.5rem;">Big Agency Results.<br>Without the Big Agency Hassle.</h2>
+                    <p style="color:#475569; font-size:1.1rem;">Most Okanagan businesses get quotes from Vancouver agencies and end up talking to three different project managers.</p>
                     
-                    <div class="advantage-list">
-                        <div class="advantage-item">You Get the Actual Designer</div>
-                        <div class="advantage-item">I Know Your Competitors</div>
-                        <div class="advantage-item">You Own Everything</div>
+                    <div style="margin-top:2.5rem; display:flex; flex-direction:column; gap:1.5rem;">
+                        <div style="background:white; padding:1.75rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.06);">You Get the Actual Designer</div>
+                        <div style="background:white; padding:1.75rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.06);">I Know Your Competitors</div>
+                        <div style="background:white; padding:1.75rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.06);">You Own Everything</div>
                     </div>
                 </div>
 
                 <div>
-                    <div class="comparison-card fade-up">
-                        <div class="comparison-header">
+                    <div style="background:white; padding:2rem; border-radius:20px; margin-bottom:2rem; box-shadow:0 15px 40px rgba(0,0,0,0.08);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
                             <span style="font-weight:600; color:#64748b;">Vancouver Agency</span>
-                            <span class="badge badge-red">THEM</span>
+                            <span style="background:#fee2e2; color:#b91c1c; padding:2px 12px; border-radius:9999px; font-size:0.8rem;">THEM</span>
                         </div>
-                        <ul class="comparison-list">
-                            <li>❌ $8,000+ upfront</li>
-                            <li>❌ 3-month timeline</li>
-                            <li>❌ Account manager only</li>
+                        <ul style="list-style:none; color:#64748b;">
+                            <li style="margin-bottom:0.75rem;">❌ $8,000+ upfront</li>
+                            <li style="margin-bottom:0.75rem;">❌ 3-month timeline</li>
+                            <li style="margin-bottom:0.75rem;">❌ Account manager only</li>
                         </ul>
                     </div>
 
-                    <div class="comparison-card-dark fade-up" style="margin-left: 2rem;">
-                        <div class="comparison-header">
-                            <span style="font-weight:600; color:white;">TrueNorth</span>
-                            <span class="badge badge-green">US</span>
+                    <div style="background:#0f172a; padding:2rem; border-radius:20px; color:white; box-shadow:0 15px 40px rgba(0,0,0,0.15);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                            <span style="font-weight:600;">TrueNorth</span>
+                            <span style="background:#14b8a6; color:white; padding:2px 12px; border-radius:9999px; font-size:0.8rem;">US</span>
                         </div>
-                        <ul class="comparison-list-light">
-                            <li>✅ $125/month, no big upfront cost</li>
-                            <li>✅ Live in 2–3 weeks</li>
-                            <li>✅ You text the designer directly</li>
+                        <ul style="list-style:none;">
+                            <li style="margin-bottom:0.75rem;">✅ $125/month, no big upfront cost</li>
+                            <li style="margin-bottom:0.75rem;">✅ Live in 2–3 weeks</li>
+                            <li style="margin-bottom:0.75rem;">✅ You text the designer directly</li>
                             <li>✅ Updates included</li>
                         </ul>
                     </div>
@@ -749,50 +517,50 @@
     </section>
 
     <!-- PRICING -->
-    <section style="background:white;">
+    <section style="background:white; padding:6rem 0;">
         <div class="container">
-            <div style="text-align:center;">
+            <div style="text-align:center; margin-bottom:4rem;">
                 <h2 style="font-size:2.8rem; margin-bottom:1rem;">Simple Pricing. Real Results.</h2>
                 <p style="color:#64748b; max-width:600px; margin:0 auto 3rem;">No massive upfront costs. No surprises. Cancel anytime.</p>
+            </div>
 
-                <div class="pricing-grid">
-                    <div class="pricing-card fade-up">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Starter</h3>
-                        <div class="price">$75</div>
-                        <p class="price-sub">per month</p>
-                        <ul class="feature-list">
-                            <li>✔ 1–3 Page Website</li>
-                            <li>✔ Mobile Optimized</li>
-                            <li>✔ Basic SEO Setup</li>
-                            <li>✔ Fast Hosting</li>
-                        </ul>
-                        <a href="#contact" class="btn-primary" style="display: block; background: #0f172a; box-shadow: none;">Get Started</a>
-                    </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 style="font-size:1.5rem; margin-bottom:2rem;">Starter</h3>
+                    <div class="price">$75</div>
+                    <p class="price-sub">per month</p>
+                    <ul style="list-style:none; text-align:left; margin-bottom:2.5rem;">
+                        <li>✔ 1–3 Page Website</li>
+                        <li>✔ Mobile Optimized</li>
+                        <li>✔ Basic SEO Setup</li>
+                        <li>✔ Fast Hosting</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="display:block; background:#0f172a;">Get Started</a>
+                </div>
 
-                    <div class="pricing-card popular fade-up">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Growth</h3>
-                        <div class="price">$125</div>
-                        <p class="price-sub">per month (12 months)</p>
-                        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 2rem;">Then $20/month for hosting & support</p>
-                        <ul class="feature-list">
-                            <li>✔ Everything in Starter</li>
-                            <li>✔ Up to 10 Pages</li>
-                            <li>✔ Advanced SEO</li>
-                            <li>✔ Conversion-Focused Design</li>
-                        </ul>
-                        <a href="#contact" class="btn-primary" style="display: block;">Get Started</a>
-                    </div>
+                <div class="pricing-card popular">
+                    <h3 style="font-size:1.5rem; margin-bottom:2rem;">Growth</h3>
+                    <div class="price">$125</div>
+                    <p class="price-sub">per month (12 months)</p>
+                    <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">Then $20/month for hosting &amp; support</p>
+                    <ul style="list-style:none; text-align:left; margin-bottom:2.5rem;">
+                        <li>✔ Everything in Starter</li>
+                        <li>✔ Up to 10 Pages</li>
+                        <li>✔ Advanced SEO</li>
+                        <li>✔ Conversion-Focused Design</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="display:block;">Get Started</a>
+                </div>
 
-                    <div class="pricing-card fade-up">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Premium</h3>
-                        <div class="price" style="font-size: 3rem; margin-bottom: 2rem;">Custom</div>
-                        <ul class="feature-list">
-                            <li>✔ Unlimited Pages</li>
-                            <li>✔ Custom Features</li>
-                            <li>✔ E-commerce Ready</li>
-                        </ul>
-                        <a href="#contact" class="btn-primary" style="display: block; background: #0f172a; box-shadow: none;">Contact Us</a>
-                    </div>
+                <div class="pricing-card">
+                    <h3 style="font-size:1.5rem; margin-bottom:2rem;">Premium</h3>
+                    <div class="price" style="font-size:3rem; margin-bottom:2rem;">Custom</div>
+                    <ul style="list-style:none; text-align:left; margin-bottom:2.5rem;">
+                        <li>✔ Unlimited Pages</li>
+                        <li>✔ Custom Features</li>
+                        <li>✔ E-commerce Ready</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="display:block; background:#0f172a;">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -808,7 +576,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" style="background:#f8fafc;">
+    <section id="contact" style="background:#f8fafc; padding:6rem 0;">
         <div class="container">
             <div style="max-width:620px; margin:0 auto; background:white; padding:3rem; border-radius:28px; box-shadow:0 25px 60px rgba(0,0,0,0.12);">
                 <div style="text-align:center; margin-bottom:2.5rem;">
@@ -822,33 +590,31 @@
 
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
                         <div>
-                            <label>Your Name</label>
+                            <label style="display:block; margin-bottom:8px; font-weight:500;">Your Name</label>
                             <input type="text" name="name" required>
                         </div>
                         <div>
-                            <label>Business Name</label>
+                            <label style="display:block; margin-bottom:8px; font-weight:500;">Business Name</label>
                             <input type="text" name="business" required>
                         </div>
                     </div>
 
                     <div style="margin-bottom:1.25rem;">
-                        <label>Email Address</label>
+                        <label style="display:block; margin-bottom:8px; font-weight:500;">Email Address</label>
                         <input type="email" name="email" required>
                     </div>
 
                     <div style="margin-bottom:1.25rem;">
-                        <label>Current Website (if any)</label>
+                        <label style="display:block; margin-bottom:8px; font-weight:500;">Current Website (if any)</label>
                         <input type="text" name="website">
                     </div>
 
                     <div style="margin-bottom:2rem;">
-                        <label>Tell me about your business & goals</label>
+                        <label style="display:block; margin-bottom:8px; font-weight:500;">Tell me about your business &amp; goals</label>
                         <textarea name="message" rows="5" placeholder="E.g., We install pools in West Kelowna and want more bookings..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn-primary" style="width:100%; border:none;">
-                        Send My Free Mockup Request →
-                    </button>
+                    <button type="submit" class="btn-primary" style="width:100%; border:none;">Send My Free Mockup Request →</button>
                 </form>
 
                 <p style="text-align:center; margin-top:1.75rem; color:#64748b; font-size:0.95rem;">Zero pressure. Zero cost. Just a custom vision for your business.</p>
@@ -856,60 +622,65 @@
         </div>
     </section>
 
-   <!-- FOOTER -->
-<footer style="background:#0f172a; color:#cbd5e1; padding:4rem 0 2rem;">
-    <div style="max-width:1280px; margin:0 auto; padding:0 2rem;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:3rem;">
-            
-            <!-- Logo Section - Using your real compass-icon.jpg -->
-<div>
-    <div style="color:white; margin-bottom:1rem; display:flex; align-items:center; gap:12px;">
-        <img src="compass-icon.png" 
-             alt="TrueNorth Logo" 
-             style="height:42px; width:auto;">
-        <span style="font-family:'Playfair Display',serif; font-size:1.8rem;">TrueNorth</span>
-    </div>
-    <p style="max-width:280px; color:#cbd5e1;">
-        Kelowna web designer helping Okanagan local businesses stand out online and get more customers.
-    </p>
-</div>
+    <!-- FOOTER -->
+    <footer style="background:#0f172a; color:#cbd5e1; padding:4rem 0 2rem;">
+        <div class="container">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:3rem;">
+                <div>
+                    <div style="color:white; margin-bottom:1rem; display:flex; align-items:center; gap:12px;">
+                        <img src="compass-icon.png" 
+                             alt="TrueNorth Logo" 
+                             style="height:42px; width:auto;">
+                        <span style="font-family:'Playfair Display',serif; font-size:1.8rem;">TrueNorth</span>
+                    </div>
+                    <p style="max-width:280px; color:#cbd5e1;">
+                        Kelowna web designer helping Okanagan local businesses stand out online and get more customers.
+                    </p>
+                </div>
 
-            <div>
-                <h4 style="color:white; margin-bottom:1rem;">Quick Links</h4>
-                <ul style="list-style:none; display:flex; flex-direction:column; gap:12px;">
-                    <li><a href="#work" style="color:#cbd5e1;">Demo Designs</a></li>
-                    <li><a href="#why-fail" style="color:#cbd5e1;">Why Most Sites Fail</a></li>
-                    <li><a href="#process" style="color:#cbd5e1;">Our Process</a></li>
-                    <li><a href="about.html" style="color:#cbd5e1;">About</a></li>
-                </ul>
+                <div>
+                    <h4 style="color:white; margin-bottom:1rem;">Quick Links</h4>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:12px;">
+                        <li><a href="#work" style="color:#cbd5e1;">Demo Designs</a></li>
+                        <li><a href="#why-fail" style="color:#cbd5e1;">Why Most Sites Fail</a></li>
+                        <li><a href="#process" style="color:#cbd5e1;">Our Process</a></li>
+                        <li><a href="about.html" style="color:#cbd5e1;">About</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color:white; margin-bottom:1rem;">Contact</h4>
+                    <p style="margin-bottom:0.5rem;">
+                        <a href="mailto:websitestruenorth@gmail.com" style="color:#67e8f9;">websitestruenorth@gmail.com</a>
+                    </p>
+                    <p>Kelowna, BC</p>
+                </div>
             </div>
 
-            <div>
-                <h4 style="color:white; margin-bottom:1rem;">Contact</h4>
-                <p style="margin-bottom:0.5rem;">
-                    <a href="mailto:websitestruenorth@gmail.com" style="color:#67e8f9;">websitestruenorth@gmail.com</a>
-                </p>
-                <p>Kelowna, BC</p>
+            <div style="border-top:1px solid #334155; margin-top:4rem; padding-top:2rem; text-align:center; font-size:0.9rem; opacity:0.7;">
+                © 2026 TrueNorth Websites • Kelowna, British Columbia • All Rights Reserved
             </div>
         </div>
-
-        <div style="border-top:1px solid #334155; margin-top:4rem; padding-top:2rem; text-align:center; font-size:0.9rem; opacity:0.7;">
-            © 2026 TrueNorth Websites • Kelowna, British Columbia • All Rights Reserved
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        document.querySelectorAll('.fade-up').forEach(el => {
-            observer.observe(el);
+        mobileBtn.addEventListener('click', () => {
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+            } else {
+                mobileMenu.style.display = 'block';
+            }
+        });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+            });
         });
     </script>
 </body>
