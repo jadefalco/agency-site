@@ -348,12 +348,13 @@
         }
 
         @media (max-width: 480px) {
-            .nav-cta {
-                padding: 7px 16px;
-                font-size: 0.85rem;
-            }
-        }
-        /* Fix Local Advantage mobile overflow */
+    .nav-cta {
+        padding: 7px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Fix Local Advantage mobile overflow */
 .local-advantage .container > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -365,6 +366,17 @@
     .local-advantage .container > div {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+    }
+}
+
+/* Optional polish */
+.local-advantage {
+    padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+    .local-advantage .container {
+        padding: 0 1.25rem;
     }
 }
     </style>
