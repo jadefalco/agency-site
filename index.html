@@ -353,6 +353,20 @@
                 font-size: 0.85rem;
             }
         }
+        /* Fix Local Advantage mobile overflow */
+.local-advantage .container > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .local-advantage .container > div {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
     </style>
 </head>
 <body>
