@@ -9,6 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 
     <style>
+        @media (min-width: 769px) {
+    .hero-badge {
+        display: inline-flex !important;
+    }
+}
+@media (max-width: 640px) {
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
         :root {
             --accent: #0ea5e9;
             --accent2: #14b8a6;
@@ -467,10 +477,9 @@
                 <a href="#contact">Contact</a>
             </div>
 
-            <div style="display:flex; align-items:center; gap:12px;">
-                <a href="#contact" class="nav-cta">Get Free Mockup</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-            </div>
+            <div style="display:flex; align-items:center;">
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+</div>
         </div>
 
         <!-- Mobile Menu -->
@@ -489,7 +498,7 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-badge">
+            <div class="hero-badge" style="display: none;">
                 <span style="color:#67e8f9;">●</span> Kelowna, BC • Okanagan Specialist
             </div>
             <h1>Your Website Should Be Your <span>Best Salesperson</span></h1>
