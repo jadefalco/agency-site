@@ -11,6 +11,9 @@ export default {
         body: ['Inter', 'sans-serif'],
         mono: ['IBM Plex Mono', 'monospace'],
       },
+      colors: {
+        border: '#e5e7eb',
+      }
     },
   },
   plugins: [],

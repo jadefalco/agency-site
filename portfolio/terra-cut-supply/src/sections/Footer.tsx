@@ -1,10 +1,10 @@
-import { Linkedin, Facebook, ArrowRight } from 'lucide-react';
+import { Share2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { footerConfig } from '../config';
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>> = {
-  Linkedin,
-  Facebook,
+  Linkedin: Share2,
+  Facebook: Share2,
 };
 
 const Footer = () => {

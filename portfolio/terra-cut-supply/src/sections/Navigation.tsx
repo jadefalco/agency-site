@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FileText, X, Linkedin, Facebook } from 'lucide-react';
+import { FileText, X, Share2 } from 'lucide-react';
+const Linkedin = Share2;
+const Facebook = Share2;
 import { navigationConfig } from '../config';
 
 interface CartItem {
