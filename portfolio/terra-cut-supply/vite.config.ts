@@ -11,8 +11,10 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '.',
+    outDir: 'dist',
     assetsDir: 'assets',
-    emptyOutDir: false,
+    emptyOutDir: true,
+    sourcemap: false,
+    minify: 'terser',
   }
 })
