@@ -51,7 +51,7 @@ export const navigationConfig: NavigationConfig = {
   cartEmptyText: "Your quote request is empty",
   cartCheckoutText: "Submit Quote Request",
   continueShoppingText: "Continue Shopping",
-  menuBackgroundImage: "./images/hero-excavator.jpg",
+  menuBackgroundImage: "images/hero-excavator.jpg",
 };
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
@@ -73,7 +73,7 @@ export const heroConfig: HeroConfig = {
   ctaPrimaryTarget: "#contact",
   ctaSecondaryText: "Browse Parts",
   ctaSecondaryTarget: "#products",
-  backgroundImage: "./images/hero-excavator.jpg",
+  backgroundImage: "images/hero-excavator.jpg",
 };
 
 // ─── SubHero (Featured Category - Rubber Tracks) ─────────────────────────────
@@ -104,8 +104,8 @@ export const subHeroConfig: SubHeroConfig = {
   ],
   linkText: "See compatible machines",
   linkTarget: "#machine-types",
-  image1: "./images/featured-rubber-track.jpg",
-  image2: "./images/product-rubber-track.jpg",
+  image1: "images/featured-rubber-track.jpg",
+  image2: "images/product-rubber-track.jpg",
   stats: [
     { value: 500, suffix: "+", label: "Track Sizes" },
     { value: 15, suffix: "+", label: "Years Experience" },
@@ -133,7 +133,7 @@ export const videoSectionConfig: VideoSectionConfig = {
   ],
   ctaText: "Search Parts",
   ctaTarget: "#products",
-  backgroundImage: "./images/search-yard.jpg",
+  backgroundImage: "images/search-yard.jpg",
 };
 
 // ─── Products ────────────────────────────────────────────────────────────────
@@ -172,7 +172,7 @@ export const productsConfig: ProductsConfig = {
       name: "Rubber Track 300×52.5W", 
       price: 0, 
       category: "Rubber Tracks", 
-      image: "./images/product-rubber-track.jpg",
+      image: "images/product-rubber-track.jpg",
       compatibility: "CAT, Kubota"
     },
     { 
@@ -180,7 +180,7 @@ export const productsConfig: ProductsConfig = {
       name: "Heavy-Duty Bucket 24″", 
       price: 0, 
       category: "Attachments", 
-      image: "./images/product-bucket.jpg",
+      image: "images/product-bucket.jpg",
       compatibility: "John Deere"
     },
     { 
@@ -188,7 +188,7 @@ export const productsConfig: ProductsConfig = {
       name: "Idler Roller Assembly", 
       price: 0, 
       category: "Undercarriage", 
-      image: "./images/product-idler.jpg",
+      image: "images/product-idler.jpg",
       compatibility: "Komatsu"
     },
     { 
@@ -196,7 +196,7 @@ export const productsConfig: ProductsConfig = {
       name: "Steel Track Link Set", 
       price: 0, 
       category: "Rubber Tracks", 
-      image: "./images/product-steel-track.jpg",
+      image: "images/product-steel-track.jpg",
       compatibility: "CAT"
     },
     { 
@@ -204,7 +204,7 @@ export const productsConfig: ProductsConfig = {
       name: "Quick Attach Coupler", 
       price: 0, 
       category: "Attachments", 
-      image: "./images/product-coupler.jpg",
+      image: "images/product-coupler.jpg",
       compatibility: "Bobcat, CAT"
     },
     { 
@@ -212,7 +212,7 @@ export const productsConfig: ProductsConfig = {
       name: "Bottom Roller", 
       price: 0, 
       category: "Undercarriage", 
-      image: "./images/product-roller.jpg",
+      image: "images/product-roller.jpg",
       compatibility: "Yanmar, Kubota"
     },
   ],
@@ -237,12 +237,12 @@ export const machineTypesConfig: MachineTypesConfig = {
   tag: "BROWSE",
   heading: "Find parts\nby machine type",
   machineTypes: [
-    { id: 1, name: "Excavators", image: "./images/machine-excavator.jpg" },
-    { id: 2, name: "Skid Steers", image: "./images/machine-skidsteer.jpg" },
-    { id: 3, name: "Loaders", image: "./images/machine-loader.jpg" },
-    { id: 4, name: "Compact Track Loaders", image: "./images/machine-ctl.jpg" },
+    { id: 1, name: "Excavators", image: "images/machine-excavator.jpg" },
+    { id: 2, name: "Skid Steers", image: "images/machine-skidsteer.jpg" },
+    { id: 3, name: "Loaders", image: "images/machine-loader.jpg" },
+    { id: 4, name: "Compact Track Loaders", image: "images/machine-ctl.jpg" },
   ],
-  backgroundImage: "./images/machine-types-bg.jpg",
+  backgroundImage: "images/machine-types-bg.jpg",
 };
 
 // ─── Brands ──────────────────────────────────────────────────────────────────
@@ -398,7 +398,7 @@ export interface TestimonialConfig {
 export const testimonialConfig: TestimonialConfig = {
   quote: "Terra Cut turned a 3-day hunt into a same-day solution. Reliable, fast, and they actually know machines.",
   attribution: "Marcus Reid, Fleet Manager",
-  backgroundImage: "./images/testimonial-bg.jpg",
+  backgroundImage: "images/testimonial-bg.jpg",
 };
 
 // ─── Final CTA ───────────────────────────────────────────────────────────────
@@ -416,7 +416,7 @@ export const finalCTAConfig: FinalCTAConfig = {
   subhead: "Tell us what you're running and what you need. We'll respond with pricing and availability.",
   ctaText: "Request a Quote",
   trustLine: "Typical response time: under 4 hours",
-  backgroundImage: "./images/cta-yard.jpg",
+  backgroundImage: "images/cta-yard.jpg",
 };
 
 // ─── Contact ─────────────────────────────────────────────────────────────────
@@ -468,7 +468,7 @@ export const contactConfig: ContactConfig = {
   submittingText: "Sending...",
   submittedText: "Quote Requested",
   successMessage: "Thanks! We'll get back to you within 4 hours.",
-  backgroundImage: "./images/cta-yard.jpg",
+  backgroundImage: "images/cta-yard.jpg",
 };
 
 // ─── Footer ──────────────────────────────────────────────────────────────────
