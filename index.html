@@ -463,10 +463,114 @@
 }
 
 @media (max-width: 768px) {
-    .local-advantage .container {
-        padding: 0 1.25rem;
+    /* ... keep your existing code ... */
+    
+    /* ✅ CENTER THE HERO BUTTONS */
+    .hero-ctas {
+        justify-content: center;
+    }
+    
+    /* ✅ Center the hero text content too for better mobile balance */
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* ✅ Ensure badges look centered on mobile */
+    .hero-badge {
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
+  /* ✅ Better spacing for section headings */
+    section {
+        padding: 3.5rem 0; /* Slightly reduced from 5rem for mobile */
+    }
+    
+    h2 {
+        font-size: 2rem !important; /* Prevent oversized headings on mobile */
+        line-height: 1.2;
+    }
+
+    /* ✅ Process section - make numbered circles smaller on mobile */
+    #process .container > div > div {
+        padding: 1.5rem 1rem;
+    }
+    
+    #process .container > div > div > div:first-child {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* ✅ Local Advantage section - better mobile stacking */
+    .local-advantage .container > div {
+        gap: 2rem !important;
+    }
+    
+    /* Ensure comparison boxes don't touch edges */
+    .local-advantage .container > div > div:last-child > div {
+        margin-bottom: 1.5rem;
+    }
+
+    /* ✅ Pricing cards - ensure they don't overflow */
+    .pricing-grid {
+        grid-template-columns: 1fr; /* Stack them on mobile */
+        gap: 1.5rem;
+    }
+    
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* ✅ Demo work section - prevent images from being too tall */
+    #work .container > div:last-child > div img {
+        height: 200px; /* Slightly smaller on mobile */
+    }
+
+    /* ✅ Contact form - ensure full width without overflow */
+    .contact-form-box {
+        padding: 2rem 1.5rem !important;
+        margin: 0 1rem; /* Add side margin so it doesn't touch screen edges */
+    }
+    
+    /* ✅ Footer - better mobile layout */
+    footer .container > div {
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    footer .container > div > div:first-child {
+        align-items: center; /* Center the logo/description */
+    }
+
+    /* ✅ Mobile menu improvements */
+    #mobile-menu {
+        padding: 1.5rem;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    #mobile-menu a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    
+    #mobile-menu a:last-of-type {
+        border-bottom: none;
+    }
+
+    /* ✅ Trust badges - center them on mobile */
+    .hero-trust {
+        justify-content: center;
+        font-size: 0.95rem;
+    }
+
     </style>
 </head>
 <body>
