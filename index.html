@@ -352,48 +352,82 @@
             min-height: 140px;
         }
 
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
 
-        .pricing-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2.75rem 2rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            text-align: center;
-        }
+        /* Pricing Improvements */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-        .pricing-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-        }
+.pricing-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 2.25rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative;
+}
 
-        .popular {
-            border: 3px solid #14b8a6;
-            position: relative;
-        }
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
 
-        .popular::before {
-            content: "MOST POPULAR";
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #14b8a6;
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 6px 24px;
-            border-radius: 9999px;
-        }
+/* Make middle card dominant */
+.pricing-card.popular {
+transform: scale(1.03);    border: 2px solid #14b8a6;
+    box-shadow: 0 30px 70px rgba(20,184,166,0.25);
+}
 
-        /* Mobile Styles */
-        /* Mobile Styles */
+/* Price styling */
+.price {
+    font-size: 3.25rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: #0f172a;
+}
+
+.price-sub {
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+/* Feature list */
+.pricing-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pricing-card li {
+    font-size: 1rem;
+    color: #334155;
+}
+
+/* CTA button contrast */
+.pricing-card .btn-primary {
+    padding: 16px;
+    font-size: 1.05rem;
+}
+
+/* Mobile fallback */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+}
+
+      /* Mobile Styles */
 @media (max-width: 768px) {
     .nav-links { display: none; }
     
@@ -416,26 +450,142 @@
 
     .hero { padding-top: 72px; }
 
-    /* ✅ Improved hero spacing */
+    /* Hero spacing and centering */
     .hero-content {
         padding: 4rem 1.25rem 0;
+        text-align: center;  /* Center all text */
+    }
+
+    /* ✅ CENTER THE BUTTONS */
+    .hero-ctas {
+        justify-content: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Trust badges centering */
+    .hero-trust {
+        justify-content: center;
+        font-size: 0.95rem;
+        gap: 1rem 2rem;
+    }
+
+    /* Better section spacing */
+    section {
+        padding: 3.5rem 0;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+
+    /* Process section tweaks */
+    #process .container > div > div {
+        padding: 1.5rem 1rem;
+    }
+    
+    #process .container > div > div > div:first-child {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Local Advantage fixes */
+    .local-advantage .container > div {
+        gap: 2rem !important;
+    }
+    
+    .local-advantage .container > div > div:last-child > div {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Pricing cards stack */
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Demo images smaller */
+    #work .container > div:last-child > div img {
+        height: 200px;
+    }
+
+    /* Contact form spacing */
+    .contact-form-box {
+        padding: 2rem 1.5rem !important;
+        margin: 0 1rem;
+    }
+
+    /* Footer centering */
+    footer .container > div {
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    footer .container > div > div:first-child {
+        align-items: center;
+    }
+
+    /* Mobile menu polish */
+    #mobile-menu {
+        padding: 1.5rem;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    #mobile-menu a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    
+    #mobile-menu a:last-of-type {
+        border-bottom: none;
     }
 }
 
-            /* Contact Form */
-            .contact-form-box {
-                padding: 2.5rem 1.75rem !important;
-            }
-        
-
-        @media (max-width: 480px) {
+/* Extra small screens */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 14px 24px;
+        font-size: 1rem;
+        width: 100%;  /* Full width buttons */
+        text-align: center;
+    }
+    
+    .hero-ctas {
+        flex-direction: column;  /* Stack buttons */
+        gap: 0.75rem;
+    }
+    
+    .hero-trust div {
+        font-size: 0.9rem;
+    }
+    
     .nav-cta {
         padding: 7px 16px;
         font-size: 0.85rem;
     }
 }
 
-/* Fix Local Advantage mobile overflow */
+/* Fix Local Advantage layout */
 .local-advantage .container > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -457,120 +607,15 @@
     }
 }
 
-/* Optional polish */
 .local-advantage {
     padding: 5rem 0;
 }
 
 @media (max-width: 768px) {
-    /* ... keep your existing code ... */
-    
-    /* ✅ CENTER THE HERO BUTTONS */
-    .hero-ctas {
-        justify-content: center;
-    }
-    
-    /* ✅ Center the hero text content too for better mobile balance */
-    .hero-content {
-        text-align: center;
-    }
-    
-    .hero p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    /* ✅ Ensure badges look centered on mobile */
-    .hero-badge {
-        display: inline-flex;
-        margin-left: auto;
-        margin-right: auto;
+    .local-advantage .container {
+        padding: 0 1.25rem;
     }
 }
-  /* ✅ Better spacing for section headings */
-    section {
-        padding: 3.5rem 0; /* Slightly reduced from 5rem for mobile */
-    }
-    
-    h2 {
-        font-size: 2rem !important; /* Prevent oversized headings on mobile */
-        line-height: 1.2;
-    }
-
-    /* ✅ Process section - make numbered circles smaller on mobile */
-    #process .container > div > div {
-        padding: 1.5rem 1rem;
-    }
-    
-    #process .container > div > div > div:first-child {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    /* ✅ Local Advantage section - better mobile stacking */
-    .local-advantage .container > div {
-        gap: 2rem !important;
-    }
-    
-    /* Ensure comparison boxes don't touch edges */
-    .local-advantage .container > div > div:last-child > div {
-        margin-bottom: 1.5rem;
-    }
-
-    /* ✅ Pricing cards - ensure they don't overflow */
-    .pricing-grid {
-        grid-template-columns: 1fr; /* Stack them on mobile */
-        gap: 1.5rem;
-    }
-    
-    .pricing-card {
-        padding: 2rem 1.5rem;
-    }
-
-    /* ✅ Demo work section - prevent images from being too tall */
-    #work .container > div:last-child > div img {
-        height: 200px; /* Slightly smaller on mobile */
-    }
-
-    /* ✅ Contact form - ensure full width without overflow */
-    .contact-form-box {
-        padding: 2rem 1.5rem !important;
-        margin: 0 1rem; /* Add side margin so it doesn't touch screen edges */
-    }
-    
-    /* ✅ Footer - better mobile layout */
-    footer .container > div {
-        gap: 2rem;
-        text-align: center;
-    }
-    
-    footer .container > div > div:first-child {
-        align-items: center; /* Center the logo/description */
-    }
-
-    /* ✅ Mobile menu improvements */
-    #mobile-menu {
-        padding: 1.5rem;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-    
-    #mobile-menu a {
-        font-size: 1.1rem;
-        padding: 10px 0;
-        border-bottom: 1px solid #f1f5f9;
-    }
-    
-    #mobile-menu a:last-of-type {
-        border-bottom: none;
-    }
-
-    /* ✅ Trust badges - center them on mobile */
-    .hero-trust {
-        justify-content: center;
-        font-size: 0.95rem;
-    }
-
     </style>
 </head>
 <body>
@@ -594,7 +639,8 @@
                 <a href="#contact">Contact</a>
             </div>
 
-            <div style="display:flex; align-items:center;">
+            <div style="display:flex; align-items:center; gap:1rem;">
+    <a href="#contact" class="nav-cta">Get Free Mockup</a>
     <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
 </div>
         </div>
@@ -619,7 +665,7 @@
                 <span style="color:#67e8f9;">●</span> Kelowna, BC • Okanagan Specialist
             </div>
             <h1>Your Website Should Be Your <span>Best Salesperson</span></h1>
-            <p>Building websites that convert visitors into customers.</p>
+            <p>We build fast, high-converting websites that bring you more calls and bookings.</p>
             
             <div class="hero-ctas">
                 <a href="#contact" class="btn-primary">Request Your Custom Design</a>
@@ -728,8 +774,7 @@
                 <div style="text-align:center; padding:2rem;">
                     <div style="width:72px;height:72px;background:linear-gradient(135deg,#0ea5e9,#14b8a6);color:white;border-radius:9999px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;">2</div>
                     <h3 style="color:white;margin-bottom:1rem;">Design &amp; Feedback</h3>
-                    <p style="color:#cbd5e1;">You get to see and approve every page. Unlimited revisions until it's perfect.</p>
-                </div>
+<p style="color:#cbd5e1;">You get to see and approve every page. Revisions until you're happy.</p>                </div>
                 <div style="text-align:center; padding:2rem;">
                     <div style="width:72px;height:72px;background:linear-gradient(135deg,#0ea5e9,#14b8a6);color:white;border-radius:9999px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;">3</div>
                     <h3 style="color:white;margin-bottom:1rem;">Launch &amp; Grow</h3>
@@ -784,56 +829,110 @@
             </div>
         </div>
     </section>
-
+    <section style="background:#f8fafc; padding:5rem 0;">
+    <div class="container" style="max-width:800px; text-align:center;">
+        <p style="font-size:1.25rem; font-style:italic; color:#334155; margin-bottom:1.5rem;">
+            “My original website had great information, but it didn’t look professional and wasn’t engaging for visitors. Justin completely transformed it — now it looks polished, modern, and actually makes people want to stay and explore. The difference is night and day.”
+        </p>
+        <p style="font-weight:600; color:#0f172a;">
+            — Peter
+        </p>
+    </div>
+</section>
     <!-- PRICING -->
-    <section style="background:white; padding:6rem 0;">
-        <div class="container">
-            <div style="text-align:center; margin-bottom:4rem;">
-                <h2 style="font-size:2.8rem; margin-bottom:1rem;">Simple Pricing. Real Results.</h2>
-                <p style="color:#64748b; max-width:600px; margin:0 auto 3rem;">No massive upfront costs. No surprises. Cancel anytime.</p>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 style="font-size:1.5rem; margin-bottom:2rem;">Starter</h3>
-                    <div class="price">$75</div>
-                    <p class="price-sub">per month</p>
-                    <ul style="list-style:none; text-align:left; margin-bottom:2.5rem;">
-                        <li>✔ 1–3 Page Website</li>
-                        <li>✔ Mobile Optimized</li>
-                        <li>✔ Basic SEO Setup</li>
-                        <li>✔ Fast Hosting</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="display:block; background:#0f172a;">Get Started</a>
-                </div>
-
-                <div class="pricing-card popular">
-                    <h3 style="font-size:1.5rem; margin-bottom:2rem;">Growth</h3>
-                    <div class="price">$125</div>
-                    <p class="price-sub">per month (12 months)</p>
-                    <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">Then $20/month for hosting &amp; support</p>
-                    <ul style="list-style:none; text-align:left; margin-bottom:2.5rem;">
-                        <li>✔ Everything in Starter</li>
-                        <li>✔ Up to 10 Pages</li>
-                        <li>✔ Advanced SEO</li>
-                        <li>✔ Conversion-Focused Design</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="display:block;">Get Started</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3 style="font-size:1.5rem; margin-bottom:2rem;">Premium</h3>
-                    <div class="price" style="font-size:3rem; margin-bottom:2rem;">Custom</div>
-                    <ul style="list-style:none; text-align:left; margin-bottom:2.5rem;">
-                        <li>✔ Unlimited Pages</li>
-                        <li>✔ Custom Features</li>
-                        <li>✔ E-commerce Ready</li>
-                    </ul>
-                    <a href="#contact" class="btn-primary" style="display:block; background:#0f172a;">Contact Us</a>
-                </div>
-            </div>
+<section style="background:white; padding:6rem 0;">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:4rem;">
+            <h2 style="font-size:2.8rem; margin-bottom:1rem;">Simple Pricing. Real Results.</h2>
+            <p style="color:#64748b; max-width:600px; margin:0 auto 1rem;">
+                No massive upfront costs. No surprises. Cancel anytime.
+            </p>
+            <p style="color:#0ea5e9; font-weight:600;">
+                Proudly serving Kelowna & the Okanagan
+            </p>
         </div>
-    </section>
+
+        <div class="pricing-grid">
+
+            <!-- LAUNCH -->
+            <div class="pricing-card">
+                <h3 style="font-size:1.5rem; margin-bottom:1.5rem;">Launch</h3>
+                <div class="price">$500</div>
+                <p class="price-sub">one-time</p>
+
+                <ul>
+                    <li>✔ 1–3 Page Website</li>
+                    <li>✔ Clean, Professional Design</li>
+                    <li>✔ Mobile Optimized</li>
+                    <li>✔ Delivered in 7–10 days</li>
+                    <li>❌ No ongoing support</li>
+                    <li>❌ No updates included</li>
+                </ul>
+
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">
+                    Best for businesses that just need a basic site and can manage it themselves.
+                </p>
+
+                <a href="#contact" class="btn-primary" style="display:block; background:#0f172a;">Get Started</a>
+            </div>
+
+            <!-- STARTER -->
+            <div class="pricing-card">
+                <h3 style="font-size:1.6rem; margin-bottom:1.5rem;">Starter</h3>
+                <div class="price">$75</div>
+                <p class="price-sub">per month</p>
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">
+    Ongoing monthly plan — ideal for simpler websites without growth-focused features.
+</p>
+
+                <ul>
+                    <li>✔ 1–3 Page Website</li>
+<li>✔ Hosting Included</li>
+<li>✔ Ongoing Support</li>
+<li>✔ No long-term contract</li>
+<li>❌ No advanced SEO or growth strategy</li>
+                </ul>
+
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">
+                    We handle everything so you don’t have to.
+                </p>
+
+                <a href="#contact" class="btn-primary" style="display:block; background:#0f172a;">Get Started</a>
+            </div>
+
+            <!-- GROWTH -->
+            <div class="pricing-card popular">
+                <h3 style="font-size:1.6rem; margin-bottom:0.75rem;">Growth</h3>
+                <p style="color:#14b8a6; font-weight:700; margin-bottom:1.5rem;">
+                    🔥 Most popular for local businesses
+                </p>
+
+                <div class="price">$125</div>
+                <p class="price-sub">per month (12-month build, no large upfront cost)</p>
+
+                <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">
+                    Then $20/month for hosting & support
+                </p>
+                <p style="font-size:0.9rem; color:#14b8a6; font-weight:600; margin-bottom:1.5rem;">
+    Designed for businesses that want more leads — not just a website
+</p>
+
+                <ul>
+                    <li>✔ Everything in Starter</li>
+<li>✔ Up to 10 Pages</li>
+<li>✔ Advanced SEO</li>
+<li>✔ Strategy to increase calls</li>
+<li>✔ Custom features (booking, forms, etc.)</li>
+            
+           
+                </ul>
+
+                <a href="#contact" class="btn-primary" style="display:block;">Get Started</a>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- FINAL CTA -->
     <section style="background:linear-gradient(135deg,#0f172a,#1e2937); color:white; padding:7rem 0; text-align:center;">
@@ -852,7 +951,10 @@
                     <h2 style="font-size:2.4rem;">Let's Build Your New Website</h2>
                     <p style="color:#64748b;">Tell me about your business and I'll reply with a custom concept within 48 hours.</p>
                 </div>
-
+                
+                <p style="text-align:center; margin-bottom:1.5rem; font-weight:500; color:#475569;">
+    No commitment. No pressure. Just a free custom design.
+</p>
                 <form action="https://formsubmit.co/websitestruenorth@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="New Free Mockup Request - TrueNorth Websites">
                     <input type="hidden" name="_next" value="https://truenorthwebsites.com/thank-you.html">
