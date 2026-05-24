@@ -189,12 +189,18 @@
         }
 
         .nav-links a {
-            color: #475569;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover { color: #5eead4; }
+
+        nav.scrolled .nav-links a {
+            color: #475569;
+        }
+
+        nav.scrolled .nav-links a:hover { color: var(--accent); }
 
         .nav-cta {
             background: linear-gradient(135deg, var(--accent), #38bdf8);

@@ -38,7 +38,6 @@
     "node_modules",
     "public/portfolio",
     "public/**/*.tsx",
-    "public/**/*.ts",
-    "missed-call-recovery"
+    "public/**/*.ts"
   ]
 }
