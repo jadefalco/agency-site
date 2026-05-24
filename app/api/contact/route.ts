@@ -1,11 +1,21 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "websitestruenorth@gmail.com";
 const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev";
 
 export async function POST(request: Request) {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set");
+    return Response.json(
+      { error: "Server configuration error" },
+      { status: 500 }
+    );
+  }
+
+  const resend = new Resend(apiKey);
+
   try {
     const body = await request.json();
     const { name, business, phone, best_time } = body;
