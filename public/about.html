@@ -3,7 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | True North Websites</title>
+    <title>About TrueNorth Websites | Kelowna Web Design & Lead Recovery | Okanagan BC</title>
+    <meta name="description" content="Meet the Kelowna web designer behind TrueNorth Websites. Helping Okanagan local businesses with web design, SEO, and AI-powered lead recovery.">
+    <link rel="canonical" href="https://truenorthwebsites.com/about.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="About TrueNorth Websites | Kelowna Web Design & Lead Recovery">
+    <meta property="og:description" content="Meet the Kelowna web designer helping Okanagan local businesses stand out online.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://truenorthwebsites.com/about.html">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About TrueNorth Websites | Kelowna Web Design & Lead Recovery">
+    <meta name="twitter:description" content="Meet the Kelowna web designer helping Okanagan local businesses stand out online.">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About TrueNorth Websites",
+      "description": "Kelowna web design and lead recovery services for Okanagan local businesses.",
+      "url": "https://truenorthwebsites.com/about.html",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "TrueNorth Websites",
+        "description": "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan local service businesses.",
+        "url": "https://truenorthwebsites.com",
+        "email": "websitestruenorth@gmail.com",
+        "areaServed": [
+          { "@type": "City", "name": "Kelowna" },
+          { "@type": "City", "name": "West Kelowna" },
+          { "@type": "City", "name": "Vernon" },
+          { "@type": "City", "name": "Penticton" },
+          { "@type": "City", "name": "Lake Country" },
+          { "@type": "City", "name": "Peachland" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kelowna",
+          "addressRegion": "BC",
+          "addressCountry": "CA"
+        }
+      }
+    }
+    </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -235,13 +281,31 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-8">
+    <footer class="bg-slate-950 border-t border-slate-800 py-10">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <img src="truenorth-logo.png" class="w-32 h-auto rounded-full opacity-80" alt="Logo">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="truenorth-logo.png" class="w-32 h-auto rounded-full opacity-80" alt="TrueNorth Logo">
+                    </div>
+                    <p class="text-slate-400 text-sm">Kelowna web design, SEO, and lead recovery for Okanagan local businesses.</p>
                 </div>
-                <p class="text-slate-500 text-sm">&copy; 2024 True North Websites. All rights reserved.</p>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-slate-400 hover:text-cyan-400 transition-colors">Home</a></li>
+                        <li><a href="/missed-call-recovery/" class="text-slate-400 hover:text-cyan-400 transition-colors">Missed Call Recovery</a></li>
+                        <li><a href="index.html#work" class="text-slate-400 hover:text-cyan-400 transition-colors">Our Work</a></li>
+                        <li><a href="index.html#contact" class="text-slate-400 hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Service Areas</h4>
+                    <p class="text-slate-400 text-sm">Kelowna, West Kelowna, Vernon, Penticton, Lake Country, Peachland</p>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-6 text-center">
+                <p class="text-slate-500 text-sm">&copy; 2026 TrueNorth Websites, a division of Mountain Scale Group &bull; Kelowna, BC &bull; All Rights Reserved</p>
             </div>
         </div>
     </footer>
