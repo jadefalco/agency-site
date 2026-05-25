@@ -101,7 +101,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
 
         <!-- LOGO -->
         <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-            <img src="images/compass-icon.png" alt="TrueNorth Logo">
+            <img src="/images/compass-icon.png" alt="TrueNorth Logo">
             <div style="display:flex; flex-direction:column; justify-content:center;">
                 <span style="
                     font-family: 'Playfair Display', serif;
@@ -204,7 +204,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
 
                 <!-- Screenshot -->
                 <img
-                    src="images/ok-const-screenshot.png"
+                    src="/images/ok-const-screenshot.png"
                     alt="Website preview showing a modern local business website design"
                     class="macbook-screen"
                     fetchpriority="high"
@@ -212,7 +212,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
 
                 <!-- MacBook Frame -->
                 <img 
-                    src="images/macbook.png" 
+                    src="/images/macbook.png" 
                     alt=""
                     class="macbook-frame"
                 >
@@ -286,7 +286,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
             
             <!-- OKANAGAN CONSTRUCTION -->
 <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.1); transition:all 0.5s ease;">
-    <img src="images/ok-const-screenshot.png" alt="Okanagan Inspired Construction" style="width:100%; height:260px; object-fit:cover;" loading="lazy">
+    <img src="/images/ok-const-screenshot.png" alt="Okanagan Inspired Construction" style="width:100%; height:260px; object-fit:cover;" loading="lazy">
     <div style="padding:1.75rem;">
         <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">LUXURY CONSTRUCTION • KELOWNA</p>
         <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Okanagan Inspired Construction</h3>
@@ -297,7 +297,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
 
             <!-- 🔥 NEW TERRA CUT DEMO (REPLACES ROOFING) -->
             <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.1); transition:all 0.5s ease;">
-                <img src="portfolio/terra-cut-supply/images/terra-demo.png" alt="Terra Cut Supply Demo" style="width:100%; height:260px; object-fit:cover; object-position: left center;" loading="lazy">
+                <img src="/images/terra-demo.png" alt="Terra Cut Supply Demo" style="width:100%; height:260px; object-fit:cover; object-position: left center;" loading="lazy">
                 <div style="padding:1.75rem;">
                     <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">EQUIPMENT & SUPPLY • KELOWNA</p>
                     <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Terra Cut Supply Concept</h3>
@@ -636,7 +636,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:3rem;">
                 <div>
                     <div style="color:white; margin-bottom:1rem; display:flex; align-items:center; gap:12px;">
-                        <img src="images/compass-icon.png" 
+                        <img src="/images/compass-icon.png" 
                              alt="TrueNorth Logo" 
                              style="height:42px; width:auto;">
                         <span style="font-family:'Playfair Display',serif; font-size:1.8rem;">TrueNorth</span>
@@ -699,7 +699,7 @@ const HOME_SCRIPT = `document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
----
+
 
 const nav = document.querySelector('nav');
         const mobileBtn = document.getElementById('mobile-menu-btn');
