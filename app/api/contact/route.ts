@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "websitestruenorth@gmail.com";
@@ -8,7 +9,7 @@ export async function POST(request: Request) {
 
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set");
-    return Response.json(
+    return NextResponse.json(
       { error: "Server configuration error" },
       { status: 500 }
     );
@@ -18,19 +19,24 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    const { name, business, phone, best_time } = body;
+    const {
+      name = "",
+      business = "",
+      phone = "",
+      best_time = "",
+    } = body ?? {};
 
     // Validation
     if (!name || typeof name !== "string" || name.trim().length === 0) {
-      return Response.json({ error: "Name is required" }, { status: 400 });
+      return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
 
     if (!business || typeof business !== "string" || business.trim().length === 0) {
-      return Response.json({ error: "Business name is required" }, { status: 400 });
+      return NextResponse.json({ error: "Business name is required" }, { status: 400 });
     }
 
     if (!phone || typeof phone !== "string" || phone.trim().length === 0) {
-      return Response.json({ error: "Phone number is required" }, { status: 400 });
+      return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
 
     const timestamp = new Date().toLocaleString("en-CA", {
@@ -52,25 +58,25 @@ export async function POST(request: Request) {
       "Sent from truenorthwebsites.com/missed-call-recovery/",
     ].join("\n");
 
-    const { data, error } = await resend.emails.send({
+    const result = await resend.emails.send({
       from: FROM_EMAIL,
       to: CONTACT_EMAIL,
       subject: "New Missed-Call Recovery Lead",
       text: emailText,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
-      return Response.json(
+    if (result.error) {
+      console.error("Resend error:", result.error);
+      return NextResponse.json(
         { error: "Failed to send email. Please try again." },
         { status: 500 }
       );
     }
 
-    return Response.json({ success: true, id: data?.id });
+    return NextResponse.json({ success: true, id: result.data?.id });
   } catch (err) {
     console.error("API route error:", err);
-    return Response.json(
+    return NextResponse.json(
       { error: "Something went wrong. Please try again." },
       { status: 500 }
     );
