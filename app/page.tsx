@@ -536,7 +536,10 @@ const HOME_BODY_HTML = `<!-- NAV -->
     object-fit: cover;
     object-position: top center;
     display: block;
-  }
+
+    transform: scale(1.15); /* zoom amount */
+    transform-origin: top center;
+}
   .hero-origin .trust-bar {
     position: relative;
     z-index: 3;
