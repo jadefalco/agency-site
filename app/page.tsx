@@ -756,7 +756,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">LUXURY CONSTRUCTION • KELOWNA</p>
         <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Okanagan Inspired Construction</h3>
         <p style="color:#64748b; font-size:0.95rem;">Full custom build with before/after transformations, project galleries, and cinematic hero.</p>
-        <a href="https://okanaganconstruction.ca" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Live Site →</a>
+        <a href="https://okanagan-construction-2.vercel.app/" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Live Site →</a>
     </div>
 </div>
 
