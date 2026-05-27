@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import { processIncomingMessage } from "@/lib/dispatcher";
+
+// Force dynamic so Next.js never tries to statically generate this API route
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   if (process.env.NODE_ENV === "production") {
@@ -15,6 +17,9 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    // Lazy import — prevents build-time crashes if lib/dispatcher has side effects
+    const { processIncomingMessage } = await import("@/lib/dispatcher");
 
     const result = await processIncomingMessage({
       phone,
