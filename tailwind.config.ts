@@ -13,6 +13,7 @@ const config: Config = {
           "dark-light": "#1e293b",
           accent: "#0ea5e9",
           teal: "#14b8a6",
+          "teal-100": "#ccfbf1",
           "teal-300": "#5eead4",
           slate: "#f8fafc",
         },

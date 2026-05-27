@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id                   String    @id @default(cuid())
+  phone                String
+  customerName         String?
+  issueType            String?
+  urgency              String?
+  area                 String?
+  symptoms             String?
+  timeframe            String?
+  attemptedFix         String?
+  photoUrl             String?
+  conversationSummary  String?
+  status               String    @default("new")
+  step                 String    @default("greeting")
+  urgencyScore         Int       @default(0)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  messages             Message[]
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  leadId      String
+  direction   String
+  body        String
+  mediaUrl    String?
+  createdAt   DateTime @default(now())
+
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+}

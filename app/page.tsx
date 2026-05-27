@@ -159,32 +159,508 @@ const HOME_BODY_HTML = `<!-- NAV -->
     </div>
 </nav>
 
-   <!-- HERO -->
-<section class="hero">
+<style>
+  /* ─── Nav Styles (Dark Hero + Scrolled White) ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+    background: transparent;
+  }
+  nav .nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .logo { cursor: pointer; display: flex; align-items: center; gap: 0.75rem; }
+  nav .nav-links { display: flex; align-items: center; gap: 2rem; }
+  nav .nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  nav .nav-links a:hover { color: #67e8f9; }
+  nav .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.25rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #ffffff;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  nav .nav-cta:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+  }
+  nav .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    position: relative;
+    padding: 0.25rem;
+  }
+  nav #mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(15,23,42,0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  nav #mobile-menu a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  /* Scrolled state */
+  nav.scrolled {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  nav.scrolled .nav-links a,
+  nav.scrolled .logo span,
+  nav.scrolled .mobile-menu-btn {
+    color: #0f172a;
+  }
+  nav.scrolled .nav-links a:hover { color: #0ea5e9; }
+  nav.scrolled .nav-cta {
+    background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+    border-color: transparent;
+    color: #ffffff;
+  }
+  nav.scrolled #mobile-menu {
+    background: rgba(255,255,255,0.98);
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  nav.scrolled #mobile-menu a { color: #0f172a; }
+  @media (max-width: 768px) {
+    nav .nav-links { display: none; }
+    nav .mobile-menu-btn { display: block; }
+    nav .nav-cta.desktop-only { display: none; }
+    nav .nav-container { padding: 1rem 1.5rem; }
+  }
 
-    <!-- Aurora Background System -->
-    <div class="aurora-bg">
-        <div class="aurora-layer"></div>
-        <div class="aurora-overlay"></div>
-        <div class="aurora-vignette"></div>
+  /* ─── Lazy Load Image Fix ─── */
+  img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  img.loaded,
+  img[loading="lazy"]:not([src]) {
+    opacity: 1;
+  }
+  #work img[loading="lazy"] {
+    opacity: 1;
+    transition: none;
+  }
+
+  .hero-origin {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #0f172a;
+    color: #fff;
+    padding: 10rem 0 6rem;
+  }
+  .hero-origin .bg-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-origin .bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.6;
+    animation: orbFloat 20s ease-in-out infinite;
+  }
+  .hero-origin .bg-orb-1 {
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, #0ea5e9 0%, transparent 70%);
+    top: -15%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+  .hero-origin .bg-orb-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #14b8a6 0%, transparent 70%);
+    bottom: -15%;
+    right: -10%;
+    animation-delay: -7s;
+    animation-duration: 25s;
+  }
+  .hero-origin .bg-orb-3 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14,165,233,0.5) 0%, transparent 70%);
+    top: 35%;
+    left: 45%;
+    animation-delay: -12s;
+    animation-duration: 22s;
+  }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+  }
+  .hero-origin .bg-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-origin .bg-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, #f8fafc 0%, rgba(15,23,42,0.6) 60%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .hero-origin .hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-origin .hero-text {
+    max-width: 600px;
+  }
+  .hero-origin .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.25rem;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2rem;
+  }
+  .hero-origin .hero-badge .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #14b8a6;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(20,184,166,0.7);
+    animation: pulseBadge 2s infinite;
+  }
+  @keyframes pulseBadge {
+    0% { box-shadow: 0 0 0 0 rgba(20,184,166,0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(20,184,166,0); }
+    100% { box-shadow: 0 0 0 0 rgba(20,184,166,0); }
+  }
+  .hero-origin h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    line-height: 1.08;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-origin h1 .accent {
+    background: linear-gradient(135deg, #67e8f9 0%, #14b8a6 50%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-origin .hero-sub {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+  }
+  .hero-origin .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero-origin .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(14,165,233,0.25);
+    border: none;
+    font-size: 1rem;
+  }
+  .hero-origin .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(14,165,233,0.35);
+  }
+  .hero-origin .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  .hero-origin .btn-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .hero-origin .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-origin .browser-glow {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(14,165,233,0.25) 0%, rgba(20,184,166,0.15) 40%, transparent 70%);
+    filter: blur(60px);
+    z-index: 0;
+    animation: glowPulse 8s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+  .hero-origin .browser-mockup {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 640px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05);
+    transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
+    animation: browserFloat 6s ease-in-out infinite;
+  }
+  @keyframes browserFloat {
+    0%, 100% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0); }
+    50% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-12px); }
+  }
+  .hero-origin .browser-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-origin .browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .hero-origin .browser-dot:nth-child(1) { background: #ff5f57; }
+  .hero-origin .browser-dot:nth-child(2) { background: #febc2e; }
+  .hero-origin .browser-dot:nth-child(3) { background: #28c840; }
+  .hero-origin .browser-bar {
+    flex: 1;
+    height: 24px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    font-family: monospace;
+  }
+  .hero-origin .browser-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: #0f172a;
+  }
+  .hero-origin .browser-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .hero-origin .trust-bar {
+    position: relative;
+    z-index: 3;
+    grid-column: 1 / -1;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .hero-origin .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    transition: all 0.3s ease;
+  }
+  .hero-origin .trust-item:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .hero-origin .trust-item svg {
+    width: 18px;
+    height: 18px;
+    color: #67e8f9;
+    flex-shrink: 0;
+  }
+  @media (max-width: 1024px) {
+    .hero-origin .hero-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+    .hero-origin .hero-text {
+      max-width: 100%;
+      order: 1;
+    }
+    .hero-origin .hero-visual {
+      order: 0;
+    }
+    .hero-origin .hero-sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-origin .hero-ctas {
+      justify-content: center;
+    }
+    .hero-origin .browser-mockup {
+      max-width: 90vw;
+      transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+      animation: browserFloatMobile 6s ease-in-out infinite;
+    }
+    @keyframes browserFloatMobile {
+      0%, 100% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(0); }
+      50% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(-8px); }
+    }
+    .hero-origin h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+    }
+  }
+  @media (max-width: 640px) {
+    .hero-origin {
+      padding: 8rem 0 4rem;
+    }
+    .hero-origin .hero-container {
+      padding: 0 1.5rem;
+    }
+    .hero-origin .trust-bar {
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .hero-origin .trust-item {
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+    }
+    .hero-origin .btn-primary,
+    .hero-origin .btn-secondary {
+      width: 100%;
+      padding: 1rem;
+    }
+    .hero-origin .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+</style>
+
+<!-- HERO -->
+<section class="hero-origin">
+
+    <!-- Animated Background -->
+    <div class="bg-layer">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
     </div>
+    <div class="bg-grain"></div>
+    <div class="bg-fade"></div>
 
-    <div class="hero-content">
+    <div class="hero-container">
 
         <!-- Left: Text -->
-        <div class="hero-left">
+        <div class="hero-text">
 
             <div class="hero-badge">
-                <span class="dot"></span>
+                <span class="pulse-dot"></span>
                 Kelowna, BC — Okanagan Web Specialist
             </div>
 
             <h1>
-                From Invisible to Unmissable <span class="accent">Web Design for Local Businesses</span>
+                Kelowna Web Design<br>
+                <span class="accent">That Actually Books Customers</span>
             </h1>
 
-            <p>
-                We build modern, high-converting websites for local businesses throughout the Okanagan. No templates. No fluff. Just results.
+            <p class="hero-sub">
+                We build modern, high-converting websites for local businesses throughout the Okanagan. No templates. No fluff. Just more calls, bookings, and revenue.
             </p>
 
             <div class="hero-ctas">
@@ -194,35 +670,24 @@ const HOME_BODY_HTML = `<!-- NAV -->
 
         </div>
 
-        <!-- Right: MacBook Mockup -->
-        <div class="hero-right">
-
-            <div class="macbook-wrapper">
-
-                <!-- Glow behind laptop -->
-                <div class="laptop-glow"></div>
-
-                <!-- Screenshot -->
-                <img
-                    src="/images/ok-const-screenshot.png"
-                    alt="Website preview showing a modern local business website design"
-                    class="macbook-screen"
-                    fetchpriority="high"
-                >
-
-                <!-- MacBook Frame -->
-                <img 
-                    src="/images/macbook.png" 
-                    alt=""
-                    class="macbook-frame"
-                >
-
+        <!-- Right: Browser Mockup -->
+        <div class="hero-visual">
+            <div class="browser-glow"></div>
+            <div class="browser-mockup">
+                <div class="browser-toolbar">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-bar">okanaganconstruction.ca</div>
+                </div>
+                <div class="browser-screen">
+                    <img src="/images/ok-const-screenshot.png" alt="Website preview showing a modern local business website design" fetchpriority="high">
+                </div>
             </div>
-
         </div>
 
         <!-- Trust Bar -->
-        <div class="hero-trust-bar">
+        <div class="trust-bar">
 
             <div class="trust-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -291,7 +756,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">LUXURY CONSTRUCTION • KELOWNA</p>
         <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Okanagan Inspired Construction</h3>
         <p style="color:#64748b; font-size:0.95rem;">Full custom build with before/after transformations, project galleries, and cinematic hero.</p>
-        <a href="https://okanagan-construction-2.vercel.app/" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Live Site →</a>
+        <a href="https://okanaganconstruction.ca" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Live Site →</a>
     </div>
 </div>
 
