@@ -581,12 +581,12 @@ const HOME_BODY_HTML = `<!-- NAV -->
       gap: 3rem;
       text-align: center;
     }
-    .hero-origin .hero-text {
-      max-width: 100%;
-      order: 1;
+     .hero-origin .hero-text {
+        max-width: 100%;
+        order: 0;
     }
-    .hero-origin .hero-visual {
-      order: 0;
+      .hero-origin .hero-visual {
+        order: 1;
     }
     .hero-origin .hero-sub {
       margin-left: auto;
