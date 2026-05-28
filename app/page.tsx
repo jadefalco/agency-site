@@ -179,7 +179,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
   nav .logo { cursor: pointer; display: flex; align-items: center; gap: 0.75rem; }
   nav .nav-links { display: flex; align-items: center; gap: 2rem; }
   nav .nav-links a {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.9) !important;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -208,9 +208,16 @@ const HOME_BODY_HTML = `<!-- NAV -->
     background: none;
     border: none;
     cursor: pointer;
-    color: #ffffff;
+    color: #ffffff !important;
     position: relative;
-    padding: 0.25rem;
+    padding: 0.5rem;
+    z-index: 101;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  nav .mobile-menu-btn svg {
+    display: block;
+    pointer-events: none;
   }
   nav #mobile-menu {
     display: none;
@@ -224,6 +231,16 @@ const HOME_BODY_HTML = `<!-- NAV -->
     padding: 1.5rem;
     gap: 1rem;
     border-top: 1px solid rgba(255,255,255,0.1);
+    z-index: 999;
+    min-width: 200px;
+  }
+  nav #mobile-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
   }
   nav #mobile-menu a {
     color: rgba(255,255,255,0.9);
@@ -233,27 +250,31 @@ const HOME_BODY_HTML = `<!-- NAV -->
   }
   /* Scrolled state */
   nav.scrolled {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.95) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   }
   nav.scrolled .nav-links a,
   nav.scrolled .logo span,
+  nav.scrolled .logo div,
   nav.scrolled .mobile-menu-btn {
-    color: #0f172a;
+    color: #0f172a !important;
   }
-  nav.scrolled .nav-links a:hover { color: #0ea5e9; }
+  nav.scrolled .nav-links a:hover { color: #0ea5e9 !important; }
   nav.scrolled .nav-cta {
-    background: linear-gradient(135deg, #0ea5e9, #14b8a6);
-    border-color: transparent;
-    color: #ffffff;
+    background: linear-gradient(135deg, #0ea5e9, #14b8a6) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
   }
   nav.scrolled #mobile-menu {
-    background: rgba(255,255,255,0.98);
-    border-top: 1px solid rgba(0,0,0,0.05);
+    background: rgba(255,255,255,0.98) !important;
+    border-top: 1px solid rgba(0,0,0,0.05) !important;
   }
-  nav.scrolled #mobile-menu a { color: #0f172a; }
+  nav.scrolled #mobile-menu a { color: #0f172a !important; }
+  nav.scrolled .mobile-menu-btn svg {
+    stroke: #0f172a !important;
+  }
   @media (max-width: 768px) {
     nav .nav-links { display: none; }
     nav .mobile-menu-btn { display: block; }
@@ -581,12 +602,16 @@ const HOME_BODY_HTML = `<!-- NAV -->
       gap: 3rem;
       text-align: center;
     }
-     .hero-origin .hero-text {
-        max-width: 100%;
-        order: 0;
+    .hero-origin .hero-text {
+      max-width: 100%;
+      order: 0;
     }
-      .hero-origin .hero-visual {
-        order: 1;
+    .hero-origin .hero-visual {
+      order: 1;
+    }
+    .hero-origin .trust-bar {
+      order: 2;
+      margin-top: 2rem;
     }
     .hero-origin .hero-sub {
       margin-left: auto;
