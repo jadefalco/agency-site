@@ -136,9 +136,9 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <!-- RIGHT SIDE -->
         <div style="display:flex; align-items:center; gap:0.75rem;">
             <a href="#contact" class="nav-cta desktop-only">Get Free Mockup</a>
-           <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" style="position:relative; width:32px; height:32px;">
-    <svg class="icon-hamburger" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; top:3px; left:3px; transition:all 0.35s cubic-bezier(0.4,0,0.2,1);"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    <svg class="icon-compass" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; top:3px; left:3px; opacity:0; transform:rotate(-90deg) scale(0.6); transition:all 0.35s cubic-bezier(0.4,0,0.2,1);"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+           <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" style="position:relative; width:32px; height:32px; display:flex; align-items:center; justify-content:center; padding:0; overflow:hidden;">
+    <svg class="icon-hamburger" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; inset:0; margin:auto; transition:all 0.35s cubic-bezier(0.4,0,0.2,1);"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg class="icon-compass" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; inset:0; margin:auto; opacity:0; transform:rotate(-90deg) scale(0.6); transition:all 0.35s cubic-bezier(0.4,0,0.2,1);"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
 </button>
         </div>
 
