@@ -6,6 +6,9 @@ const twilioClient = new Twilio(
   process.env.TWILIO_AUTH_TOKEN!
 );
 
+// Use your production URL for the audio file
+const AUDIO_URL = "https://truenorthwebsites.com/audio/missed-call.mp3";
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -13,9 +16,8 @@ export async function POST(request: Request) {
     const to = formData.get("To") as string;
 
     if (from && to) {
-      // Send the recovery SMS immediately
       await twilioClient.messages.create({
-        body: "Sorry we missed your call! What do you need help with?\n\n1️⃣ Leak\n2️⃣ Drain\n3️⃣ Clog\n4️⃣ No Hot Water\n5️⃣ Toilet Issue\n6️⃣ Emergency\n7️⃣ Other\n\nReply with a number.",
+        body: "Sorry we missed your call! What do you need help with?\n\n1. Leak\n2. Drain\n3. Clog\n4. No Hot Water\n5. Toilet Issue\n6. Emergency\n7. Other\n\nReply with a number.",
         from: to,
         to: from,
       });
@@ -23,7 +25,7 @@ export async function POST(request: Request) {
 
     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say voice="alice">Sorry we missed your call. Please text us or call back later.</Say>
+  <Play>${AUDIO_URL}</Play>
   <Hangup/>
 </Response>`;
 
@@ -32,14 +34,12 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error("Voice webhook error:", error);
-    
-    // Fallback to TTS if anything fails
+    // Fallback to Alice if audio fails
     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Say voice="alice">Sorry we missed your call. Please text us or call back later.</Say>
   <Hangup/>
 </Response>`;
-    
     return new NextResponse(twiml, {
       headers: { "Content-Type": "text/xml" },
     });
