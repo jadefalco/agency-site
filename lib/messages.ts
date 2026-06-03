@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { prisma } from "./db";
+import { sendLeadNotification } from "./email";
 import {
   COMPLETE_NODE,
   FLOW_NODES,
@@ -26,20 +27,31 @@ export async function processIncomingMessage({
   body: string;
   mediaUrl?: string | null;
 }) {
+  console.log("📩 INCOMING:", { phone, body: body.slice(0, 50), hasMedia: !!mediaUrl });
+
+  const STALE_MINUTES = 30;
   let lead = await prisma.lead.findFirst({
     where: { phone },
     orderBy: { createdAt: "desc" },
   });
 
-  const isNewLead = !lead;
+  if (lead) {
+    const ageMinutes = (Date.now() - lead.createdAt.getTime()) / 1000 / 60;
+    if (ageMinutes > STALE_MINUTES) {
+      console.log("🕐 Existing lead is stale (", Math.round(ageMinutes), "min old). Creating new lead.");
+      lead = null;
+    }
+  }
 
-  if (!lead) {
+  if (!lead || lead.step === COMPLETE_NODE) {
     lead = await prisma.lead.create({
       data: { phone, step: "greeting", urgencyScore: 0 },
     });
+    console.log("✅ Created new lead:", lead.id);
+  } else {
+    console.log("🔄 Using existing lead:", lead.id, "step:", lead.step);
   }
 
-  // Store inbound message
   await prisma.message.create({
     data: {
       leadId: lead.id,
@@ -53,159 +65,133 @@ export async function processIncomingMessage({
   const node = getNode(currentStep);
 
   if (!node) {
-    // Unknown step — reset to greeting
-    await prisma.lead.update({
-      where: { id: lead.id },
-      data: { step: "greeting" },
-    });
+    await prisma.lead.update({ where: { id: lead.id }, data: { step: "greeting" } });
     const reply = FLOW_NODES["greeting"].message;
     await storeOutbound(lead.id, reply);
     return { reply, leadId: lead.id, step: "greeting" };
   }
 
-  // Handle completed conversations
   if (currentStep === COMPLETE_NODE) {
-    const reply =
-      "We've already received your request. A plumber will contact you shortly.";
+    const reply = "We've already received your request. A plumber will contact you shortly.";
     await storeOutbound(lead.id, reply);
     return { reply, leadId: lead.id, step: COMPLETE_NODE };
   }
 
-  // Determine if this is the first interaction (no outbound messages yet)
   const outboundCount = await prisma.message.count({
     where: { leadId: lead.id, direction: "outbound" },
   });
   const isFirstInteraction = outboundCount === 0;
+  console.log("🔄 First interaction?", isFirstInteraction, "outbound count:", outboundCount);
 
-  // Build accumulated updates
   const updates: Partial<LeadUpdateFields> = {};
-  let nextStep = node.next;
+  let nextStep: string | null = node.next;
   let reply = "";
   let additionalReply: string | undefined;
 
-  // Photo handling: save any uploaded photo, but only advance flow if at a photo node
   if (mediaUrl) {
     updates.photoUrl = mediaUrl;
     if (node.acceptsPhoto) {
       nextStep = COMPLETE_NODE;
+      console.log("📸 Photo at photo node → completing");
     }
   }
 
-  // If we're at a photo node and they sent text instead, accept text and complete
+  // If we're at a photo node and they sent text instead, ask again or allow skip
   if (node.acceptsPhoto && !mediaUrl) {
-    if (node.saveField && node.saveField !== "photoUrl") {
-      (updates as any)[node.saveField] = body.trim();
+    const lowerBody = body.trim().toLowerCase();
+    if (lowerBody === "skip" || lowerBody === "no" || lowerBody === "none") {
+      nextStep = COMPLETE_NODE;
+    } else {
+      reply = "Please send a photo, or reply SKIP to continue without one. 📸";
+      await storeOutbound(lead.id, reply);
+      return { reply, leadId: lead.id, step: currentStep };
     }
-    nextStep = COMPLETE_NODE;
-  }
+  } else if (!node.acceptsPhoto || !mediaUrl) {
+    const matched = matchOption(node, body);
+    console.log("🔍 matchOption result:", matched?.label || "NO MATCH");
 
-  // Only process text response if we haven't already advanced via photo
-  if (!node.acceptsPhoto || !mediaUrl) {
-    // Try to match the user's response to an option
-    const matchedOption = matchOption(node, body);
-
-    if (matchedOption) {
-      // Save field value
+    if (matched) {
       if (node.saveField) {
-        const value = matchedOption.saveValue || matchedOption.label;
+        const value = matched.saveValue || matched.label;
         (updates as any)[node.saveField] = value;
+        console.log("💾 Saved", node.saveField, "=", value);
       }
-
-      // Add urgency score
-      if (matchedOption.urgencyScore) {
-        updates.urgencyScore =
-          (lead.urgencyScore || 0) + matchedOption.urgencyScore;
+      if (matched.urgencyScore) {
+        updates.urgencyScore = (lead.urgencyScore || 0) + matched.urgencyScore;
       }
-
-      // Immediate reply (e.g. emergency instructions)
-      if (matchedOption.immediateReply) {
-        additionalReply = matchedOption.immediateReply;
+      if (matched.immediateReply) {
+        additionalReply = matched.immediateReply;
       }
-
-      // Append note to symptoms if present
-      if (matchedOption.note && node.saveField) {
+      if (matched.note && node.saveField) {
         const existing = ((lead as any)[node.saveField] as string) || "";
         (updates as any)[node.saveField] = existing
-          ? `${existing} — ${matchedOption.note}`
-          : matchedOption.note;
+          ? `${existing} — ${matched.note}`
+          : matched.note;
       }
-
-      nextStep = matchedOption.next ?? node.next;
+      nextStep = matched.next ?? node.next;
+      console.log("➡️ nextStep from match:", nextStep);
     } else if (node.fallbackAllowed) {
+      // Guard: don't accept arbitrary text as a photo URL
+      if (node.acceptsPhoto && !mediaUrl) {
+        reply = "Please send a photo, or reply SKIP to continue without one. 📸";
+        await storeOutbound(lead.id, reply);
+        return { reply, leadId: lead.id, step: currentStep };
+      }
       // Text input node — accept any text
       if (node.saveField) {
         (updates as any)[node.saveField] = body.trim();
+        console.log("💾 Saved (fallback)", node.saveField, "=", body.trim());
       }
       nextStep = node.next;
+      console.log("➡️ nextStep from fallback:", nextStep);
     } else {
-      // Did not match any option and fallback not allowed — re-ask
       reply = `I didn't catch that. ${node.message}`;
       await storeOutbound(lead.id, reply);
-
-      // No state change
+      console.log("❌ No match, re-asking");
       return { reply, leadId: lead.id, step: currentStep };
     }
   }
 
-  // If this is the first interaction and we're at greeting,
-  // try to match the first message against greeting options
-  if (isFirstInteraction && currentStep === "greeting") {
-    if (findMatchedOption(node, body)) {
-      // They answered the greeting in their first text — process it
-      const opt = findMatchedOption(node, body)!;
-      if (node.saveField) {
-        (updates as any)[node.saveField] = opt.saveValue || opt.label;
-      }
-      nextStep = opt.next ?? node.next;
-    } else {
-      // First message didn't match — just send the greeting
-      reply = node.message;
-      await storeOutbound(lead.id, reply);
-      return { reply, leadId: lead.id, step: currentStep };
-    }
+  if (isFirstInteraction && currentStep === "greeting" && !matchOption(node, body)) {
+    reply = node.message;
+    await storeOutbound(lead.id, reply);
+    console.log("👋 First interaction, no match → sending greeting");
+    return { reply, leadId: lead.id, step: currentStep };
   }
 
-  // Determine the reply for the next step
   if (!reply) {
     if (nextStep && nextStep !== COMPLETE_NODE) {
       const nextNode = getNode(nextStep);
-
       if (nextNode) {
         reply = nextNode.message;
+        console.log("💬 Reply from next node:", nextStep);
+      } else {
+        console.log("⚠️ Next node not found:", nextStep);
+        reply = FLOW_NODES[COMPLETE_NODE].message;
+        nextStep = COMPLETE_NODE;
       }
-    } else if (nextStep === COMPLETE_NODE || !nextStep) {
-      // Conversation complete
+    } else {
       const issueType = updates.issueType || lead.issueType;
-
-      reply =
-        FINAL_MESSAGES[issueType || "Other"] ||
-        FLOW_NODES[COMPLETE_NODE].message;
-
+      reply = FINAL_MESSAGES[issueType || "Other"] || FLOW_NODES[COMPLETE_NODE].message;
       nextStep = COMPLETE_NODE;
+      console.log("🏁 Flow complete. Issue:", issueType);
     }
   }
 
-  // Store any immediate additional reply first
   if (additionalReply) {
     await storeOutbound(lead.id, additionalReply);
   }
 
-  // Store main reply
   if (reply) {
     await storeOutbound(lead.id, reply);
   }
 
-  // Calculate final urgency level
-  const finalUrgencyScore =
-    (updates.urgencyScore ?? lead.urgencyScore ?? 0);
-  const urgencyLevel = getUrgencyLevel(finalUrgencyScore);
+  const finalUrgencyScore = updates.urgencyScore ?? lead.urgencyScore ?? 0;
 
-  // Build Prisma update data
   const prismaUpdate: Record<string, any> = {
     step: nextStep || COMPLETE_NODE,
     urgencyScore: finalUrgencyScore,
   };
-
   if (updates.issueType !== undefined) prismaUpdate.issueType = updates.issueType;
   if (updates.symptoms !== undefined) prismaUpdate.symptoms = updates.symptoms;
   if (updates.urgency !== undefined) prismaUpdate.urgency = updates.urgency;
@@ -215,7 +201,9 @@ export async function processIncomingMessage({
   if (updates.photoUrl !== undefined) prismaUpdate.photoUrl = updates.photoUrl;
   if (updates.customerName !== undefined) prismaUpdate.customerName = updates.customerName;
 
-  if (nextStep === COMPLETE_NODE || !nextStep) {
+  const isComplete = nextStep === COMPLETE_NODE || !nextStep;
+
+  if (isComplete) {
     prismaUpdate.status = "qualified";
     prismaUpdate.conversationSummary = "Lead summary pending...";
   }
@@ -224,6 +212,20 @@ export async function processIncomingMessage({
     where: { id: lead.id },
     data: prismaUpdate,
   });
+
+  console.log("💾 Lead updated to step:", prismaUpdate.step);
+
+  if (isComplete) {
+    const freshLead = await prisma.lead.findUnique({
+      where: { id: lead.id },
+      include: {
+        messages: { orderBy: { createdAt: "asc" } },
+      },
+    });
+    if (freshLead) {
+      await sendLeadNotification(freshLead);
+    }
+  }
 
   return {
     reply: additionalReply ? `${additionalReply}\n\n${reply}` : reply,
@@ -238,10 +240,6 @@ async function storeOutbound(leadId: string, body: string) {
   });
 }
 
-function findMatchedOption(node: FlowNode, body: string) {
-  return matchOption(node, body);
-}
-
 async function generateSummary(
   leadId: string,
   urgencyLevel: string
@@ -250,10 +248,8 @@ async function generateSummary(
     where: { id: leadId },
     include: { messages: { orderBy: { createdAt: "asc" } } },
   });
-
   if (!lead) return "";
 
-  // Build structured summary from collected fields
   const parts: string[] = [];
   parts.push(`${urgencyLevel.toUpperCase()} PRIORITY`);
   if (lead.issueType) parts.push(`Issue: ${lead.issueType}`);
@@ -263,38 +259,23 @@ async function generateSummary(
   if (lead.attemptedFix) parts.push(`Attempted fix: ${lead.attemptedFix}`);
   if (lead.customerName) parts.push(`Customer: ${lead.customerName}`);
   if (lead.photoUrl) parts.push(`Photo: attached`);
-
   const structured = parts.join("\n");
 
-  // Try AI refinement
   try {
     const transcript = lead.messages
-      .map(
-        (m) =>
-          `${m.direction === "inbound" ? "Customer" : "Dispatcher"}: ${m.body}`
-      )
+      .map((m) => `${m.direction === "inbound" ? "Customer" : "Dispatcher"}: ${m.body}`)
       .join("\n");
-
-    const prompt = `Refine this plumbing lead summary into 3-5 concise bullet points. Keep it factual and brief. Do not add information not present.
-
-Structured data:
-${structured}
-
-Conversation:
-${transcript}`;
-
+    const prompt = `Refine this plumbing lead summary into 3-5 concise bullet points. Keep it factual and brief. Do not add information not present.\n\nStructured data:\n${structured}\n\nConversation:\n${transcript}`;
     const completion = await getOpenAI().chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.2,
       max_tokens: 200,
     });
-
     const aiSummary = completion.choices[0]?.message?.content?.trim();
     if (aiSummary) return aiSummary;
   } catch {
-    // Ignore AI errors, use structured summary
+    // Ignore AI errors
   }
-
   return structured;
 }

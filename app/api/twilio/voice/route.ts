@@ -6,8 +6,6 @@ const twilioClient = new Twilio(
   process.env.TWILIO_AUTH_TOKEN!
 );
 
-// CHANGE THIS to your actual ngrok URL + /audio/missed-call.mp3
-const VOICE_GREETING_URL = "https://truenorthwebsites.com/audio/missed-call.mp3";
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -23,10 +21,9 @@ export async function POST(request: Request) {
       });
     }
 
-    // Play your recorded voice instead of robot "alice"
     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Play>${VOICE_GREETING_URL}</Play>
+  <Say voice="alice">Sorry we missed your call. Please text us or call back later.</Say>
   <Hangup/>
 </Response>`;
 
