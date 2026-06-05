@@ -141,7 +141,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   "leak.q7": {
     id: "leak.q7",
     message:
-      "If you can, snap a quick photo — it helps the tech know what to bring. 📸",
+      "If you can, snap a quick photo — it helps the tech know what to bring. 📸\n\nReply SKIP if you can't send a photo.",
     options: [],
     next: COMPLETE_NODE,
     saveField: "photoUrl",
@@ -234,7 +234,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   "drain.q7": {
     id: "drain.q7",
     message:
-      "If you can, send a photo of the drain or backup. 📸",
+      "If you can, send a photo of the drain or backup. 📸\n\nReply SKIP if you can't send a photo.",
     options: [],
     next: COMPLETE_NODE,
     saveField: "photoUrl",
