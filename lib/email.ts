@@ -1,12 +1,193 @@
 import { Resend } from "resend";
+import { Twilio } from "twilio";
+import {
+  FLOW_NODES,
+  COMPLETE_NODE,
+  matchOption,
+} from "./flows/plumber";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const PLUMBER_EMAIL = process.env.PLUMBER_EMAIL;
+const PLUMBER_NOTIFICATION_NUMBER = process.env.PLUMBER_NOTIFICATION_NUMBER;
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
+
 let APP_URL = process.env.APP_URL;
 if (!APP_URL) {
   console.warn("⚠️ APP_URL not set — photo links may not work locally");
   APP_URL = "https://truenorthwebsites.com";
 }
+
+const twilioClient =
+  TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN
+    ? new Twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    : null;
+
+/* ================================================================
+   Helpers: map outbound messages back to flow nodes
+   ================================================================ */
+
+function findNodeByMessage(messageBody: string) {
+  for (const [id, node] of Object.entries(FLOW_NODES)) {
+    if (node.message === messageBody) {
+      return { id, node };
+    }
+  }
+  return null;
+}
+
+const TRANSITION_PHRASES = [
+  "Sorry we missed your call! We'll ask a few quick questions so we can understand your issue and get back to you faster.",
+  "Thanks. A couple more questions so we can better understand the issue.",
+  "A few more details:",
+  "Next question:",
+  "One more detail:",
+  "Almost done.",
+];
+
+function cleanQuestionText(raw: string): string {
+  const paragraphs = raw.split("\n\n");
+  const clean = paragraphs.filter((p) => {
+    const trimmed = p.trim();
+    if (!trimmed) return false;
+    if (TRANSITION_PHRASES.some((t) => trimmed === t)) return false;
+    const firstLine = trimmed.split("\n")[0];
+    if (/^\d[\uFE0F]?\u20E3?\s/.test(firstLine)) return false; // emoji numbers
+    if (/^\d+[.\s)]\s/.test(firstLine)) return false; // plain numbers
+    if (firstLine.startsWith("Please type the number on your keyboard")) return false;
+    if (firstLine.startsWith("Reply SKIP if you can't send a photo")) return false;
+    return true;
+  });
+
+  let result = clean.join("\n\n").trim();
+  // strip remaining emoji used in flow messages
+  result = result.replace(/[📍📝📸🚨📞💬🔧🚽]/g, "").trim();
+  // collapse multiple spaces
+  result = result.replace(/\s+/g, " ").trim();
+  return result || raw;
+}
+
+function buildQAPairs(
+  messages: { direction: string; body: string; mediaUrl?: string | null }[],
+  issueType: string | null
+) {
+  const pairs: { question: string; answer: string }[] = [];
+  let currentNode: ReturnType<typeof findNodeByMessage> | null = null;
+  let startIndex = 0;
+
+  // The voice-webhook greeting SMS is not stored in the DB.
+  // If the very first message is inbound, treat it as the answer to the greeting.
+  if (messages.length > 0 && messages[0].direction === "inbound" && issueType) {
+    const nextMsg = messages[1];
+    const isRetry =
+      nextMsg?.direction === "outbound" &&
+      nextMsg.body.startsWith("I didn't catch that.");
+    if (!isRetry) {
+      const greetingNode = FLOW_NODES["greeting"];
+      const firstMsg = messages[0];
+      const opt = matchOption(greetingNode, firstMsg.body);
+      const answer = opt
+        ? opt.saveValue || opt.label
+        : firstMsg.body.trim();
+      pairs.push({
+        question: cleanQuestionText(greetingNode.message),
+        answer,
+      });
+    }
+    startIndex = 1;
+  }
+
+  for (let i = startIndex; i < messages.length; i++) {
+    const msg = messages[i];
+    if (msg.direction === "outbound") {
+      const matched = findNodeByMessage(msg.body);
+      if (matched && matched.id !== COMPLETE_NODE) {
+        currentNode = matched;
+      } else if (msg.body.startsWith("I didn't catch that.")) {
+        // retry – keep currentNode so the next inbound is processed
+      } else {
+        currentNode = null;
+      }
+    } else if (msg.direction === "inbound" && currentNode) {
+      const nextMsg = messages[i + 1];
+      const isRetry =
+        nextMsg?.direction === "outbound" &&
+        nextMsg.body.startsWith("I didn't catch that.");
+      if (isRetry) {
+        continue; // invalid response – skip it
+      }
+
+      let answer: string;
+      if (msg.mediaUrl) {
+        answer = "Photo attached";
+      } else {
+        const opt = matchOption(currentNode.node, msg.body);
+        if (opt) {
+          answer = opt.saveValue || opt.label;
+        } else if (currentNode.node.fallbackAllowed) {
+          answer = msg.body.trim();
+        } else {
+          answer = msg.body.trim();
+        }
+      }
+      pairs.push({
+        question: cleanQuestionText(currentNode.node.message),
+        answer,
+      });
+      currentNode = null;
+    }
+  }
+
+  return pairs;
+}
+
+/* ================================================================
+   Plumber SMS alert
+   ================================================================ */
+
+async function sendPlumberSms(lead: {
+  customerName: string | null;
+  area: string | null;
+  urgencyScore: number | null;
+  urgency: string | null;
+  issueType: string | null;
+}) {
+  if (!twilioClient || !PLUMBER_NOTIFICATION_NUMBER || !TWILIO_PHONE_NUMBER) {
+    console.warn("⚠️ Skipping plumber SMS — missing Twilio config");
+    return;
+  }
+
+  const name = lead.customerName || "Unknown";
+  const area = lead.area || "your";
+  const score = lead.urgencyScore || 0;
+
+  let body: string;
+  if (score >= 50) {
+    const detail = lead.urgency || "Emergency";
+    body = `🚨 URGENT: ${detail} reported by ${name} in ${area} area. Check your email immediately.`;
+  } else if (score >= 25) {
+    const detail = lead.issueType || "Plumbing issue";
+    body = `⚠️ URGENT: ${detail} from ${name} in ${area} area. Check your email for details.`;
+  } else {
+    body = `📋 New plumbing lead from ${name} in ${area} area. Check your email for details.`;
+  }
+
+  try {
+    const result = await twilioClient.messages.create({
+      body,
+      from: TWILIO_PHONE_NUMBER,
+      to: PLUMBER_NOTIFICATION_NUMBER,
+    });
+    console.log(">>> PLUMBER SMS SENT:", result.sid);
+  } catch (err) {
+    console.error(">>> PLUMBER SMS FAILED:", err);
+  }
+}
+
+/* ================================================================
+   Email notification
+   ================================================================ */
 
 export async function sendLeadNotification(lead: {
   id: string;
@@ -20,72 +201,130 @@ export async function sendLeadNotification(lead: {
   timeframe: string | null;
   photoUrl: string | null;
   urgencyScore: number | null;
-  messages: { direction: string; body: string; createdAt: Date }[];
+  messages: {
+    direction: string;
+    body: string;
+    mediaUrl?: string | null;
+    createdAt: Date;
+  }[];
 }) {
   if (!PLUMBER_EMAIL) {
     console.error("PLUMBER_EMAIL not set");
     return;
   }
 
-  const urgencyLabel =
-    (lead.urgencyScore || 0) >= 50
-      ? "🔴 EMERGENCY"
-      : (lead.urgencyScore || 0) >= 25
-      ? "🟡 MEDIUM"
-      : "🟢 LOW";
+  const score = lead.urgencyScore || 0;
+  const isEmergency = score >= 50;
+  const isUrgent = score >= 25 && !isEmergency;
 
-  const subject = `${urgencyLabel} — ${lead.issueType || "New Lead"} from ${lead.customerName || "Unknown"}`;
+  /* -------- priority banner -------- */
+  let bannerText: string;
+  let bannerBg: string;
+  let bannerEmoji: string;
+  if (isEmergency) {
+    bannerText = "ACTIVE FLOODING";
+    bannerBg = "#dc2626";
+    bannerEmoji = "🚨";
+  } else if (isUrgent) {
+    bannerText = "URGENT PLUMBING ISSUE";
+    bannerBg = "#ea580c";
+    bannerEmoji = "⚠️";
+  } else {
+    bannerText = "NEW SERVICE REQUEST";
+    bannerBg = "#2563eb";
+    bannerEmoji = "📋";
+  }
 
-  const transcript = lead.messages
-    .map((m) => `${m.direction === "inbound" ? "Customer" : "System"}: ${m.body}`)
-    .join("\n");
+  const subject = `${bannerEmoji} ${bannerText} — ${lead.issueType || "New Lead"} from ${lead.customerName || "Unknown"}`;
 
-  const proxiedPhotoUrl = lead.photoUrl && lead.photoUrl.startsWith("http")
-    ? `${APP_URL}/api/twilio-media?url=${encodeURIComponent(lead.photoUrl)}`
-    : null;
+  /* -------- dispatch summary fields -------- */
+  const summaryRows: { label: string; value: string }[] = [];
+  if (lead.area) summaryRows.push({ label: "Location", value: lead.area });
+  if (lead.issueType) summaryRows.push({ label: "Problem", value: lead.issueType });
+  if (lead.symptoms) summaryRows.push({ label: "Leak Source", value: lead.symptoms });
+  if (lead.urgency) summaryRows.push({ label: "Severity", value: lead.urgency });
+  if (lead.timeframe) summaryRows.push({ label: "Duration", value: lead.timeframe });
+  if (lead.attemptedFix) summaryRows.push({ label: "Water Shut Off?", value: lead.attemptedFix });
+
+  /* -------- photo -------- */
+  const proxiedPhotoUrl =
+    lead.photoUrl && lead.photoUrl.startsWith("http")
+      ? `${APP_URL}/api/twilio-media?url=${encodeURIComponent(lead.photoUrl)}`
+      : null;
 
   const photoBlock = proxiedPhotoUrl
     ? `<div style="margin: 16px 0;">
-  <p style="margin: 0 0 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280;">Photo</p>
-  <img src="${proxiedPhotoUrl}" style="max-width: 100%; height: auto; border-radius: 8px; display: block; border: 1px solid #e5e7eb;" alt="Customer photo">
-  <p style="margin: 8px 0 0; font-size: 12px;">
-    <a href="${proxiedPhotoUrl}" style="color: #2563eb;">View full size →</a>
-  </p>
-</div>`
+      <p style="margin: 0 0 8px; font-size: 13px; font-weight: 600; color: #374151;">Photo: Attached</p>
+      <img src="${proxiedPhotoUrl}" style="max-width: 100%; height: auto; border-radius: 8px; display: block; border: 1px solid #e5e7eb;" alt="Customer photo">
+      <p style="margin: 8px 0 0; font-size: 12px;">
+        <a href="${proxiedPhotoUrl}" style="color: #2563eb;">View full size →</a>
+      </p>
+    </div>`
     : "";
 
+  /* -------- conversation Q/A -------- */
+  const qaPairs = buildQAPairs(lead.messages, lead.issueType);
+  const qaBlock = qaPairs.length
+    ? `<div style="margin-top: 24px;">
+      <p style="margin: 0 0 12px; font-size: 14px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 0.05em;">Conversation Details</p>
+      ${qaPairs
+        .map(
+          (qa) =>
+            `<div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
+              <p style="margin: 0; font-size: 13px; color: #6b7280;">Q: ${escapeHtml(qa.question)}</p>
+              <p style="margin: 4px 0 0; font-size: 15px; font-weight: 600; color: #111827;">A: ${escapeHtml(qa.answer)}</p>
+            </div>`
+        )
+        .join("")}
+    </div>`
+    : "";
+
+  /* -------- summary HTML rows -------- */
+  const summaryHtml = summaryRows
+    .map(
+      (row) =>
+        `<p style="margin: 4px 0; font-size: 15px; color: #111827;">
+          <span style="color: #6b7280; font-weight: 500;">${escapeHtml(row.label)}:</span>
+          <span style="font-weight: 600;">${escapeHtml(row.value)}</span>
+        </p>`
+    )
+    .join("");
+
+  /* -------- full email HTML -------- */
   const html = `
-<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 16px; line-height: 1.5; color: #111827;">
-  <h2 style="margin: 0 0 16px; font-size: 20px;">New Missed-Call Lead</h2>
-  <p><strong>Customer:</strong> ${lead.customerName || "Unknown"}</p>
-  <p><strong>Phone:</strong> ${lead.phone}</p>
-  ${photoBlock}
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 0; line-height: 1.5; color: #111827; background: #ffffff;">
+  <!-- Priority Banner -->
+  <div style="background: ${bannerBg}; color: #ffffff; padding: 16px; text-align: center; font-size: 18px; font-weight: 700; letter-spacing: 0.02em;">
+    ${bannerEmoji} ${bannerText}
+  </div>
 
-  <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 24px auto;">
-    <tr>
-      <td style="background-color: #2563eb; border-radius: 8px; text-align: center;">
-        <a href="tel:${lead.phone}" style="display: inline-block; padding: 16px 32px; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: 700; border-radius: 8px;">
-          📞 Call Back Now
-        </a>
-      </td>
-    </tr>
-  </table>
+  <div style="padding: 16px;">
+    <!-- Customer + Phone -->
+    <p style="margin: 0 0 4px; font-size: 20px; font-weight: 700;">${escapeHtml(lead.customerName || "Unknown")}</p>
+    <p style="margin: 0 0 16px; font-size: 24px; font-weight: 700;">
+      <a href="tel:${lead.phone}" style="color: #111827; text-decoration: none;">${lead.phone}</a>
+    </p>
 
-  <p style="font-size: 28px; font-weight: 700; text-align: center; margin-top: 16px;">
-    <a href="tel:${lead.phone}" style="color: #111827; text-decoration: none;">${lead.phone}</a>
-  </p>
-  <p style="text-align: center; color: #6b7280; font-size: 14px; margin-top: 4px;">
-    Tap the number above to call
-  </p>
+    <!-- Tap-to-call button -->
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto 16px; width: 100%;">
+      <tr>
+        <td style="background-color: #16a34a; border-radius: 8px; text-align: center;">
+          <a href="tel:${lead.phone}" style="display: inline-block; padding: 16px 32px; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: 700; border-radius: 8px; width: 100%; box-sizing: border-box;">
+            📞 Call Back Now
+          </a>
+        </td>
+      </tr>
+    </table>
 
-  <p><strong>Issue:</strong> ${lead.issueType || "—"}</p>
-  <p><strong>Area:</strong> ${lead.area || "—"}</p>
-  <p><strong>Urgency:</strong> ${lead.urgency || "—"}</p>
-  <p><strong>Symptoms:</strong> ${lead.symptoms || "—"}</p>
-  <p><strong>Tried:</strong> ${lead.attemptedFix || "—"}</p>
-  <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 16px 0;">
-  <p><strong>Conversation:</strong></p>
-  <div style="white-space: pre-wrap; color: #374151;">${transcript}</div>
+    <!-- Dispatch Summary -->
+    <div style="background: #f9fafb; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;">
+      ${summaryHtml}
+      ${photoBlock}
+    </div>
+
+    <!-- Conversation Details -->
+    ${qaBlock}
+  </div>
 </div>`;
 
   console.log("Photo proxy URL:", proxiedPhotoUrl);
@@ -107,4 +346,16 @@ export async function sendLeadNotification(lead: {
   } catch (error) {
     console.error(">>> EMAIL SEND FAILED:", error);
   }
+
+  /* -------- plumber SMS alert -------- */
+  await sendPlumberSms(lead);
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
