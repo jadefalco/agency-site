@@ -39,7 +39,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   greeting: {
     id: "greeting",
     message:
-      "Sorry we missed your call! What do you need help with?\n\n1️⃣ Leak\n2️⃣ Drain\n3️⃣ Clog\n4️⃣ No Hot Water\n5️⃣ Toilet Issue\n6️⃣ Emergency\n7️⃣ Other\n\nReply with a number.",
+      "Sorry we missed your call! We'll ask a few quick questions so we can understand your issue and get back to you faster.\n\nWhat do you need help with?\n\n1️⃣ Leak\n2️⃣ Drain\n3️⃣ Clog\n4️⃣ No Hot Water\n5️⃣ Toilet Issue\n6️⃣ Emergency\n7️⃣ Other\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Leak", next: "leak.q1", saveValue: "Leak" },
       { label: "Drain", next: "drain.q1", saveValue: "Drain / Clog" },
@@ -59,7 +59,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   // ============================================================
   "leak.q1": {
     id: "leak.q1",
-    message: "Where's the leak coming from?\n\n1️⃣ Under Sink\n2️⃣ Ceiling\n3️⃣ Toilet\n4️⃣ Basement\n5️⃣ Pipe\n6️⃣ Wall\n7️⃣ Outside\n\nReply with a number.",
+    message: "Thanks. A couple more questions so we can better understand the issue.\n\nWhere's the leak coming from?\n\n1️⃣ Under Sink\n2️⃣ Ceiling\n3️⃣ Toilet\n4️⃣ Basement\n5️⃣ Pipe\n6️⃣ Wall\n7️⃣ Outside\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Under Sink", next: "leak.q2", saveValue: "Under Sink" },
       { label: "Ceiling", next: "leak.q2", saveValue: "Ceiling" },
@@ -76,7 +76,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "leak.q2": {
     id: "leak.q2",
-    message: "How bad is the leak right now?\n\n1️⃣ Dripping\n2️⃣ Steady Leak\n3️⃣ Actively Flooding\n\nReply with a number.",
+    message: "A few more details:\n\nHow bad is the leak right now?\n\n1️⃣ Dripping\n2️⃣ Steady Leak\n3️⃣ Actively Flooding\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Dripping", next: "leak.q3", saveValue: "Dripping" },
       { label: "Steady", next: "leak.q3", saveValue: "Steady Leak" },
@@ -89,7 +89,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "leak.q3": {
     id: "leak.q3",
-    message: "How long has this been going on?\n\n1️⃣ Just Started\n2️⃣ Few Hours\n3️⃣ More Than a Day\n\nReply with a number.",
+    message: "A few more details:\n\nHow long has this been going on?\n\n1️⃣ Just Started\n2️⃣ Few Hours\n3️⃣ More Than a Day\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Just Started", next: "leak.q4", saveValue: "Just Started" },
       { label: "Few Hours", next: "leak.q4", saveValue: "Few Hours" },
@@ -102,7 +102,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "leak.q4": {
     id: "leak.q4",
-    message: "Have you been able to shut off the water?\n\n1️⃣ Yes\n2️⃣ No\n3️⃣ Not Sure How\n\nReply with a number.",
+    message: "Next question:\n\nHave you been able to shut off the water?\n\n1️⃣ Yes\n2️⃣ No\n3️⃣ Not Sure How\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Yes", next: "leak.q5", saveValue: "Yes — shut off" },
       { label: "No", next: "leak.q5", saveValue: "No" },
@@ -122,7 +122,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "leak.q5": {
     id: "leak.q5",
-    message: "What area of town are you in? 📍",
+    message: "A few more details:\n\nWhat area of town are you in? 📍",
     options: [],
     next: "leak.q6",
     saveField: "area",
@@ -131,7 +131,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "leak.q6": {
     id: "leak.q6",
-    message: "And who am I speaking with? 📝",
+    message: "One more detail:\n\nAnd who am I speaking with? 📝",
     options: [],
     next: "leak.q7",
     saveField: "customerName",
@@ -141,7 +141,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   "leak.q7": {
     id: "leak.q7",
     message:
-      "If you can, snap a quick photo — it helps the tech know what to bring. 📸\n\nReply SKIP if you can't send a photo.",
+      "Almost done.\n\nIf you can, snap a quick photo — it helps the tech know what to bring. 📸\n\nReply SKIP if you can't send a photo.",
     options: [],
     next: COMPLETE_NODE,
     saveField: "photoUrl",
@@ -154,7 +154,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   // ============================================================
   "drain.q1": {
     id: "drain.q1",
-    message: "Which drain is backing up?\n\n1️⃣ Kitchen Sink\n2️⃣ Bathroom Sink\n3️⃣ Shower\n4️⃣ Tub\n5️⃣ Toilet\n6️⃣ Main Drain\n\nReply with a number.",
+    message: "Thanks. A couple more questions so we can better understand the issue.\n\nWhich drain is backing up?\n\n1️⃣ Kitchen Sink\n2️⃣ Bathroom Sink\n3️⃣ Shower\n4️⃣ Tub\n5️⃣ Toilet\n6️⃣ Main Drain\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Kitchen Sink", next: "drain.q2", saveValue: "Kitchen Sink" },
       { label: "Bathroom Sink", next: "drain.q2", saveValue: "Bathroom Sink" },
@@ -170,7 +170,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "drain.q2": {
     id: "drain.q2",
-    message: "Is it draining slowly or completely blocked?\n\n1️⃣ Slow Drain\n2️⃣ Fully Blocked\n3️⃣ Overflowing\n\nReply with a number.",
+    message: "A few more details:\n\nIs it draining slowly or completely blocked?\n\n1️⃣ Slow Drain\n2️⃣ Fully Blocked\n3️⃣ Overflowing\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Slow", next: "drain.q3", saveValue: "Slow Drain" },
       { label: "Blocked", next: "drain.q3", saveValue: "Fully Blocked" },
@@ -183,7 +183,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "drain.q3": {
     id: "drain.q3",
-    message: "Have you tried anything to clear it?\n\n1️⃣ Plunger\n2️⃣ Drain Cleaner\n3️⃣ Snake\n4️⃣ Nothing Yet\n\nReply with a number.",
+    message: "A few more details:\n\nHave you tried anything to clear it?\n\n1️⃣ Plunger\n2️⃣ Drain Cleaner\n3️⃣ Snake\n4️⃣ Nothing Yet\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Plunger", next: "drain.q4", saveValue: "Plunger" },
       { label: "Drain Cleaner", next: "drain.q4", saveValue: "Drain Cleaner" },
@@ -197,7 +197,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "drain.q4": {
     id: "drain.q4",
-    message: "Is this affecting multiple drains?\n\n1️⃣ Yes\n2️⃣ No\n\nReply with a number.",
+    message: "Next question:\n\nIs this affecting multiple drains?\n\n1️⃣ Yes\n2️⃣ No\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       {
         label: "Yes",
@@ -215,7 +215,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "drain.q5": {
     id: "drain.q5",
-    message: "What area of town are you in? 📍",
+    message: "A few more details:\n\nWhat area of town are you in? 📍",
     options: [],
     next: "drain.q6",
     saveField: "area",
@@ -224,7 +224,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "drain.q6": {
     id: "drain.q6",
-    message: "And who am I speaking with? 📝",
+    message: "One more detail:\n\nAnd who am I speaking with? 📝",
     options: [],
     next: "drain.q7",
     saveField: "customerName",
@@ -234,7 +234,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   "drain.q7": {
     id: "drain.q7",
     message:
-      "If you can, send a photo of the drain or backup. 📸\n\nReply SKIP if you can't send a photo.",
+      "Almost done.\n\nIf you can, send a photo of the drain or backup. 📸\n\nReply SKIP if you can't send a photo.",
     options: [],
     next: COMPLETE_NODE,
     saveField: "photoUrl",
@@ -247,7 +247,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   // ============================================================
   "hotwater.q1": {
     id: "hotwater.q1",
-    message: "What kind of water heater do you have?\n\n1️⃣ Tank\n2️⃣ Tankless\n3️⃣ Not Sure\n\nReply with a number.",
+    message: "Thanks. A couple more questions so we can better understand the issue.\n\nWhat kind of water heater do you have?\n\n1️⃣ Tank\n2️⃣ Tankless\n3️⃣ Not Sure\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Tank", next: "hotwater.q2", saveValue: "Tank" },
       { label: "Tankless", next: "hotwater.q2", saveValue: "Tankless" },
@@ -260,7 +260,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "hotwater.q2": {
     id: "hotwater.q2",
-    message: "What's going on with it?\n\n1️⃣ No Hot Water\n2️⃣ Water Too Hot\n3️⃣ Fluctuating Temperature\n4️⃣ Strange Noises\n\nReply with a number.",
+    message: "A few more details:\n\nWhat's going on with it?\n\n1️⃣ No Hot Water\n2️⃣ Water Too Hot\n3️⃣ Fluctuating Temperature\n4️⃣ Strange Noises\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "No Hot Water", next: "hotwater.q3", saveValue: "No Hot Water" },
       { label: "Too Hot", next: "hotwater.q3", saveValue: "Water Too Hot" },
@@ -274,7 +274,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "hotwater.q3": {
     id: "hotwater.q3",
-    message: "Did it stop working suddenly?\n\n1️⃣ Yes\n2️⃣ Gradually got worse\n\nReply with a number.",
+    message: "A few more details:\n\nDid it stop working suddenly?\n\n1️⃣ Yes\n2️⃣ Gradually got worse\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Yes", next: "hotwater.q4", saveValue: "Sudden failure" },
       { label: "Gradually", next: "hotwater.q4", saveValue: "Gradual decline" },
@@ -286,7 +286,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "hotwater.q4": {
     id: "hotwater.q4",
-    message: "Do you see any water pooling around the unit?\n\n1️⃣ Yes\n2️⃣ No\n3️⃣ Not Sure\n\nReply with a number.",
+    message: "Next question:\n\nDo you see any water pooling around the unit?\n\n1️⃣ Yes\n2️⃣ No\n3️⃣ Not Sure\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Yes", next: "hotwater.q5", urgencyScore: 25, saveValue: "Leak around tank" },
       { label: "No", next: "hotwater.q5", saveValue: "No leak" },
@@ -299,7 +299,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "hotwater.q5": {
     id: "hotwater.q5",
-    message: "What area of town are you in? 📍",
+    message: "A few more details:\n\nWhat area of town are you in? 📍",
     options: [],
     next: "hotwater.q6",
     saveField: "area",
@@ -308,7 +308,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "hotwater.q6": {
     id: "hotwater.q6",
-    message: "And who am I speaking with? 📝",
+    message: "Almost done.\n\nAnd who am I speaking with? 📝",
     options: [],
     next: COMPLETE_NODE,
     saveField: "customerName",
@@ -320,7 +320,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   // ============================================================
   "toilet.q1": {
     id: "toilet.q1",
-    message: "What's the toilet doing?\n\n1️⃣ Overflowing\n2️⃣ Won't Flush\n3️⃣ Constant Running\n4️⃣ Leak Around Base\n\nReply with a number.",
+    message: "Thanks. A couple more questions so we can better understand the issue.\n\nWhat's the toilet doing?\n\n1️⃣ Overflowing\n2️⃣ Won't Flush\n3️⃣ Constant Running\n4️⃣ Leak Around Base\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Overflowing", next: "toilet.q2", urgencyScore: 35, saveValue: "Overflowing" },
       { label: "Won't Flush", next: "toilet.q2", saveValue: "Won't Flush" },
@@ -334,7 +334,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "toilet.q2": {
     id: "toilet.q2",
-    message: "Is this the only toilet in the house?\n\n1️⃣ Yes\n2️⃣ No\n\nReply with a number.",
+    message: "A few more details:\n\nIs this the only toilet in the house?\n\n1️⃣ Yes\n2️⃣ No\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Yes", next: "toilet.q3", urgencyScore: 25, saveValue: "Only toilet" },
       { label: "No", next: "toilet.q3", saveValue: "Has other toilets" },
@@ -346,7 +346,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "toilet.q3": {
     id: "toilet.q3",
-    message: "What area of town are you in? 📍",
+    message: "One more detail:\n\nWhat area of town are you in? 📍",
     options: [],
     next: "toilet.q4",
     saveField: "area",
@@ -355,7 +355,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "toilet.q4": {
     id: "toilet.q4",
-    message: "And who am I speaking with? 📝",
+    message: "Almost done.\n\nAnd who am I speaking with? 📝",
     options: [],
     next: COMPLETE_NODE,
     saveField: "customerName",
@@ -367,7 +367,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   // ============================================================
   "emergency.q1": {
     id: "emergency.q1",
-    message: "Is water actively flooding right now?\n\n1️⃣ Yes\n2️⃣ No\n\nReply with a number.",
+    message: "Thanks. A couple more questions so we can better understand the issue.\n\nIs water actively flooding right now?\n\n1️⃣ Yes\n2️⃣ No\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       {
         label: "Yes",
@@ -386,7 +386,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "emergency.q2": {
     id: "emergency.q2",
-    message: "Is the water anywhere near outlets or appliances?\n\n1️⃣ Yes\n2️⃣ No\n\nReply with a number.",
+    message: "A few more details:\n\nIs the water anywhere near outlets or appliances?\n\n1️⃣ Yes\n2️⃣ No\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
     options: [
       { label: "Yes", next: "emergency.q3", urgencyScore: 40, saveValue: "Water near electricity" },
       { label: "No", next: "emergency.q3", saveValue: "No electrical hazard" },
@@ -398,7 +398,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "emergency.q3": {
     id: "emergency.q3",
-    message: "What area of town are you in? 📍",
+    message: "One more detail:\n\nWhat area of town are you in? 📍",
     options: [],
     next: "emergency.q4",
     saveField: "area",
@@ -407,7 +407,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "emergency.q4": {
     id: "emergency.q4",
-    message: "And who am I speaking with? 📝",
+    message: "Almost done.\n\nAnd who am I speaking with? 📝",
     options: [],
     next: COMPLETE_NODE,
     saveField: "customerName",
@@ -420,7 +420,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
   "other.q1": {
     id: "other.q1",
     message:
-      "No worries — just tell us what's going on in a few words. 💬",
+      "Thanks. A couple more questions so we can better understand the issue.\n\nNo worries — just tell us what's going on in a few words. 💬",
     options: [],
     next: "other.q2",
     saveField: "symptoms",
@@ -429,7 +429,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "other.q2": {
     id: "other.q2",
-    message: "What area of town are you in? 📍",
+    message: "One more detail:\n\nWhat area of town are you in? 📍",
     options: [],
     next: "other.q3",
     saveField: "area",
@@ -438,7 +438,7 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "other.q3": {
     id: "other.q3",
-    message: "And who am I speaking with? 📝",
+    message: "Almost done.\n\nAnd who am I speaking with? 📝",
     options: [],
     next: COMPLETE_NODE,
     saveField: "customerName",

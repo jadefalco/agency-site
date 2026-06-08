@@ -7,7 +7,7 @@ const twilioClient = new Twilio(
 );
 
 // Use your production URL for the audio file
-const AUDIO_URL = "https://truenorthwebsites.com/audio/missed-call.mp3";
+const AUDIO_URL = "https://truenorthwebsites.com/audio/plumber-greeting.mp3";
 
 export async function POST(request: Request) {
   try {
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     if (from && to) {
       await twilioClient.messages.create({
-        body: "Sorry we missed your call! What do you need help with?\n\n1. Leak\n2. Drain\n3. Clog\n4. No Hot Water\n5. Toilet Issue\n6. Emergency\n7. Other\n\nReply with a number.",
+        body: "Sorry we missed your call! We'll ask a few quick questions so we can understand your issue and get back to you faster.\n\nWhat do you need help with?\n\n1. Leak\n2. Drain\n3. Clog\n4. No Hot Water\n5. Toilet Issue\n6. Emergency\n7. Other\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
         from: to,
         to: from,
       });
