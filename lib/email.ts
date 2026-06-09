@@ -72,7 +72,7 @@ function buildQAPairs(
   messages: { direction: string; body: string; mediaUrl?: string | null }[],
   issueType: string | null
 ) {
-  const pairs: { question: string; answer: string }[] = [];
+  const pairs: { question: string; answer: string; nodeId: string }[] = [];
   let currentNode: ReturnType<typeof findNodeByMessage> | null = null;
   let startIndex = 0;
 
@@ -93,6 +93,7 @@ function buildQAPairs(
       pairs.push({
         question: cleanQuestionText(greetingNode.message),
         answer,
+        nodeId: "greeting",
       });
     }
     startIndex = 1;
@@ -131,9 +132,10 @@ function buildQAPairs(
           answer = msg.body.trim();
         }
       }
-      pairs.push({
+          pairs.push({
         question: cleanQuestionText(currentNode.node.message),
         answer,
+        nodeId: currentNode.id,
       });
       currentNode = null;
     }
@@ -237,14 +239,40 @@ export async function sendLeadNotification(lead: {
 
   const subject = `${bannerEmoji} ${bannerText} — ${lead.issueType || "New Lead"} from ${lead.customerName || "Unknown"}`;
 
+  const SUMMARY_LABEL_MAP: Record<string, string> = {
+    "leak.q1": "Leak Source",
+    "leak.q2": "Severity",
+    "leak.q3": "Duration",
+    "leak.q4": "Water Shut Off?",
+    "drain.q1": "Drain Type",
+    "drain.q2": "Severity",
+    "drain.q3": "Attempted Fix",
+    "drain.q4": "Multiple Drains?",
+    "hotwater.q1": "Water Heater Type",
+    "hotwater.q2": "Water Heater Symptom",
+    "hotwater.q3": "Duration",
+    "hotwater.q4": "Visible Issue",
+    "toilet.q1": "Toilet Issue",
+    "toilet.q2": "Only Toilet?",
+    "emergency.q1": "Active Flooding?",
+    "emergency.q2": "Water Near Electricity?",
+    "other.q1": "Description",
+  };
+
+  /* -------- conversation Q/A (used for both summary & details) -------- */
+  const qaPairs = buildQAPairs(lead.messages, lead.issueType);
+
   /* -------- dispatch summary fields -------- */
   const summaryRows: { label: string; value: string }[] = [];
   if (lead.area) summaryRows.push({ label: "Location", value: lead.area });
   if (lead.issueType) summaryRows.push({ label: "Problem", value: lead.issueType });
-  if (lead.symptoms) summaryRows.push({ label: "Leak Source", value: lead.symptoms });
-  if (lead.urgency) summaryRows.push({ label: "Severity", value: lead.urgency });
-  if (lead.timeframe) summaryRows.push({ label: "Duration", value: lead.timeframe });
-  if (lead.attemptedFix) summaryRows.push({ label: "Water Shut Off?", value: lead.attemptedFix });
+
+  for (const qa of qaPairs) {
+    const label = SUMMARY_LABEL_MAP[qa.nodeId];
+    if (label) {
+      summaryRows.push({ label, value: qa.answer });
+    }
+  }
 
   /* -------- photo -------- */
   const proxiedPhotoUrl =
@@ -262,8 +290,6 @@ export async function sendLeadNotification(lead: {
     </div>`
     : "";
 
-  /* -------- conversation Q/A -------- */
-  const qaPairs = buildQAPairs(lead.messages, lead.issueType);
   const qaBlock = qaPairs.length
     ? `<div style="margin-top: 24px;">
       <p style="margin: 0 0 12px; font-size: 14px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 0.05em;">Conversation Details</p>
