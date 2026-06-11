@@ -150,10 +150,9 @@ function buildQAPairs(
 
 async function sendPlumberSms(lead: {
   customerName: string | null;
+  phone: string;
   area: string | null;
   urgencyScore: number | null;
-  urgency: string | null;
-  issueType: string | null;
 }) {
   if (!twilioClient || !PLUMBER_NOTIFICATION_NUMBER || !TWILIO_PHONE_NUMBER) {
     console.warn("⚠️ Skipping plumber SMS — missing Twilio config");
@@ -164,16 +163,16 @@ async function sendPlumberSms(lead: {
   const area = lead.area || "your";
   const score = lead.urgencyScore || 0;
 
-  let body: string;
+  let banner: string;
   if (score >= 50) {
-    const detail = lead.urgency || "Emergency";
-    body = `🚨 URGENT: ${detail} reported by ${name} in ${area} area. Check your email immediately.`;
+    banner = "🚨 ACTIVE FLOODING";
   } else if (score >= 25) {
-    const detail = lead.issueType || "Plumbing issue";
-    body = `⚠️ URGENT: ${detail} from ${name} in ${area} area. Check your email for details.`;
+    banner = "⚠️ URGENT PLUMBING ISSUE";
   } else {
-    body = `📋 New plumbing lead from ${name} in ${area} area. Check your email for details.`;
+    banner = "📋 NEW SERVICE REQUEST";
   }
+
+  const body = `${banner}\n\n${name}\n${lead.phone}\n\n${area}\n\nCheck email for full details and photos.`;
 
   try {
     const result = await twilioClient.messages.create({

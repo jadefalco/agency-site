@@ -7,19 +7,16 @@
     <meta name="description" content="Meet the Kelowna web designer behind TrueNorth Websites. Helping Okanagan local businesses with web design, SEO, and AI-powered lead recovery.">
     <link rel="canonical" href="https://truenorthwebsites.com/about.html">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="About TrueNorth Websites | Kelowna Web Design & Lead Recovery">
     <meta property="og:description" content="Meet the Kelowna web designer helping Okanagan local businesses stand out online.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://truenorthwebsites.com/about.html">
     <meta property="og:locale" content="en_CA">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="About TrueNorth Websites | Kelowna Web Design & Lead Recovery">
     <meta name="twitter:description" content="Meet the Kelowna web designer helping Okanagan local businesses stand out online.">
 
-    <!-- Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -68,7 +65,6 @@
             color: #1f2937;
         }
         
-        /* Northern Lights Background */
         .aurora-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
             position: relative;
@@ -99,19 +95,12 @@
             z-index: 10;
         }
         
-        /* Glass Card Effect */
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .glass-nav {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .gradient-text {
@@ -121,37 +110,217 @@
             background-clip: text;
         }
         
-        /* Reduced spacing */
         .compact-section {
             padding-top: 3rem;
             padding-bottom: 3rem;
         }
+
+                /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            transition: background 0.35s ease, box-shadow 0.35s ease;
+            background: transparent;
+        }
+        nav .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+        nav .logo img {
+            height: 42px;
+            width: auto;
+            display: block;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1);
+        }
+        nav.scrolled .logo img {
+            filter: none;
+        }
+        nav .logo span {
+            color: rgba(255,255,255,0.9);
+        }
+        nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: nowrap;
+        }
+        nav .nav-links a {
+            color: rgba(255,255,255,0.9) !important;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        nav .nav-links a:hover {
+            color: #67e8f9 !important;
+        }
+        nav .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.25rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #ffffff;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        nav .nav-cta:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+        }
+        nav .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #ffffff;
+            position: relative;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            z-index: 101;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
+        }
+        nav .mobile-menu-btn svg {
+            display: block;
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        nav #mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; right: 0;
+            background: rgba(15,23,42,0.98);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 999;
+            min-width: 200px;
+        }
+        nav #mobile-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        nav.scrolled {
+            background: rgba(255,255,255,0.95) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        nav.scrolled .nav-links a,
+        nav.scrolled .logo span,
+        nav.scrolled .logo div,
+        nav.scrolled .mobile-menu-btn {
+            color: #0f172a !important;
+        }
+        nav.scrolled .nav-links a:hover {
+            color: #0ea5e9 !important;
+        }
+        nav.scrolled .nav-cta {
+            background: linear-gradient(135deg, #0ea5e9, #14b8a6) !important;
+            border-color: transparent !important;
+            color: #ffffff !important;
+        }
+        nav.scrolled #mobile-menu {
+            background: rgba(255,255,255,0.98) !important;
+            border-top: 1px solid rgba(0,0,0,0.05) !important;
+        }
+        nav.scrolled #mobile-menu a {
+            color: #0f172a !important;
+        }
+        nav.scrolled .mobile-menu-btn svg {
+            stroke: #0f172a !important;
+        }
+        @media (max-width: 1024px) {
+            nav .nav-links { gap: 1.25rem; }
+            nav .nav-links a { font-size: 0.85rem; }
+        }
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            nav .mobile-menu-btn { display: flex; }
+            nav .nav-cta.desktop-only { display: none; }
+            nav .nav-container { padding: 1rem 1.5rem; }
+        }
+        
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
-                    <img src="truenorth-logo.png" class="w-40 h-auto rounded-full" alt="Logo">
-                </div>
-                
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="index.html#portfolio" class="text-slate-300 hover:text-white font-medium transition-colors">Work</a>
-                    <a href="/missed-call-recovery/" class="text-slate-300 hover:text-white font-medium transition-colors">Lead Recovery</a>
-                    <a href="index.html#services" class="text-slate-300 hover:text-white font-medium transition-colors">Services</a>
-                    <a href="index.html#pricing" class="text-slate-300 hover:text-white font-medium transition-colors">Pricing</a>
-                    <a href="index.html#process" class="text-slate-300 hover:text-white font-medium transition-colors">Process</a>
-                    <a href="about.html" class="text-cyan-400 font-medium">About</a>
-                    <a href="index.html#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold shadow-lg hover:shadow-cyan-500/25 transition-all">Free Review</a>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                <img src="/images/compass-icon.png" alt="TrueNorth Logo">
+                <div style="display:flex; flex-direction:column; justify-content:center;">
+                    <span style="font-family: 'Playfair Display', serif; font-size:1.6rem; line-height:1.05;">
+                        TrueNorth
+                    </span>
+                    <span style="font-size:0.75rem; font-weight:600; letter-spacing:1.2px; margin-top:4px; opacity:0.75;">
+                        WEBSITES
+                    </span>
                 </div>
             </div>
+            <div class="nav-links">
+                <a href="/#work">Work</a>
+                <a href="/kelowna-web-design/">Web Design</a>
+                <a href="/missed-call-recovery/">Lead Recovery</a>
+                <a href="/#why-fail">Why Most Fail</a>
+                <a href="/#process">Process</a>
+                <a href="about.html">About</a>
+                <a href="/#contact">Contact</a>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+                <a href="/#contact" class="nav-cta desktop-only">Get Free Mockup</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg class="icon-hamburger" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <svg class="icon-compass" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0; transform:rotate(-90deg) scale(0.6);"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu">
+            <a href="/#work">Work</a>
+            <a href="/kelowna-web-design/">Web Design</a>
+            <a href="/missed-call-recovery/">Lead Recovery</a>
+            <a href="/#why-fail">Why Most Fail</a>
+            <a href="/#process">Process</a>
+            <a href="about.html">About</a>
+            <a href="/#contact">Contact</a>
+            <a href="/#contact" class="nav-cta" style="text-align:center; margin-top:1rem;">Get Free Mockup</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="aurora-bg pt-32 pb-16">
         <div class="aurora-content max-w-5xl mx-auto px-6">
             <div class="text-center mb-12">
@@ -166,38 +335,30 @@
         </div>
     </section>
 
-    <!-- Profile Card - Overlapping Hero -->
     <section class="aurora-bg compact-section -mt-8 pb-20">
         <div class="aurora-content max-w-4xl mx-auto px-6">
             <div class="glass-card p-8 md:p-12">
                 <div class="flex flex-col md:flex-row gap-8 items-start">
-                    
-                    <!-- Photo -->
                     <div class="flex-shrink-0 mx-auto md:mx-0">
                         <img src="Justin photo.JPEG" alt="Justin - True North Websites" class="w-32 h-32 rounded-2xl shadow-xl object-cover ring-4 ring-cyan-500/20">
                     </div>
-                    
-                    <!-- Text -->
                     <div class="space-y-4 text-slate-700 leading-relaxed">
                         <p class="text-lg text-slate-900 font-semibold border-l-4 border-cyan-500 pl-4">
                             Most businesses don't fail because they have a bad service.
                             They fail because people simply don't notice them.
                         </p>
-                        
                         <p>
                             I learned that lesson early. Growing up, I watched my dad start a
                             business with less than $1,000 and grow it into a million-dollar
                             company. The secret wasn't complicated — he understood the power
                             of marketing and the importance of standing out.
                         </p>
-                        
                         <p>
                             Later, I married into another entrepreneurial family whose products
                             are sold across Canada. Being surrounded by successful business
                             owners showed me how much the right message, presentation,
                             and customer experience matter.
                         </p>
-                        
                         <p>
                             Today, I'm pursuing my <strong>Master's of Data Analytics</strong>, 
                             which has sharpened my natural tendency to analyze and optimize. 
@@ -206,13 +367,11 @@
                             to click away. The patterns are clear — and often surprisingly simple 
                             to fix.
                         </p>
-                        
                         <p>
                             Over time I realized something important: your website is often the
                             <strong>first impression</strong> people get of your business.
                             If it looks outdated, confusing, or generic, customers move on.
                         </p>
-                        
                         <p class="text-slate-900 font-medium">
                             That's why I started <span class="text-cyan-600 font-bold">True North Websites</span> —
                             to help businesses build modern websites that actually attract
@@ -224,16 +383,12 @@
         </div>
     </section>
 
-    <!-- What I Focus On - Darker Section -->
     <section class="bg-slate-900 compact-section">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-10">
                 <p class="uppercase tracking-widest text-sm text-cyan-400 mb-3">My Approach</p>
-                <h2 class="text-4xl font-bold text-white">
-                    What I Focus On
-                </h2>
+                <h2 class="text-4xl font-bold text-white">What I Focus On</h2>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="glass-card p-6 text-center">
                     <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600 mx-auto mb-4">
@@ -245,7 +400,6 @@
                         and make a strong first impression.
                     </p>
                 </div>
-                
                 <div class="glass-card p-6 text-center">
                     <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center text-teal-600 mx-auto mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -256,7 +410,6 @@
                         contacting you or requesting a quote.
                     </p>
                 </div>
-                
                 <div class="glass-card p-6 text-center">
                     <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mx-auto mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -271,7 +424,6 @@
         </div>
     </section>
 
-    <!-- CTA - Gradient -->
     <section class="compact-section bg-gradient-to-br from-cyan-600 to-teal-700">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Stand Out?</h2>
@@ -280,35 +432,106 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-10">
+        <footer class="bg-slate-950 border-t border-slate-800 py-10">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12 mb-8">
                 <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="truenorth-logo.png" class="w-32 h-auto rounded-full opacity-80" alt="TrueNorth Logo">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="/images/compass-icon.png" alt="TrueNorth Logo" class="h-[42px] w-auto" style="filter: brightness(0) invert(1);">
+                        <div style="display:flex; flex-direction:column; justify-content:center;">
+                            <span style="font-family: 'Playfair Display', serif; font-size:1.8rem; line-height:1.05; color: #ffffff;">
+                                TrueNorth
+                            </span>
+                            <span style="font-size:0.75rem; font-weight:600; letter-spacing:1.2px; margin-top:4px; color: rgba(255,255,255,0.75);">
+                                WEBSITES
+                            </span>
+                        </div>
                     </div>
-                    <p class="text-slate-400 text-sm">Kelowna web design, SEO, and lead recovery for Okanagan local businesses.</p>
+                    <p class="text-white/45 text-sm leading-relaxed max-w-xs">
+                        Kelowna web design, SEO, and lead recovery for Okanagan local businesses.
+                    </p>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-slate-400 hover:text-cyan-400 transition-colors">Home</a></li>
-                        <li><a href="/missed-call-recovery/" class="text-slate-400 hover:text-cyan-400 transition-colors">Missed Call Recovery</a></li>
-                        <li><a href="index.html#work" class="text-slate-400 hover:text-cyan-400 transition-colors">Our Work</a></li>
-                        <li><a href="index.html#contact" class="text-slate-400 hover:text-cyan-400 transition-colors">Contact</a></li>
+                    <h4 class="text-white text-sm font-semibold mb-3">Quick Links</h4>
+                    <ul class="space-y-1.5 text-white/45 text-sm">
+                        <li><a href="index.html" class="hover:text-brand-teal transition-colors duration-200">Home</a></li>
+                        <li><a href="/missed-call-recovery/" class="hover:text-brand-teal transition-colors duration-200">Missed Call Recovery</a></li>
+                        <li><a href="index.html#work" class="hover:text-brand-teal transition-colors duration-200">Our Work</a></li>
+                        <li><a href="index.html#contact" class="hover:text-brand-teal transition-colors duration-200">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Service Areas</h4>
-                    <p class="text-slate-400 text-sm">Kelowna, West Kelowna, Vernon, Penticton, Lake Country, Peachland</p>
+                    <h4 class="text-white text-sm font-semibold mb-3">Service Areas</h4>
+                    <p class="text-white/45 text-sm">Kelowna, West Kelowna, Vernon, Penticton, Lake Country, Peachland</p>
                 </div>
             </div>
-            <div class="border-t border-slate-800 pt-6 text-center">
-                <p class="text-slate-500 text-sm">&copy; 2026 TrueNorth Websites, a division of Mountain Scale Group &bull; Kelowna, BC &bull; All Rights Reserved</p>
+            <div class="mt-10 pt-6 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p class="text-white/35 text-xs">
+                    &copy; 2026 TrueNorth Websites, a division of Mountain Scale Group. All rights reserved.
+                </p>
+                <div class="flex items-center gap-5 text-xs text-white/35">
+                    <a href="#" class="hover:text-white/60 transition-colors duration-200">Privacy</a>
+                    <a href="#" class="hover:text-white/60 transition-colors duration-200">Terms</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        const nav = document.querySelector('nav');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        mobileBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.style.display = 'flex';
+                animateToX();
+            } else {
+                mobileMenu.style.display = 'none';
+                animateToHamburger();
+            }
+        });
+
+        function animateToX() {
+            const hamburger = mobileBtn.querySelector('.icon-hamburger');
+            const compass = mobileBtn.querySelector('.icon-compass');
+            if (hamburger) { hamburger.style.opacity = '0'; hamburger.style.transform = 'rotate(90deg) scale(0.6)'; }
+            if (compass) { compass.style.opacity = '1'; compass.style.transform = 'rotate(0deg) scale(1)'; }
+        }
+
+        function animateToHamburger() {
+            const hamburger = mobileBtn.querySelector('.icon-hamburger');
+            const compass = mobileBtn.querySelector('.icon-compass');
+            if (hamburger) { hamburger.style.opacity = '1'; hamburger.style.transform = 'rotate(0deg) scale(1)'; }
+            if (compass) { compass.style.opacity = '0'; compass.style.transform = 'rotate(-90deg) scale(0.6)'; }
+        }
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+                isMenuOpen = false;
+                animateToHamburger();
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && mobileMenu.style.display === 'flex') {
+                mobileMenu.style.display = 'none';
+                isMenuOpen = false;
+                animateToHamburger();
+            }
+        });
+    </script>
 
 </body>
 </html>

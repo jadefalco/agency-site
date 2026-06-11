@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Footer from "./sections/Footer";
 
 export const metadata: Metadata = {
   title: "TrueNorth Websites | Kelowna Web Design, SEO & Lead Recovery | Okanagan BC",
@@ -89,6 +90,7 @@ export default function HomePage() {
     ` }}
       />
       <div dangerouslySetInnerHTML={{ __html: HOME_BODY_HTML }} />
+      <Footer />
       <script dangerouslySetInnerHTML={{ __html: HOME_SCRIPT }} />
       <a href="#contact" className="mobile-sticky-cta">Get Free Mockup</a>
     </>
@@ -126,6 +128,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <!-- DESKTOP LINKS -->
         <div class="nav-links">
             <a href="#work">Work</a>
+            <a href="/kelowna-web-design/">Web Design</a>
             <a href="/missed-call-recovery/">Lead Recovery</a>
             <a href="#why-fail">Why Most Fail</a>
             <a href="#process">Process</a>
@@ -147,6 +150,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
     <!-- MOBILE MENU -->
     <div id="mobile-menu">
         <a href="#work">Work</a>
+        <a href="/kelowna-web-design/">Web Design</a>
         <a href="/missed-call-recovery/">Lead Recovery</a>
         <a href="#why-fail">Why Most Fail</a>
         <a href="#process">Process</a>
@@ -784,7 +788,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">LUXURY CONSTRUCTION • KELOWNA</p>
         <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Okanagan Inspired Construction</h3>
         <p style="color:#64748b; font-size:0.95rem;">Full custom build with before/after transformations, project galleries, and cinematic hero.</p>
-        <a href="https://okanagan-construction-2.vercel.app/" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Live Site →</a>
+        <a href="https://okanaganconstruction.ca" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">View Live Site →</a>
     </div>
 </div>
 
@@ -813,6 +817,48 @@ const HOME_BODY_HTML = `<!-- NAV -->
         </div>
     </div>
 </section>
+
+    <!-- PROUDLY LOCAL -->
+    <section id="local" style="background:#f8fafc; padding:6rem 0;">
+        <div class="container">
+            <div style="text-align:center; max-width:720px; margin:0 auto 4rem;">
+                <p style="color:#0ea5e9; font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:0.95rem;">PROUDLY LOCAL</p>
+                <h2 style="font-size:2.75rem; margin-bottom:1rem;">Built in the Okanagan. Helping Local Businesses Grow.</h2>
+                <p style="font-size:1.15rem; color:#64748b; line-height:1.7;">
+                    True North Websites is based right here in Kelowna. We work with businesses across the Okanagan — from West Kelowna and Lake Country to Vernon, Penticton, Peachland, and Summerland.
+                </p>
+                <p style="font-size:1.15rem; color:#64748b; line-height:1.7; margin-top:1rem;">
+                    We understand the local market because we live and work here too. Every site is built with your specific audience in mind, optimized for the searches your customers actually make. And while <strong>Kelowna web design</strong> is what we're known for, we happily serve businesses anywhere in Canada.
+                </p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-bottom:3rem;">
+                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🏔️</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Local Knowledge</h3>
+                    <p style="color:#475569;">We know the Okanagan. We understand the seasonal cycles, the local competition, and what customers in this region actually search for. That means your <strong>website design in Kelowna</strong> is optimized for real local intent — not generic templates.</p>
+                </div>
+                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🤝</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Personal Service</h3>
+                    <p style="color:#475569;">You work directly with the designer. No account managers, no ticket systems, no chasing someone in a different time zone. Just clear communication and fast turnaround.</p>
+                </div>
+                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🍁</div>
+                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Canada-Wide Reach</h3>
+                    <p style="color:#475569;">While <strong>Okanagan web design</strong> is our specialty, we work with businesses across Canada. The process is the same — understand your market, build a site that converts, and make sure you own every part of it.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; max-width:640px; margin:0 auto;">
+                <p style="font-size:1.15rem; color:#475569; line-height:1.7; margin-bottom:1.5rem;">
+                    Ready to work with a local team that actually understands your business?
+                </p>
+                <a href="#contact" class="btn-primary">Get Your Free Mockup →</a>
+            </div>
+        </div>
+    </section>
+
     <!-- PROCESS -->
     <section id="process" style="background:#0f172a; color:white; padding:6rem 0;">
         <div class="container">
@@ -945,7 +991,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
                             <span style="background:#14b8a6; color:white; padding:2px 12px; border-radius:9999px; font-size:0.8rem;">US</span>
                         </div>
                         <ul style="list-style:none;">
-                            <li style="margin-bottom:0.75rem;">✅ \$125/month, no big upfront cost</li>
+                            <li style="margin-bottom:0.75rem;">✅ \$149/month, no big upfront cost</li>
                             <li style="margin-bottom:0.75rem;">✅ Live in 2–3 weeks</li>
                             <li style="margin-bottom:0.75rem;">✅ You text the designer directly</li>
                             <li>✅ Updates included</li>
@@ -1033,7 +1079,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
                     🔥 Most popular for local businesses
                 </p>
 
-                <div class="price">\$125</div>
+                <div class="price">\$149</div>
                 <p class="price-sub">per month (12-month build, no large upfront cost)</p>
 
                 <p style="font-size:0.9rem; color:#64748b; margin-bottom:2rem;">
@@ -1122,49 +1168,6 @@ const HOME_BODY_HTML = `<!-- NAV -->
             </div>
         </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer style="background:#0f172a; color:#cbd5e1; padding:4rem 0 2rem;">
-        <div class="container">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:3rem;">
-                <div>
-                    <div style="color:white; margin-bottom:1rem; display:flex; align-items:center; gap:12px;">
-                        <img src="/images/compass-icon.png" 
-                             alt="TrueNorth Logo" 
-                             style="height:42px; width:auto;">
-                        <span style="font-family:'Playfair Display',serif; font-size:1.8rem;">TrueNorth</span>
-                    </div>
-                    <p style="max-width:280px; color:#cbd5e1;">
-                        Kelowna web designer helping Okanagan local businesses stand out online and get more customers.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 style="color:white; margin-bottom:1rem;">Quick Links</h4>
-                    <ul style="list-style:none; display:flex; flex-direction:column; gap:12px;">
-                        <li><a href="#work" style="color:#cbd5e1;">Demo Designs</a></li>
-                        <li><a href="/missed-call-recovery/" style="color:#cbd5e1;">Missed Call Recovery</a></li>
-                        <li><a href="#why-fail" style="color:#cbd5e1;">Why Most Sites Fail</a></li>
-                        <li><a href="#process" style="color:#cbd5e1;">Our Process</a></li>
-                        <li><a href="about.html" style="color:#cbd5e1;">About</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="color:white; margin-bottom:1rem;">Contact</h4>
-                    <p style="margin-bottom:0.5rem;">
-                        <a href="mailto:websitestruenorth@gmail.com" style="color:#67e8f9;">websitestruenorth@gmail.com</a>
-                    </p>
-                    <p style="margin-bottom:0.5rem;">Kelowna, BC</p>
-                    <p style="font-size:0.85rem; color:#94a3b8;">Serving Okanagan businesses in Kelowna, West Kelowna, Vernon, Penticton, Lake Country &amp; Peachland.</p>
-                </div>
-            </div>
-
-            <div style="border-top:1px solid #334155; margin-top:4rem; padding-top:2rem; text-align:center; font-size:0.9rem; opacity:0.7;">
-                © 2026 TrueNorth Websites, a division of Mountain Scale Group • Kelowna, British Columbia • All Rights Reserved
-            </div>
-        </div>
-    </footer>
 
     <!-- Lazy load image fade-in -->
     
