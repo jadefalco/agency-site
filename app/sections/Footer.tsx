@@ -60,6 +60,9 @@ export default function Footer() {
                 <a href="mailto:websitestruenorth@gmail.com" className="hover:text-[#67e8f9] transition-colors duration-200">
                   websitestruenorth@gmail.com
                 </a>
+                <a href="tel:2508591231" className="hover:text-[#67e8f9] transition-colors duration-200">
+                  (250) 859-1231
+                </a>
               </li>
               <li>Kelowna, BC</li>
             </ul>
