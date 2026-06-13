@@ -79,45 +79,12 @@ export const FLOW_NODES: Record<string, FlowNode> = {
     id: "leak.q2",
     message: "How bad is the leak?\n\n1 - Dripping\n2 - Steady\n3 - Flooding",
     options: [
-      { label: "Dripping", next: "leak.q3", saveValue: "Dripping" },
-      { label: "Steady", next: "leak.q3", saveValue: "Steady Leak" },
-      { label: "Flooding", next: "leak.q3", urgencyScore: 50, saveValue: "Actively Flooding" },
-    ],
-    next: "leak.q3",
-    saveField: "urgency",
-    fallbackAllowed: false,
-  },
-
-  "leak.q3": {
-    id: "leak.q3",
-    message: "How long has it been leaking?\n\n1 - Just Started\n2 - Few Hours\n3 - More Than a Day",
-    options: [
-      { label: "Just Started", next: "leak.q4", saveValue: "Just Started" },
-      { label: "Few Hours", next: "leak.q4", saveValue: "Few Hours" },
-      { label: "More Than a Day", next: "leak.q4", saveValue: "More Than a Day" },
-    ],
-    next: "leak.q4",
-    saveField: "timeframe",
-    fallbackAllowed: false,
-  },
-
-  "leak.q4": {
-    id: "leak.q4",
-    message: "Can you shut off the water?\n\n1 - Yes\n2 - No\n3 - Not Sure How",
-    options: [
-      { label: "Yes", next: "leak.q5", saveValue: "Yes — shut off" },
-      { label: "No", next: "leak.q5", saveValue: "No" },
-      {
-        label: "Not Sure How",
-        next: "leak.q5",
-        urgencyScore: 20,
-        saveValue: "Not Sure How",
-        immediateReply:
-          "A technician will call and walk you through it. 📞",
-      },
+      { label: "Dripping", next: "leak.q5", saveValue: "Dripping" },
+      { label: "Steady", next: "leak.q5", saveValue: "Steady Leak" },
+      { label: "Flooding", next: "leak.q5", urgencyScore: 50, saveValue: "Actively Flooding" },
     ],
     next: "leak.q5",
-    saveField: "attemptedFix",
+    saveField: "urgency",
     fallbackAllowed: false,
   },
 
@@ -173,44 +140,12 @@ export const FLOW_NODES: Record<string, FlowNode> = {
     id: "drain.q2",
     message: "How bad is the blockage?\n\n1 - Slow Drain\n2 - Fully Blocked\n3 - Overflowing",
     options: [
-      { label: "Slow", next: "drain.q3", saveValue: "Slow Drain" },
-      { label: "Blocked", next: "drain.q3", saveValue: "Fully Blocked" },
-      { label: "Overflowing", next: "drain.q3", urgencyScore: 30, saveValue: "Overflowing" },
-    ],
-    next: "drain.q3",
-    saveField: "urgency",
-    fallbackAllowed: false,
-  },
-
-  "drain.q3": {
-    id: "drain.q3",
-    message: "What have you tried?\n\n1 - Plunger\n2 - Drain Cleaner\n3 - Snake\n4 - Nothing Yet",
-    options: [
-      { label: "Plunger", next: "drain.q4", saveValue: "Plunger" },
-      { label: "Drain Cleaner", next: "drain.q4", saveValue: "Drain Cleaner" },
-      { label: "Snake", next: "drain.q4", saveValue: "Snake" },
-      { label: "Nothing Yet", next: "drain.q4", saveValue: "Nothing Yet" },
-    ],
-    next: "drain.q4",
-    saveField: "attemptedFix",
-    fallbackAllowed: false,
-  },
-
-  "drain.q4": {
-    id: "drain.q4",
-    message: "Is more than one drain affected?\n\n1 - Yes\n2 - No",
-    options: [
-      {
-        label: "Yes",
-        next: "drain.q5",
-        urgencyScore: 35,
-        saveValue: "Yes — multiple drains",
-        note: "Possible main line issue",
-      },
-      { label: "No", next: "drain.q5", saveValue: "No — single drain" },
+      { label: "Slow", next: "drain.q5", saveValue: "Slow Drain" },
+      { label: "Blocked", next: "drain.q5", saveValue: "Fully Blocked" },
+      { label: "Overflowing", next: "drain.q5", urgencyScore: 30, saveValue: "Overflowing" },
     ],
     next: "drain.q5",
-    saveField: "symptoms",
+    saveField: "urgency",
     fallbackAllowed: false,
   },
 
@@ -263,38 +198,13 @@ export const FLOW_NODES: Record<string, FlowNode> = {
     id: "hotwater.q2",
     message: "What's the problem?\n\n1 - No Hot Water\n2 - Too Hot\n3 - Fluctuating\n4 - Noises",
     options: [
-      { label: "No Hot Water", next: "hotwater.q3", saveValue: "No Hot Water" },
-      { label: "Too Hot", next: "hotwater.q3", saveValue: "Water Too Hot" },
-      { label: "Fluctuating", next: "hotwater.q3", saveValue: "Fluctuating Temperature" },
-      { label: "Noises", next: "hotwater.q3", saveValue: "Strange Noises" },
-    ],
-    next: "hotwater.q3",
-    saveField: "symptoms",
-    fallbackAllowed: false,
-  },
-
-  "hotwater.q3": {
-    id: "hotwater.q3",
-    message: "Did it stop suddenly?\n\n1 - Yes\n2 - Gradually",
-    options: [
-      { label: "Yes", next: "hotwater.q4", saveValue: "Sudden failure" },
-      { label: "Gradually", next: "hotwater.q4", saveValue: "Gradual decline" },
-    ],
-    next: "hotwater.q4",
-    saveField: "timeframe",
-    fallbackAllowed: false,
-  },
-
-  "hotwater.q4": {
-    id: "hotwater.q4",
-    message: "Any water around the unit?\n\n1 - Yes\n2 - No\n3 - Not Sure",
-    options: [
-      { label: "Yes", next: "hotwater.q5", urgencyScore: 25, saveValue: "Leak around tank" },
-      { label: "No", next: "hotwater.q5", saveValue: "No leak" },
-      { label: "Not Sure", next: "hotwater.q5", saveValue: "Not Sure" },
+      { label: "No Hot Water", next: "hotwater.q5", saveValue: "No Hot Water" },
+      { label: "Too Hot", next: "hotwater.q5", saveValue: "Water Too Hot" },
+      { label: "Fluctuating", next: "hotwater.q5", saveValue: "Fluctuating Temperature" },
+      { label: "Noises", next: "hotwater.q5", saveValue: "Strange Noises" },
     ],
     next: "hotwater.q5",
-    saveField: "attemptedFix",
+    saveField: "symptoms",
     fallbackAllowed: false,
   },
 
@@ -432,10 +342,10 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 // FINAL MESSAGES BY ISSUE TYPE
 // ============================================================
 export const FINAL_MESSAGES: Record<string, string> = {
-  Leak: "Thanks. A plumber will call shortly. 🔧",
-  "Drain / Clog": "Thanks. A technician will call shortly. 🔧",
-  "No Hot Water": "Thanks. A technician will call shortly. 🔧",
-  "Toilet Issue": "Thanks. A technician will call shortly. 🚽",
+  Leak: "Thanks. If safe, shut off the water to reduce damage. A technician will call shortly.",
+  "Drain / Clog": "Thanks. Avoid using the affected drain until a technician can assess it. A technician will call shortly.",
+  "No Hot Water": "Thanks. If you see leaking water, avoid using the unit until a technician can assess it. A technician will call shortly.",
+  "Toilet Issue": "Thanks. Avoid flushing again if the toilet is overflowing. A technician will call shortly.",
   Emergency:
     "Emergency received. A technician will call shortly.",
   Other: "Thanks. A technician will call shortly. 🔧",
