@@ -21,73 +21,87 @@ export const metadata: Metadata = {
   },
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.truenorthwebsites.com/#business",
+  name: "True North Websites",
+  description:
+    "Kelowna Web Design, SEO, and Lead Recovery for Local Businesses",
+  url: "https://www.truenorthwebsites.com",
+  telephone: "+1-250-575-3445",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kelowna",
+    addressRegion: "BC",
+    addressCountry: "CA",
+  },
+  areaServed: [
+    { "@type": "City", name: "Kelowna" },
+    { "@type": "City", name: "West Kelowna" },
+    { "@type": "City", name: "Vernon" },
+    { "@type": "City", name: "Penticton" },
+    { "@type": "City", name: "Lake Country" },
+    { "@type": "City", name: "Peachland" },
+  ],
+  sameAs: [],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "True North Websites",
+  url: "https://www.truenorthwebsites.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://www.truenorthwebsites.com/?s={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const serviceSchema = (name: string) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name,
+  provider: { "@id": "https://www.truenorthwebsites.com/#business" },
+  areaServed: { "@type": "Place", name: "Okanagan Valley" },
+});
+
 export default function HomePage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: `
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "LocalBusiness",
-          "name": "TrueNorth Websites",
-          "description": "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan local service businesses.",
-          "url": "https://truenorthwebsites.com",
-          "email": "websitestruenorth@gmail.com",
-          "areaServed": [
-            { "@type": "City", "name": "Kelowna" },
-            { "@type": "City", "name": "West Kelowna" },
-            { "@type": "City", "name": "Vernon" },
-            { "@type": "City", "name": "Penticton" },
-            { "@type": "City", "name": "Lake Country" },
-            { "@type": "City", "name": "Peachland" }
-          ],
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kelowna",
-            "addressRegion": "BC",
-            "addressCountry": "CA"
-          },
-          "sameAs": ["https://truenorthwebsites.com"]
-        },
-        {
-          "@type": "Organization",
-          "name": "TrueNorth Websites",
-          "url": "https://truenorthwebsites.com",
-          "logo": "https://truenorthwebsites.com/images/compass-icon.png"
-        },
-        {
-          "@type": "WebSite",
-          "name": "TrueNorth Websites",
-          "url": "https://truenorthwebsites.com"
-        },
-        {
-          "@type": "Service",
-          "name": "Web Design",
-          "description": "Custom high-converting website design for local businesses in Kelowna and the Okanagan.",
-          "provider": { "@type": "LocalBusiness", "name": "TrueNorth Websites" },
-          "areaServed": { "@type": "Place", "name": "Okanagan Valley" }
-        },
-        {
-          "@type": "Service",
-          "name": "Local SEO",
-          "description": "Local search optimization to help Okanagan businesses rank higher on Google and get found by nearby customers.",
-          "provider": { "@type": "LocalBusiness", "name": "TrueNorth Websites" },
-          "areaServed": { "@type": "Place", "name": "Okanagan Valley" }
-        },
-        {
-          "@type": "Service",
-          "name": "Missed Call Recovery",
-          "description": "AI-powered text-back system that instantly recovers missed calls and turns them into booked appointments for local trades businesses.",
-          "provider": { "@type": "LocalBusiness", "name": "TrueNorth Websites" },
-          "areaServed": { "@type": "Place", "name": "Okanagan Valley" },
-          "url": "https://truenorthwebsites.com/missed-call-recovery/"
-        }
-      ]
-    }
-    ` }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema("Web Design")),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema("SEO")),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema("Lead Recovery")),
+        }}
       />
       <div dangerouslySetInnerHTML={{ __html: HOME_BODY_HTML }} />
       <Footer />

@@ -14,6 +14,8 @@ model Lead {
   issueType            String?
   urgency              String?
   area                 String?
+  areaRaw              String?
+  areaMatched          String?
   symptoms             String?
   timeframe            String?
   attemptedFix         String?

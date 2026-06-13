@@ -38,7 +38,7 @@ function findNodeByMessage(messageBody: string) {
 }
 
 const TRANSITION_PHRASES = [
-  "Sorry we missed your call! We'll ask a few quick questions so we can understand your issue and get back to you faster.",
+  "We missed your call! We'll ask a few quick questions so we can understand your issue and get back to you faster.",
   "Thanks. A couple more questions so we can better understand the issue.",
   "A few more details:",
   "Next question:",
@@ -253,8 +253,8 @@ export async function sendLeadNotification(lead: {
     "hotwater.q4": "Visible Issue",
     "toilet.q1": "Toilet Issue",
     "toilet.q2": "Only Toilet?",
-    "emergency.q1": "Active Flooding?",
-    "emergency.q2": "Water Near Electricity?",
+    "emergency.area": "Location",
+    "emergency.name": "Customer Name",
     "other.q1": "Description",
   };
 

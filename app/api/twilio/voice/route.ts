@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     if (from && to) {
       await twilioClient.messages.create({
-        body: "Sorry we missed your call! We'll ask a few quick questions so we can understand your issue and get back to you faster.\n\nWhat do you need help with?\n\n1. Leak\n2. Drain\n3. Clog\n4. No Hot Water\n5. Toilet Issue\n6. Emergency\n7. Other\n\nPlease type the number on your keyboard that matches your answer, then press Send.",
+        body: "We missed your call! What do you need help with?\n\n1. EMERGENCY\n2. Leak\n3. Drain\n4. No Hot Water\n5. Toilet\n6. Other\n\nReply with a number.",
         from: to,
         to: from,
       });
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     // Fallback to Alice if audio fails
     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say voice="alice">Sorry we missed your call. Please text us or call back later.</Say>
+  <Say voice="alice">We missed your call. Please text us or call back later.</Say>
   <Hangup/>
 </Response>`;
     return new NextResponse(twiml, {
@@ -66,7 +66,7 @@ export async function GET() {
 
 //     if (from && to) {
 //       await twilioClient.messages.create({
-//         body: "Sorry we missed your call! What do you need help with?\n\n1. Leak\n2. Drain\n3. Clog\n4. No Hot Water\n5. Toilet Issue\n6. Emergency\n7. Other\n\nReply with a number.",
+//         body: "We missed your call! What do you need help with?\n\n1. Leak\n2. Drain\n3. Clog\n4. No Hot Water\n5. Toilet Issue\n6. Emergency\n7. Other\n\nReply with a number.",
 //         from: to,
 //         to: from,
 //       });
@@ -74,7 +74,7 @@ export async function GET() {
 
 //     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 // <Response>
-//   <Say voice="alice">Sorry we missed your call. We have sent you a text message to help right away.</Say>
+//   <Say voice="alice">We missed your call. We have sent you a text message to help right away.</Say>
 //   <Hangup/>
 // </Response>`;
 
@@ -85,7 +85,7 @@ export async function GET() {
 //     console.error("Voice webhook error:", error);
 //     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 // <Response>
-//   <Say voice="alice">Sorry we missed your call. Please text us or call back later.</Say>
+//   <Say voice="alice">We missed your call. Please text us or call back later.</Say>
 //   <Hangup/>
 // </Response>`;
 //     return new NextResponse(twiml, {

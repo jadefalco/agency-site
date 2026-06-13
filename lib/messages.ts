@@ -7,6 +7,7 @@ import {
   FINAL_MESSAGES,
   getNode,
   matchOption,
+  matchServiceArea,
   getUrgencyLevel,
   type FlowNode,
   type LeadUpdateFields,
@@ -72,7 +73,7 @@ export async function processIncomingMessage({
   }
 
   if (currentStep === COMPLETE_NODE) {
-    const reply = "We've already received your request. A plumber will contact you shortly.";
+    const reply = "We've received your request. A plumber will call shortly.";
     await storeOutbound(lead.id, reply);
     return { reply, leadId: lead.id, step: COMPLETE_NODE };
   }
@@ -102,7 +103,7 @@ export async function processIncomingMessage({
     if (lowerBody === "skip" || lowerBody === "no" || lowerBody === "none") {
       nextStep = COMPLETE_NODE;
     } else {
-      reply = "Please send a photo, or reply SKIP to continue without one. 📸";
+      reply = "Send a photo, or reply SKIP. 📸";
       await storeOutbound(lead.id, reply);
       return { reply, leadId: lead.id, step: currentStep };
     }
@@ -133,14 +134,22 @@ export async function processIncomingMessage({
     } else if (node.fallbackAllowed) {
       // Guard: don't accept arbitrary text as a photo URL
       if (node.acceptsPhoto && !mediaUrl) {
-        reply = "Please send a photo, or reply SKIP to continue without one. 📸";
+        reply = "Send a photo, or reply SKIP. 📸";
         await storeOutbound(lead.id, reply);
         return { reply, leadId: lead.id, step: currentStep };
       }
       // Text input node — accept any text
       if (node.saveField) {
-        (updates as any)[node.saveField] = body.trim();
-        console.log("💾 Saved (fallback)", node.saveField, "=", body.trim());
+        if (currentStep === "emergency.area") {
+          const { matched, raw } = matchServiceArea(body);
+          updates.areaRaw = raw;
+          updates.areaMatched = matched ?? undefined;
+          updates.area = matched || raw;
+          console.log("💾 Saved area raw =", raw, "matched =", matched);
+        } else {
+          (updates as any)[node.saveField] = body.trim();
+          console.log("💾 Saved (fallback)", node.saveField, "=", body.trim());
+        }
       }
       nextStep = node.next;
       console.log("➡️ nextStep from fallback:", nextStep);
@@ -196,6 +205,8 @@ export async function processIncomingMessage({
   if (updates.symptoms !== undefined) prismaUpdate.symptoms = updates.symptoms;
   if (updates.urgency !== undefined) prismaUpdate.urgency = updates.urgency;
   if (updates.area !== undefined) prismaUpdate.area = updates.area;
+  if (updates.areaRaw !== undefined) prismaUpdate.areaRaw = updates.areaRaw;
+  if (updates.areaMatched !== undefined) prismaUpdate.areaMatched = updates.areaMatched;
   if (updates.timeframe !== undefined) prismaUpdate.timeframe = updates.timeframe;
   if (updates.attemptedFix !== undefined) prismaUpdate.attemptedFix = updates.attemptedFix;
   if (updates.photoUrl !== undefined) prismaUpdate.photoUrl = updates.photoUrl;
