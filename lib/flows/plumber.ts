@@ -196,12 +196,13 @@ export const FLOW_NODES: Record<string, FlowNode> = {
 
   "hotwater.q2": {
     id: "hotwater.q2",
-    message: "What's the problem?\n\n1 - No Hot Water\n2 - Too Hot\n3 - Fluctuating\n4 - Noises",
+    message: "What's happening?\n\n1 - Strange Noises\n2 - Leak\n3 - Pilot Light Issue\n4 - Error Code\n5 - Other",
     options: [
-      { label: "No Hot Water", next: "hotwater.q5", saveValue: "No Hot Water" },
-      { label: "Too Hot", next: "hotwater.q5", saveValue: "Water Too Hot" },
-      { label: "Fluctuating", next: "hotwater.q5", saveValue: "Fluctuating Temperature" },
-      { label: "Noises", next: "hotwater.q5", saveValue: "Strange Noises" },
+      { label: "Strange Noises", next: "hotwater.q5", saveValue: "Strange Noises" },
+      { label: "Leak", next: "hotwater.q5", saveValue: "Leak" },
+      { label: "Pilot Light Issue", next: "hotwater.q5", saveValue: "Pilot Light Issue" },
+      { label: "Error Code", next: "hotwater.q5", saveValue: "Error Code" },
+      { label: "Other", next: "hotwater.q5", saveValue: "Other" },
     ],
     next: "hotwater.q5",
     saveField: "symptoms",
@@ -221,9 +222,20 @@ export const FLOW_NODES: Record<string, FlowNode> = {
     id: "hotwater.q6",
     message: "What's your name? 📝",
     options: [],
-    next: COMPLETE_NODE,
+    next: "hotwater.q7",
     saveField: "customerName",
     fallbackAllowed: true,
+  },
+
+  "hotwater.q7": {
+    id: "hotwater.q7",
+    message:
+      "Send a photo if you can.\n\nA photo of the water heater or its model/serial number label is especially helpful.\n\nOr reply SKIP. 📸",
+    options: [],
+    next: COMPLETE_NODE,
+    saveField: "photoUrl",
+    fallbackAllowed: true,
+    acceptsPhoto: true,
   },
 
   // ============================================================
