@@ -792,12 +792,12 @@ function CaseStudy() {
         <div className="bg-brand-slate rounded-2xl border border-slate-200/80 overflow-hidden">
           <div className="grid md:grid-cols-2">
             <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-slate-100">
-              <img
-                src="/images/ok-const-screenshot.png"
-                alt="Okanagan Inspired Construction website example"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+          <img
+  src="/images/ok-const-screenshot.png"
+  alt="Okanagan Inspired Construction website example"
+  className="w-full h-full object-cover"
+  loading="lazy"
+/>
             </div>
             <div className="p-6 md:p-8 flex flex-col justify-center">
               <p className="text-brand-teal text-xs font-semibold uppercase tracking-wider mb-2">Luxury Construction • Kelowna</p>

@@ -976,13 +976,4 @@ transform: scale(1.03);    border: 2px solid #14b8a6;
         }
     }
 
-    /* Image lazy load fade-in */
-    img[loading="lazy"] {
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-    img[loading="lazy"].loaded,
-    img[loading="eager"] {
-        opacity: 1;
-    }
     
