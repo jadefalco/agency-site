@@ -89,7 +89,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-teal text-white text-sm font-semibold transition-all duration-200 hover:bg-teal-500 hover:-translate-y-px shadow-sm"
             >
               Book My Demo
@@ -168,7 +168,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={handleLinkClick}
             className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-brand-teal text-white font-semibold hover:bg-teal-500 transition-colors"
           >
