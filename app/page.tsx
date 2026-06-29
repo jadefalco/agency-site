@@ -821,8 +821,8 @@ const HOME_BODY_HTML = `<!-- NAV -->
             <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.1); transition:all 0.5s ease;">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Educator Website Demo" style="width:100%; height:260px; object-fit:cover;" loading="lazy">
                 <div style="padding:1.75rem;">
-                    <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">TUTORING SERVICES</p>
-                    <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Local Tutor / Educator</h3>
+                    <p style="color:#0ea5e9; font-size:0.9rem; font-weight:600;">TEACHER</p>
+                    <h3 style="margin:0.75rem 0 0.5rem; font-size:1.45rem;">Local Educator</h3>
                     <p style="color:#64748b; font-size:0.95rem;">Clean, professional site that ranks locally and converts inquiries.</p>
                     <a href="https://justinenns.com" target="_blank" style="color:#0ea5e9; font-weight:600; display:inline-flex; align-items:center; gap:8px; margin-top:1.25rem;">Visit Live Site →</a>
                 </div>
