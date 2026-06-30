@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: { url: "/favicon.ico?v=2", sizes: "any" },
+  },
+};
 
 const inter = Inter({
   subsets: ["latin"],
