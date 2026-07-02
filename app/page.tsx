@@ -2,33 +2,49 @@ import type { Metadata } from "next";
 import Footer from "./sections/Footer";
 
 export const metadata: Metadata = {
-  title: "TrueNorth Websites | Kelowna Web Design, SEO & Lead Recovery | Okanagan BC",
-  description: "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan businesses. High-converting websites that generate more calls, bookings, and customers.",
+  title: {
+    absolute:
+      "TrueNorth Websites | Kelowna Web Design, SEO & Lead Recovery | Okanagan BC",
+  },
+  description:
+    "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan businesses. High-converting websites that generate more calls, bookings, and customers.",
   alternates: {
     canonical: "https://truenorthwebsites.com/",
   },
   openGraph: {
     title: "TrueNorth Websites | Kelowna Web Design, SEO & Lead Recovery",
-    description: "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan businesses. High-converting websites that generate more calls, bookings, and customers.",
+    description:
+      "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan businesses. High-converting websites that generate more calls, bookings, and customers.",
     type: "website",
     locale: "en_CA",
     url: "https://truenorthwebsites.com/",
+    siteName: "TrueNorth Websites",
+    images: [
+      {
+        url: "/truenorth-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "TrueNorth Websites — Kelowna Web Design, SEO & Lead Recovery",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "TrueNorth Websites | Kelowna Web Design, SEO & Lead Recovery",
-    description: "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan businesses. High-converting websites that generate more calls, bookings, and customers.",
+    description:
+      "Kelowna web design, local SEO, and AI-powered lead recovery for Okanagan businesses. High-converting websites that generate more calls, bookings, and customers.",
+    images: ["/truenorth-logo.png"],
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.truenorthwebsites.com/#business",
+  "@id": "https://truenorthwebsites.com/#business",
   name: "True North Websites",
   description:
     "Kelowna Web Design, SEO, and Lead Recovery for Local Businesses",
-  url: "https://www.truenorthwebsites.com",
+  url: "https://truenorthwebsites.com",
   telephone: "+1-250-575-3445",
   address: {
     "@type": "PostalAddress",
@@ -51,12 +67,12 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "True North Websites",
-  url: "https://www.truenorthwebsites.com",
+  url: "https://truenorthwebsites.com",
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://www.truenorthwebsites.com/?s={search_term_string}",
+      urlTemplate: "https://truenorthwebsites.com/?s={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -66,7 +82,7 @@ const serviceSchema = (name: string) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   name,
-  provider: { "@id": "https://www.truenorthwebsites.com/#business" },
+  provider: { "@id": "https://truenorthwebsites.com/#business" },
   areaServed: { "@type": "Place", name: "Okanagan Valley" },
 });
 
@@ -146,7 +162,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
             <a href="/missed-call-recovery/">Lead Recovery</a>
             <a href="/#why-fail">Why Most Fail</a>
             <a href="/#process">Process</a>
-            <a href="about.html">About</a>
+            <a href="/about.html">About</a>
             <a href="/#contact">Contact</a>
         </div>
 
@@ -168,7 +184,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <a href="/missed-call-recovery/">Lead Recovery</a>
         <a href="/#why-fail">Why Most Fail</a>
         <a href="/#process">Process</a>
-        <a href="about.html">About</a>
+        <a href="/about.html">About</a>
         <a href="/#contact">Contact</a>
 
         <a href="/#contact" class="nav-cta" style="text-align:center; margin-top:1rem;">

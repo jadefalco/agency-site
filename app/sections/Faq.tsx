@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
-
-const faqs = [
+export const faqs = [
   {
     q: "Do I need a new phone number?",
     a: "No. The system works with your existing business number. When you miss a call, the text comes from your number so customers recognize it.",
@@ -45,35 +41,15 @@ const faqs = [
   },
 ];
 
+/**
+ * Server Component FAQ accordion for the missed-call recovery page.
+ *
+ * Uses native <details>/<summary> elements instead of React state so the
+ * section can be server-rendered with zero client-side JavaScript.
+ */
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  // Generate FAQPage schema
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
-    })),
-  };
-
   return (
     <section id="faq" className="relative bg-white py-16 md:py-20 border-t border-slate-200">
-      {/* FAQPage schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
       <div className="max-w-3xl mx-auto px-5 md:px-6">
         {/* Header */}
         <div className="text-center mb-10 md:mb-14">
@@ -88,37 +64,28 @@ export default function Faq() {
         {/* Accordion */}
         <div className="space-y-3">
           {faqs.map((faq, index) => (
-            <div
+            <details
               key={index}
-              className="rounded-xl border border-slate-200/80 overflow-hidden transition-colors duration-200 hover:border-slate-300/80"
+              className="group rounded-xl border border-slate-200/80 overflow-hidden transition-colors duration-200 hover:border-slate-300/80"
+              open={index === 0}
             >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
-                aria-expanded={openIndex === index}
-              >
+              <summary className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer list-none">
                 <span className="text-brand-dark text-sm md:text-base font-semibold">
                   {faq.q}
                 </span>
                 <span
-                  className={`shrink-0 w-6 h-6 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-sm font-bold transition-transform duration-200 ${
-                    openIndex === index ? "rotate-45" : ""
-                  }`}
+                  className="shrink-0 w-6 h-6 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-sm font-bold transition-transform duration-200 group-open:rotate-45"
                   aria-hidden="true"
                 >
                   +
                 </span>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-out ${
-                  openIndex === index ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
+              </summary>
+              <div className="overflow-hidden transition-all">
                 <p className="px-5 pb-4 text-slate-600 text-sm leading-relaxed">
                   {faq.a}
                 </p>
               </div>
-            </div>
+            </details>
           ))}
         </div>
       </div>

@@ -1,71 +1,19 @@
-"use client";
-
-import React from "react";
 import Footer from "../sections/Footer";
 
-const PAGE_TITLE = "How Much Does a Website Cost in Kelowna? [2026 Guide] | TrueNorth";
-const PAGE_DESCRIPTION =
-  "A practical guide to website costs in Kelowna. Typical pricing, what to ask a designer, DIY vs hiring local, and a free checklist for small business owners.";
+/**
+ * Server Component for the Kelowna web design guide.
+ *
+ * Metadata (title, description, canonical, OG, Twitter) is provided by
+ * app/kelowna-web-design/layout.tsx via the Next.js Metadata API.
+ * JSON-LD structured data is also rendered server-side in the layout.
+ *
+ * The inline NAV_HTML and NAV_SCRIPT are preserved so the existing
+ * navigation behaviour and mobile menu continue to work unchanged.
+ */
 
 export default function KelownaWebDesignPage() {
   return (
     <>
-      <title>{PAGE_TITLE}</title>
-      <meta name="description" content={PAGE_DESCRIPTION} />
-      <link rel="canonical" href="https://truenorthwebsites.com/kelowna-web-design/" />
-      <meta property="og:title" content={PAGE_TITLE} />
-      <meta property="og:description" content={PAGE_DESCRIPTION} />
-      <meta property="og:type" content="website" />
-      <meta property="og:locale" content="en_CA" />
-      <meta property="og:url" content="https://truenorthwebsites.com/kelowna-web-design/" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={PAGE_TITLE} />
-      <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Article",
-                headline: "How Much Does a Website Cost in Kelowna? A Small Business Guide",
-                description: PAGE_DESCRIPTION,
-                url: "https://truenorthwebsites.com/kelowna-web-design/",
-                author: { "@type": "Organization", name: "TrueNorth Websites" },
-                publisher: { "@type": "Organization", name: "TrueNorth Websites" },
-                datePublished: "2026-06-08",
-              },
-              {
-                "@type": "LocalBusiness",
-                name: "TrueNorth Websites",
-                url: "https://truenorthwebsites.com",
-                email: "websitestruenorth@gmail.com",
-                areaServed: [
-                  { "@type": "City", name: "Kelowna" },
-                  { "@type": "City", name: "West Kelowna" },
-                  { "@type": "City", name: "Vernon" },
-                  { "@type": "City", name: "Penticton" },
-                  { "@type": "City", name: "Lake Country" },
-                  { "@type": "City", name: "Peachland" },
-                ],
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Kelowna",
-                  addressRegion: "BC",
-                  addressCountry: "CA",
-                },
-              },
-            ],
-          }),
-        }}
-      />
-
       <div dangerouslySetInnerHTML={{ __html: NAV_HTML }} />
 
       <main id="main-content">
@@ -112,7 +60,7 @@ const NAV_HTML = `
             <a href="/missed-call-recovery/">Lead Recovery</a>
             <a href="/#why-fail">Why Most Fail</a>
             <a href="/#process">Process</a>
-            <a href="about.html">About</a>
+            <a href="/about.html">About</a>
             <a href="/#contact">Contact</a>
         </div>
         <div style="display:flex; align-items:center; gap:0.75rem;">
@@ -129,7 +77,7 @@ const NAV_HTML = `
         <a href="/missed-call-recovery/">Lead Recovery</a>
         <a href="/#why-fail">Why Most Fail</a>
         <a href="/#process">Process</a>
-        <a href="about.html">About</a>
+        <a href="/about.html">About</a>
         <a href="/#contact">Contact</a>
         <a href="/#contact" class="nav-cta" style="text-align:center; margin-top:1rem;">Get Free Mockup</a>
     </div>

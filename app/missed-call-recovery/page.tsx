@@ -28,7 +28,7 @@ const NAV_HTML = `
             <a href="/missed-call-recovery/">Lead Recovery</a>
             <a href="/#why-fail">Why Most Fail</a>
             <a href="/#process">Process</a>
-            <a href="about.html">About</a>
+            <a href="/about.html">About</a>
             <a href="/#contact">Contact</a>
         </div>
         <div style="display:flex; align-items:center; gap:0.75rem;">
@@ -45,7 +45,7 @@ const NAV_HTML = `
         <a href="/missed-call-recovery/">Lead Recovery</a>
         <a href="/#why-fail">Why Most Fail</a>
         <a href="/#process">Process</a>
-        <a href="about.html">About</a>
+        <a href="/about.html">About</a>
         <a href="/#contact">Contact</a>
         <a href="/#contact" class="nav-cta" style="text-align:center; margin-top:1rem;">Get Free Mockup</a>
     </div>
@@ -133,10 +133,6 @@ document.addEventListener('click', (e) => {
 export default function MissedCallRecoveryPage() {
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-
       <div dangerouslySetInnerHTML={{ __html: NAV_HTML }} />
       <main id="main-content">
         <Hero />

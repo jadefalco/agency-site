@@ -1,10 +1,15 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { formatDistanceToNow } from "date-fns";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Lead Dashboard | Missed-Call Recovery",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 function getUrgencyBadge(score: number) {
