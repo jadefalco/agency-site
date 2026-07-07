@@ -7,13 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-     "postinstall": "prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
     "@neondatabase/serverless": "^1.1.0",
+    "@next/mdx": "^16.2.10",
     "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^5.22.0",
     "date-fns": "^4.4.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.16.0",
     "next": "14.2.3",
     "openai": "^6.39.0",
@@ -26,6 +30,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

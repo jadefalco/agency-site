@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://truenorthwebsites.com/missed-call-recovery/",
+    canonical: "https://truenorthwebsites.com/missed-call-recovery",
   },
 };
 

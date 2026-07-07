@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "./sections/Footer";
+import HelpfulGuides from "./sections/HelpfulGuides";
 
 export const metadata: Metadata = {
   title: {
@@ -41,11 +42,11 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://truenorthwebsites.com/#business",
-  name: "True North Websites",
+  name: "TrueNorth Websites",
   description:
     "Kelowna Web Design, SEO, and Lead Recovery for Local Businesses",
   url: "https://truenorthwebsites.com",
-  telephone: "+1-250-575-3445",
+  telephone: "+1-250-859-1231",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Kelowna",
@@ -66,7 +67,7 @@ const localBusinessSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "True North Websites",
+  name: "TrueNorth Websites",
   url: "https://truenorthwebsites.com",
   potentialAction: {
     "@type": "SearchAction",
@@ -120,6 +121,7 @@ export default function HomePage() {
         }}
       />
       <div dangerouslySetInnerHTML={{ __html: HOME_BODY_HTML }} />
+      <HelpfulGuides />
       <Footer />
       <script dangerouslySetInnerHTML={{ __html: HOME_SCRIPT }} />
       <a href="#contact" className="mobile-sticky-cta">Get Free Mockup</a>
@@ -162,6 +164,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
             <a href="/missed-call-recovery/">Lead Recovery</a>
             <a href="/#why-fail">Why Most Fail</a>
             <a href="/#process">Process</a>
+            <a href="/resources/">Resources</a>
             <a href="/about.html">About</a>
             <a href="/#contact">Contact</a>
         </div>
@@ -184,6 +187,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
         <a href="/missed-call-recovery/">Lead Recovery</a>
         <a href="/#why-fail">Why Most Fail</a>
         <a href="/#process">Process</a>
+        <a href="/resources/">Resources</a>
         <a href="/about.html">About</a>
         <a href="/#contact">Contact</a>
 
@@ -743,7 +747,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
                     <div class="browser-bar">okanaganconstruction.ca</div>
                 </div>
                 <div class="browser-screen">
-                    <img src="/images/ok-const-screenshot.png" alt="Website preview showing a modern local business website design" fetchpriority="high">
+                    <img src="/images/ok-const-screenshot.webp" alt="Website preview showing a modern local business website design" width="1413" height="730" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -855,7 +859,7 @@ const HOME_BODY_HTML = `<!-- NAV -->
                 <p style="color:#0ea5e9; font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:0.95rem;">PROUDLY LOCAL</p>
                 <h2 style="font-size:2.75rem; margin-bottom:1rem;">Built in the Okanagan. Helping Local Businesses Grow.</h2>
                 <p style="font-size:1.15rem; color:#64748b; line-height:1.7;">
-                    True North Websites is based right here in Kelowna. We work with businesses across the Okanagan — from West Kelowna and Lake Country to Vernon, Penticton, Peachland, and Summerland.
+                    TrueNorth Websites is based right here in Kelowna. We work with businesses across the Okanagan — from West Kelowna and Lake Country to Vernon, Penticton, Peachland, and Summerland.
                 </p>
                 <p style="font-size:1.15rem; color:#64748b; line-height:1.7; margin-top:1rem;">
                     We understand the local market because we live and work here too. Every site is built with your specific audience in mind, optimized for the searches your customers actually make. And while <strong>Kelowna web design</strong> is what we're known for, we happily serve businesses anywhere in Canada.

@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 const PAGE_TITLE = "How Much Does a Website Cost in Kelowna? [2026 Guide]";
 const PAGE_DESCRIPTION =
   "A practical guide to website costs in Kelowna. Typical pricing, what to ask a designer, DIY vs hiring local, and a free checklist for small business owners.";
-const CANONICAL_URL = "https://truenorthwebsites.com/kelowna-web-design/";
+const CANONICAL_URL = "https://truenorthwebsites.com/kelowna-web-design";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

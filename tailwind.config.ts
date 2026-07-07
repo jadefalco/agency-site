@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   content: [
@@ -41,9 +42,152 @@ const config: Config = {
           "50%": { opacity: "0.6" },
         },
       },
+      typography: ({
+        theme,
+      }: {
+        theme: (key: string, defaultValue?: unknown) => unknown;
+      }) => {
+        const joinFonts = (key: string): string => {
+          const value = theme(key);
+          return Array.isArray(value) ? value.join(", ") : String(value);
+        };
+
+        return {
+          DEFAULT: {
+            css: {
+              "--tw-prose-body": theme("colors.slate.600"),
+              "--tw-prose-headings": theme("colors.brand.dark"),
+              "--tw-prose-lead": theme("colors.slate.600"),
+              "--tw-prose-links": theme("colors.brand.teal"),
+              "--tw-prose-bold": theme("colors.brand.dark"),
+              "--tw-prose-counters": theme("colors.slate.500"),
+              "--tw-prose-bullets": theme("colors.brand.teal"),
+              "--tw-prose-hr": theme("colors.slate.200"),
+              "--tw-prose-quotes": theme("colors.brand.dark"),
+              "--tw-prose-quote-borders": theme("colors.brand.teal"),
+              "--tw-prose-captions": theme("colors.slate.500"),
+              "--tw-prose-code": theme("colors.brand.dark"),
+              "--tw-prose-pre-code": theme("colors.slate.200"),
+              "--tw-prose-pre-bg": theme("colors.brand.dark"),
+              "--tw-prose-th-borders": theme("colors.slate.200"),
+              "--tw-prose-td-borders": theme("colors.slate.100"),
+              maxWidth: "none",
+              fontSize: "1.0625rem",
+              lineHeight: "1.75",
+              h1: {
+                fontFamily: joinFonts("fontFamily.serif"),
+                fontWeight: "700",
+                letterSpacing: "-0.025em",
+                lineHeight: "1.1",
+              },
+              h2: {
+                fontFamily: joinFonts("fontFamily.serif"),
+                fontWeight: "700",
+                letterSpacing: "-0.025em",
+                lineHeight: "1.2",
+                marginTop: "2.5em",
+              },
+              h3: {
+                fontFamily: joinFonts("fontFamily.serif"),
+                fontWeight: "700",
+                letterSpacing: "-0.02em",
+                lineHeight: "1.25",
+                marginTop: "2em",
+              },
+              h4: {
+                fontFamily: joinFonts("fontFamily.sans"),
+                fontWeight: "700",
+                lineHeight: "1.3",
+                marginTop: "1.75em",
+              },
+              "h1 + *, h2 + *, h3 + *, h4 + *": {
+                marginTop: "0",
+              },
+              p: {
+                marginTop: "0",
+                marginBottom: "1.5em",
+              },
+              a: {
+                textDecoration: "none",
+                fontWeight: "500",
+                transition: "color 150ms ease",
+              },
+              "a:hover": {
+                color: theme("colors.teal.600"),
+                textDecoration: "underline",
+                textUnderlineOffset: "2px",
+              },
+              blockquote: {
+                fontStyle: "italic",
+                fontWeight: "500",
+                borderInlineStartWidth: "4px",
+                borderRadius: "0 0.75rem 0.75rem 0",
+                backgroundColor: theme("colors.slate.50"),
+                padding: "1.25rem 1.5rem",
+              },
+              "blockquote p:first-of-type::before": {
+                content: "none",
+              },
+              "blockquote p:last-of-type::after": {
+                content: "none",
+              },
+              code: {
+                fontWeight: "500",
+                padding: "0.125rem 0.375rem",
+                borderRadius: "0.375rem",
+              },
+              "code::before": {
+                content: "none",
+              },
+              "code::after": {
+                content: "none",
+              },
+              pre: {
+                borderRadius: "0.75rem",
+                padding: "1.25rem",
+              },
+              "pre code": {
+                padding: "0",
+                backgroundColor: "transparent",
+              },
+              img: {
+                borderRadius: "1rem",
+                borderWidth: "1px",
+                borderColor: theme("colors.slate.200"),
+                boxShadow: theme("boxShadow.sm"),
+              },
+              "figure img": {
+                marginBottom: "0.75rem",
+              },
+              figcaption: {
+                textAlign: "center",
+                fontSize: "0.875rem",
+              },
+              hr: {
+                marginTop: "2.5em",
+                marginBottom: "2.5em",
+              },
+              "ul > li, ol > li": {
+                marginTop: "0.375em",
+                marginBottom: "0.375em",
+              },
+              "ul > li::marker, ol > li::marker": {
+                color: theme("colors.brand.teal"),
+              },
+              table: {
+                fontSize: "0.9375rem",
+              },
+              "thead th": {
+                fontWeight: "700",
+                color: theme("colors.brand.dark"),
+              },
+            },
+          },
+        };
+      },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;

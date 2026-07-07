@@ -60,6 +60,7 @@ const NAV_HTML = `
             <a href="/missed-call-recovery/">Lead Recovery</a>
             <a href="/#why-fail">Why Most Fail</a>
             <a href="/#process">Process</a>
+            <a href="/resources/">Resources</a>
             <a href="/about.html">About</a>
             <a href="/#contact">Contact</a>
         </div>
@@ -77,6 +78,7 @@ const NAV_HTML = `
         <a href="/missed-call-recovery/">Lead Recovery</a>
         <a href="/#why-fail">Why Most Fail</a>
         <a href="/#process">Process</a>
+        <a href="/resources/">Resources</a>
         <a href="/about.html">About</a>
         <a href="/#contact">Contact</a>
         <a href="/#contact" class="nav-cta" style="text-align:center; margin-top:1rem;">Get Free Mockup</a>
