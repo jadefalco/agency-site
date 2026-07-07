@@ -5,6 +5,8 @@ import {
   getAllMdxSlugs,
   getMdxBySlug,
 } from "@/content/lib/mdx";
+import Header from "@/app/sections/Header";
+import Footer from "@/app/sections/Footer";
 
 /**
  * Automatic /resources index page.
@@ -93,6 +95,7 @@ export default function ResourcesIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
+      <Header solid />
       <main className="relative bg-brand-slate pt-28 pb-16 md:pt-36 md:pb-24">
         <div className="max-w-7xl mx-auto px-5 md:px-6">
           {/* Header */}
@@ -149,6 +152,7 @@ export default function ResourcesIndexPage() {
           )}
         </div>
       </main>
+      <Footer />
     </>
   );
 }

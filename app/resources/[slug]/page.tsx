@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { compile, run } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import ArticleLayout from "@/app/components/ArticleLayout";
+import Header from "@/app/sections/Header";
+import Footer from "@/app/sections/Footer";
 import {
   Callout,
   ComparisonTable,
@@ -143,9 +145,11 @@ export default async function ResourcePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <Header solid />
       <ArticleLayout frontmatter={frontmatter} readingTime={readingTime}>
         <MDXContent components={mdxComponents} />
       </ArticleLayout>
+      <Footer />
     </>
   );
 }
