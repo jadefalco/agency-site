@@ -597,20 +597,20 @@ const HOME_BODY_HTML = `<style>
             </div>
 
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem;">
-                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">🐢</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Slow &amp; Frustrating</h3>
-                    <p>Visitors leave in seconds if your site takes longer than 3 seconds to load.</p>
+                <div class="stat-card">
+                    <div class="stat-headline">3s</div>
+                    <h3 style="font-size:1.375rem; margin-bottom:0.75rem;">Too Slow</h3>
+                    <p>Visitors leave if your website takes longer than 3 seconds to load.</p>
                 </div>
-                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">📱</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Broken on Mobile</h3>
-                    <p>Over 60% of local searches happen on phones. If it doesn't look perfect, you lose the customer.</p>
+                <div class="stat-card">
+                    <div class="stat-headline">60%+</div>
+                    <h3 style="font-size:1.375rem; margin-bottom:0.75rem;">On Mobile</h3>
+                    <p>More than 60% of local searches happen on phones. If your website doesn't look great on mobile, customers move on.</p>
                 </div>
-                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">❓</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">No Clear Next Step</h3>
-                    <p>No strong call-to-action means visitors don't know what to do next. Even worse, <a href="/missed-call-recovery/" style="color:#0ea5e9; font-weight:600; text-decoration:underline;">missed calls go unanswered</a> and potential customers move on.</p>
+                <div class="stat-card">
+                    <div class="stat-headline">1 CTA</div>
+                    <h3 style="font-size:1.375rem; margin-bottom:0.75rem;">One Clear Action</h3>
+                    <p>Every page should guide visitors toward one obvious next step&mdash;call, request a quote, or book a consultation. Even worse, <a href="/missed-call-recovery/" style="color:#0ea5e9; font-weight:600; text-decoration:underline;">missed calls go unanswered</a> when there's no clear path forward.</p>
                 </div>
             </div>
         </div>
@@ -679,20 +679,20 @@ const HOME_BODY_HTML = `<style>
             </div>
 
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-bottom:3rem;">
-                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">🏔️</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Local Knowledge</h3>
-                    <p style="color:#475569;">We know the Okanagan. We understand the seasonal cycles, the local competition, and what customers in this region actually search for. That means your <strong>website design in Kelowna</strong> is optimized for real local intent — not generic templates.</p>
+                <div class="stat-card">
+                    <div class="stat-headline">Local</div>
+                    <h3 style="font-size:1.375rem; margin-bottom:0.75rem;">Built for the Okanagan</h3>
+                    <p style="color:#475569;">We know the Okanagan, the seasonal trends, and how local customers search. Your website is built around real local demand&mdash;not generic templates.</p>
                 </div>
-                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">🤝</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Personal Service</h3>
-                    <p style="color:#475569;">You work directly with the designer. No account managers, no ticket systems, no chasing someone in a different time zone. Just clear communication and fast turnaround.</p>
+                <div class="stat-card">
+                    <div class="stat-headline">Direct</div>
+                    <h3 style="font-size:1.375rem; margin-bottom:0.75rem;">Work With the Designer</h3>
+                    <p style="color:#475569;">You'll always communicate directly with the person building your website. No account managers, no support tickets, and no getting passed around&mdash;just clear communication and fast turnaround.</p>
                 </div>
-                <div style="background:white; padding:2.5rem; border-radius:24px; box-shadow:0 10px 30px rgba(0,0,0,0.07);">
-                    <div style="font-size:3rem; margin-bottom:1rem;">🍁</div>
-                    <h3 style="font-size:1.5rem; margin-bottom:0.75rem;">Canada-Wide Reach</h3>
-                    <p style="color:#475569;">While <strong>Okanagan web design</strong> is our specialty, we work with businesses across Canada. The process is the same — understand your market, build a site that converts, and make sure you own every part of it.</p>
+                <div class="stat-card">
+                    <div class="stat-headline">Canada</div>
+                    <h3 style="font-size:1.375rem; margin-bottom:0.75rem;">Serving Businesses Nationwide</h3>
+                    <p style="color:#475569;">While Kelowna is home, we build high-performing websites for businesses across Canada, tailoring every project to its local market.</p>
                 </div>
             </div>
 
@@ -1037,4 +1037,15 @@ const HOME_SCRIPT = `document.addEventListener('DOMContentLoaded', () => {
                     observer.observe(img);
                 }
             });
+
+            const problemCards = document.querySelectorAll('.stat-card');
+            const problemObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        problemObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            problemCards.forEach(card => problemObserver.observe(card));
         });`;
